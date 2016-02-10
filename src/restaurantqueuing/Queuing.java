@@ -1,6 +1,6 @@
 package restaurantqueuing;
 
-import edu.sit.cs.db.CSDbDelegate;
+//import edu.sit.cs.db.CSDbDelegate;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class Queuing {
 
     public Queuing() {
-        db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G5", "CSC105_G5", "CSC105_G5");
+        //db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G5", "CSC105_G5", "CSC105_G5");
         System.out.println(db.connect());
     }
 
