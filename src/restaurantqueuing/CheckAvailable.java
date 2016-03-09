@@ -51,9 +51,11 @@ public class CheckAvailable extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 255));
         jLabel1.setText("Date");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 255));
         jLabel2.setText("Time");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -82,6 +84,7 @@ public class CheckAvailable extends javax.swing.JFrame {
         lblMessage.setPreferredSize(new java.awt.Dimension(22, 19));
 
         btnDone.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnDone.setForeground(new java.awt.Color(102, 153, 255));
         btnDone.setText("Done");
         btnDone.setPreferredSize(new java.awt.Dimension(75, 27));
         btnDone.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,6 +94,7 @@ public class CheckAvailable extends javax.swing.JFrame {
         });
 
         btnCancel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(102, 153, 255));
         btnCancel.setText("Cancel");
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,6 +120,7 @@ public class CheckAvailable extends javax.swing.JFrame {
                 .addComponent(btnDone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnTen.setForeground(new java.awt.Color(153, 51, 255));
         btnTen.setText("10");
         btnTen.setPreferredSize(new java.awt.Dimension(50, 25));
         btnTen.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,6 +129,7 @@ public class CheckAvailable extends javax.swing.JFrame {
             }
         });
 
+        btnSix.setForeground(new java.awt.Color(153, 51, 255));
         btnSix.setText("6");
         btnSix.setPreferredSize(new java.awt.Dimension(50, 25));
         btnSix.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,6 +138,7 @@ public class CheckAvailable extends javax.swing.JFrame {
             }
         });
 
+        btnFour.setForeground(new java.awt.Color(153, 51, 255));
         btnFour.setText("4");
         btnFour.setPreferredSize(new java.awt.Dimension(50, 25));
         btnFour.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,6 +147,7 @@ public class CheckAvailable extends javax.swing.JFrame {
             }
         });
 
+        btnTwo.setForeground(new java.awt.Color(153, 51, 255));
         btnTwo.setText("2");
         btnTwo.setPreferredSize(new java.awt.Dimension(50, 25));
         btnTwo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,6 +157,7 @@ public class CheckAvailable extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("Chairs");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

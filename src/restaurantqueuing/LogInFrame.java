@@ -36,11 +36,13 @@ public class LogInFrame extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 153, 153));
         jLabel1.setText("Username");
 
+        jLabel2.setForeground(new java.awt.Color(255, 153, 153));
         jLabel2.setText("Password");
 
-        btnSignIn.setBackground(new java.awt.Color(102, 102, 102));
+        btnSignIn.setBackground(new java.awt.Color(0, 0, 0));
         btnSignIn.setForeground(new java.awt.Color(204, 204, 255));
         btnSignIn.setText("Sign in");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +52,7 @@ public class LogInFrame extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Footlight MT Light", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setForeground(new java.awt.Color(255, 204, 204));
         jLabel3.setText("Mergano Restaruant");
 
         lblMessage.setToolTipText("");
