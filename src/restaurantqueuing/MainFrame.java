@@ -46,7 +46,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         pnlMenuBar.setPreferredSize(new java.awt.Dimension(800, 70));
 
-        btnReserve.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnReserve.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
+        btnReserve.setForeground(new java.awt.Color(255, 51, 102));
         btnReserve.setText("RESERVE");
         btnReserve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReserve.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -55,7 +56,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBilling.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBilling.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
+        btnBilling.setForeground(new java.awt.Color(255, 51, 102));
         btnBilling.setText("BILLING");
         btnBilling.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBilling.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -64,7 +66,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBacklog.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBacklog.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
+        btnBacklog.setForeground(new java.awt.Color(255, 51, 102));
         btnBacklog.setText("BACKLOG");
         btnBacklog.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBacklog.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,7 +76,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btnPopularFood.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPopularFood.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
+        btnPopularFood.setForeground(new java.awt.Color(255, 0, 102));
         btnPopularFood.setText("POPULAR FOOD");
         btnPopularFood.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPopularFood.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,14 +99,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnBacklog, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPopularFood)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
         pnlMenuBarLayout.setVerticalGroup(
             pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReserve, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                    .addComponent(btnReserve, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(btnBilling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPopularFood, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBacklog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
