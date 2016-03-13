@@ -132,7 +132,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("aey aey aey");
+        jLabel1.setText("Test test ");
 
         lblClock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblClock.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
