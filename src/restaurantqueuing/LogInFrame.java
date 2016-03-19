@@ -46,7 +46,7 @@ public class LogInFrame extends javax.swing.JFrame {
 
         btnSignIn.setBackground(new java.awt.Color(0, 0, 0));
         btnSignIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnSignIn.setForeground(new java.awt.Color(204, 204, 255));
+        btnSignIn.setForeground(new java.awt.Color(255, 153, 102));
         btnSignIn.setText("LOG IN");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
