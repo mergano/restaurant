@@ -13,7 +13,6 @@ import java.util.HashMap;
 public class Queuing {
 
     public Queuing() {
-        // Temp connection (host,port,db_name,username,password)
         db = new CSDbDelegate("128.199.117.93", "3306", "mergano", "user", "iloveoosd");
         System.out.println(db.connect());
     }
