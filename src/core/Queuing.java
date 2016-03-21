@@ -1,4 +1,4 @@
-package restaurantqueuing;
+package core;
 
 import edu.sit.cs.db.CSDbDelegate;
 import java.text.DateFormat;

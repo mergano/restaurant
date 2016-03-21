@@ -1,4 +1,4 @@
-package restaurantqueuing;
+package core;
 
 import java.awt.Color;
 
