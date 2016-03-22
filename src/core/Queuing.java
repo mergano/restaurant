@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class Queuing {
 
     public Queuing() {
-        db = new CSDbDelegate("128.199.117.93", "3306", "mergano", "user", "iloveoosd");
+        db = new CSDbDelegate("128.199.117.93", "3306", "kiyoshi", "user", "iloveoosd");
         System.out.println(db.connect());
     }
 
