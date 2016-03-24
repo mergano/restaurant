@@ -2117,7 +2117,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDashboardMouseClicked
 
     private void addIcon() {
-        javax.swing.ImageIcon img = new javax.swing.ImageIcon("icon.jpg");
+        javax.swing.ImageIcon img = new javax.swing.ImageIcon("icon.png");
         setIconImage(img.getImage());
     }
 
