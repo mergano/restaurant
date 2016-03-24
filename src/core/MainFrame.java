@@ -26,9 +26,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel24 = new javax.swing.JPanel();
+        pnlContent = new javax.swing.JPanel();
         pnlMenuBar = new javax.swing.JPanel();
-        btnDashboard = new javax.swing.JButton();
-        btnReserve = new javax.swing.JButton();
         btnBilling = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnStatistics = new javax.swing.JButton();
@@ -36,7 +35,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblClock = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
-        pnlContent = new javax.swing.JPanel();
+        btnDashboard1 = new javax.swing.JButton();
+        btnReserve = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -51,6 +51,19 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        pnlContent.setPreferredSize(new java.awt.Dimension(0, 500));
+
+        javax.swing.GroupLayout pnlContentLayout = new javax.swing.GroupLayout(pnlContent);
+        pnlContent.setLayout(pnlContentLayout);
+        pnlContentLayout.setHorizontalGroup(
+            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
+        );
+        pnlContentLayout.setVerticalGroup(
+            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(100, 100, 0, 0));
         setMinimumSize(new java.awt.Dimension(907, 674));
@@ -62,38 +75,6 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenuBar.setPreferredSize(new java.awt.Dimension(800, 70));
-
-        btnDashboard.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
-        btnDashboard.setForeground(new java.awt.Color(255, 153, 102));
-        btnDashboard.setText("DASHBOARD");
-        btnDashboard.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDashboardMouseClicked(evt);
-            }
-        });
-        btnDashboard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDashboardActionPerformed(evt);
-            }
-        });
-
-        btnReserve.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
-        btnReserve.setForeground(new java.awt.Color(255, 153, 102));
-        btnReserve.setText("RESERVE");
-        btnReserve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnReserve.setMaximumSize(new java.awt.Dimension(122, 28));
-        btnReserve.setMinimumSize(new java.awt.Dimension(122, 28));
-        btnReserve.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReserveMouseClicked(evt);
-            }
-        });
-        btnReserve.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReserveActionPerformed(evt);
-            }
-        });
 
         btnBilling.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
         btnBilling.setForeground(new java.awt.Color(255, 153, 102));
@@ -160,7 +141,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,31 +151,63 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        btnDashboard1.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
+        btnDashboard1.setForeground(new java.awt.Color(255, 153, 102));
+        btnDashboard1.setText("DASHBOARD");
+        btnDashboard1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDashboard1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDashboard1MouseClicked(evt);
+            }
+        });
+        btnDashboard1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDashboard1ActionPerformed(evt);
+            }
+        });
+
+        btnReserve.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
+        btnReserve.setForeground(new java.awt.Color(255, 153, 102));
+        btnReserve.setText("RESERVE");
+        btnReserve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnReserve.setMaximumSize(new java.awt.Dimension(122, 28));
+        btnReserve.setMinimumSize(new java.awt.Dimension(122, 28));
+        btnReserve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReserveMouseClicked(evt);
+            }
+        });
+        btnReserve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReserveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMenuBarLayout = new javax.swing.GroupLayout(pnlMenuBar);
         pnlMenuBar.setLayout(pnlMenuBarLayout);
         pnlMenuBarLayout.setHorizontalGroup(
             pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(pnlMenuBarLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(btnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnBilling, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBilling, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addComponent(btnHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlMenuBarLayout.setVerticalGroup(
@@ -202,38 +215,17 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBilling, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnStatistics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlMenuBarLayout.createSequentialGroup()
-                        .addGroup(pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDashboard))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(btnStatistics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBilling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
-
-        btnDashboard.getAccessibleContext().setAccessibleName("RESERVE");
 
         getContentPane().add(pnlMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));
-
-        pnlContent.setBounds(new java.awt.Rectangle(0, 23, 855, 639));
-        pnlContent.setPreferredSize(new java.awt.Dimension(0, 500));
-
-        javax.swing.GroupLayout pnlContentLayout = new javax.swing.GroupLayout(pnlContent);
-        pnlContent.setLayout(pnlContentLayout);
-        pnlContentLayout.setHorizontalGroup(
-            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-        );
-        pnlContentLayout.setVerticalGroup(
-            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 910, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2107,14 +2099,14 @@ public class MainFrame extends javax.swing.JFrame {
         initReserve();
     }//GEN-LAST:event_btnReserveMouseClicked
 
-    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDashboardActionPerformed
-
-    private void btnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseClicked
+    private void btnDashboard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboard1MouseClicked
         pnlContent.removeAll();
         initDashboard();
-    }//GEN-LAST:event_btnDashboardMouseClicked
+    }//GEN-LAST:event_btnDashboard1MouseClicked
+
+    private void btnDashboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboard1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDashboard1ActionPerformed
 
     private void addIcon() {
         javax.swing.ImageIcon img = new javax.swing.ImageIcon("icon.png");
@@ -2583,7 +2575,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBilling;
-    private javax.swing.JButton btnDashboard;
+    private javax.swing.JButton btnDashboard1;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnReserve;
     private javax.swing.JButton btnStatistics;
@@ -2592,7 +2584,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblClock;
-    private javax.swing.JLabel lblUser;
+    private static javax.swing.JLabel lblUser;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlMenuBar;
     // End of variables declaration//GEN-END:variables
