@@ -3,7 +3,7 @@ package core;
 public class MainFrame extends javax.swing.JFrame {
 
     public MainFrame() {
-        setTitle("Restaurant Queuing");
+        setTitle("KIYOSHI JAPANESE RESTAURANT");
         addIcon();
         createMenuButton();
         initComponents();
@@ -78,6 +78,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnBilling.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
         btnBilling.setForeground(new java.awt.Color(255, 153, 102));
+        btnBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/billing.jpg"))); // NOI18N
         btnBilling.setText("BILLING");
         btnBilling.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBilling.setMaximumSize(new java.awt.Dimension(122, 28));
@@ -95,6 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnHistory.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
         btnHistory.setForeground(new java.awt.Color(255, 153, 102));
+        btnHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/history.jpg"))); // NOI18N
         btnHistory.setText("HISTORY");
         btnHistory.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnHistory.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,6 +112,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnStatistics.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
         btnStatistics.setForeground(new java.awt.Color(255, 153, 102));
+        btnStatistics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/statistics.jpg"))); // NOI18N
         btnStatistics.setText("STATISTICS");
         btnStatistics.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,6 +165,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnDashboard1.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
         btnDashboard1.setForeground(new java.awt.Color(255, 153, 102));
+        btnDashboard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dashboard.jpg"))); // NOI18N
         btnDashboard1.setText("DASHBOARD");
         btnDashboard1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDashboard1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,6 +181,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnReserve.setFont(new java.awt.Font("Adobe Hebrew", 1, 18)); // NOI18N
         btnReserve.setForeground(new java.awt.Color(255, 153, 102));
+        btnReserve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reverse.jpg"))); // NOI18N
         btnReserve.setText("RESERVE");
         btnReserve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnReserve.setMaximumSize(new java.awt.Dimension(122, 28));
@@ -197,7 +202,7 @@ public class MainFrame extends javax.swing.JFrame {
         pnlMenuBarLayout.setHorizontalGroup(
             pnlMenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(pnlMenuBarLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addComponent(btnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,9 +225,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(btnStatistics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBilling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 10, Short.MAX_VALUE))
+                    .addComponent(btnDashboard1)
+                    .addComponent(btnReserve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));
