@@ -1,6 +1,7 @@
 package core;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 public class LogInFrame extends javax.swing.JFrame {
 
@@ -8,14 +9,13 @@ public class LogInFrame extends javax.swing.JFrame {
      * Creates new form LogInFrame
      */
     public LogInFrame() {
-        
+
         addIcon();
         setTitle("Log in");
         initComponents();
         setLocationRelativeTo(null);
         queue = new Queuing();
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -51,6 +51,23 @@ public class LogInFrame extends javax.swing.JFrame {
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignInActionPerformed(evt);
+            }
+        });
+
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
+
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
             }
         });
 
@@ -138,6 +155,20 @@ public class LogInFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+
+    }//GEN-LAST:event_txtUserKeyPressed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnSignInActionPerformed(evt);
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
+
     private void addIcon() {
         javax.swing.ImageIcon img = new javax.swing.ImageIcon("icon.png");
         setIconImage(img.getImage());
@@ -147,7 +178,7 @@ public class LogInFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
