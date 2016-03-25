@@ -161,7 +161,7 @@ public class LogInFrame extends javax.swing.JFrame {
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnSignInActionPerformed(evt);
+            // btnSignInActionPerformed(evt);
         }
     }//GEN-LAST:event_txtPassKeyPressed
 
