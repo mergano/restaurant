@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Juk on digital ocean" uploadOnCheckin="796fd7c0-886b-4625-b036-4c8747a3d71c">
+    <serverData>
+      <paths name="Juk on digital ocean">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/projects" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="Juk on digital ocean" />
+  </component>
+</project>
