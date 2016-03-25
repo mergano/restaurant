@@ -73,7 +73,7 @@ public class LogInFrame extends javax.swing.JFrame {
 
         lblMessage.setToolTipText("");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/label.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/head.jpg"))); // NOI18N
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salmon.jpg"))); // NOI18N
 
