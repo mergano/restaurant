@@ -65,6 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Kiyoshi Queuing System");
         setBounds(new java.awt.Rectangle(100, 100, 0, 0));
         setMinimumSize(new java.awt.Dimension(907, 674));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -134,8 +135,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblClock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblClock.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
-        lblUser.setBounds(new java.awt.Rectangle(0, 23, 855, 639));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -227,7 +226,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(btnBilling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDashboard1)
                     .addComponent(btnReserve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));

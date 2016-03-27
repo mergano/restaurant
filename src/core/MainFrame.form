@@ -55,6 +55,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Kiyoshi Queuing System"/>
     <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
       <Rectangle value="[100, 100, 0, 0]"/>
     </Property>
@@ -130,7 +131,7 @@
                       <Component id="btnDashboard1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnReserve" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -270,11 +271,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblUser">
-              <Properties>
-                <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
-                  <Rectangle value="[0, 23, 855, 639]"/>
-                </Property>
-              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
