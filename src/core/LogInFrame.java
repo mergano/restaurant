@@ -31,6 +31,7 @@ public class LogInFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Kiyoshi Queuing System");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(855, 639));
 
@@ -39,10 +40,10 @@ public class LogInFrame extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("USERNAME: ");
+        jLabel1.setText("Username");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("PASSWORD:");
+        jLabel2.setText("Password");
 
         btnSignIn.setBackground(new java.awt.Color(0, 0, 0));
         btnSignIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
