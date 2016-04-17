@@ -1,6 +1,8 @@
 
-package core;
+package com.kiyoshi.core;
 
+import com.kiyoshi.dao.Queuing;
+import com.kiyoshi.core.MainFrame;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

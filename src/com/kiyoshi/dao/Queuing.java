@@ -1,5 +1,6 @@
-package core;
+package com.kiyoshi.dao;
 
+import com.kiyoshi.core.CheckAvailable;
 import edu.sit.cs.db.CSDbDelegate;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -306,17 +307,19 @@ public class Queuing {
         db.executeQuery(sql);
     }
 
-    public int checkLogin(String id, String pass) {
+    public int checkLogin(String id, char[] pass) {
         String sql = "SELECT * FROM R_ID WHERE Id = '" + id + "'";
-        HashMap user = db.queryRow(sql);
+        HashMap user = db.queryRow(sql); // execute query
+        String passwd = String.valueOf(pass); // convert char to string
+
         if (!user.isEmpty()) {
-            if (String.valueOf(user.get("Pass")).equals(pass)) {
-                return 1;
+            if (String.valueOf(user.get("Pass")).equals(passwd)) {
+                return 2;
             } else {
-                return 0;
+                return 1;
             }
         } else {
-            return -1;
+            return 0;
         }
     }
 
