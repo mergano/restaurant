@@ -1,11 +1,11 @@
 package com.kiyoshi.gui;
 
-public class PreferenceFrame extends javax.swing.JFrame {
+public class Preference extends javax.swing.JFrame {
 
     /**
      * Creates new form SettingsFrame
      */
-    public PreferenceFrame() {
+    public Preference() {
         initComponents();
     }
 

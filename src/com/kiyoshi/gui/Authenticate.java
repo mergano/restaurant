@@ -4,11 +4,11 @@ import com.kiyoshi.core.MainFrame;
 import com.kiyoshi.dao.Queuing;
 import java.awt.event.KeyEvent;
 
-public class AuthenticateFrame extends javax.swing.JFrame {
+public class Authenticate extends javax.swing.JFrame {
 
     Queuing queue;
 
-    public AuthenticateFrame() {
+    public Authenticate() {
         initComponents();
         queue = new Queuing();
     }
@@ -94,10 +94,8 @@ public class AuthenticateFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kiyoshi Restaurant Queuing System");
-        setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(640, 480));
         setResizable(false);
         setSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -191,7 +189,6 @@ public class AuthenticateFrame extends javax.swing.JFrame {
 
         auth_forgot_passwd_btn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         auth_forgot_passwd_btn.setText("Forgot password ?");
-        auth_forgot_passwd_btn.setActionCommand("Forgot password ?");
         auth_forgot_passwd_btn.setBorder(null);
         auth_forgot_passwd_btn.setContentAreaFilled(false);
         auth_forgot_passwd_btn.setName("auth_forgot_passwd_btn"); // NOI18N
@@ -325,11 +322,11 @@ public class AuthenticateFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuthenticateFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Authenticate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         java.awt.EventQueue.invokeLater(() -> {
-            new AuthenticateFrame().setVisible(true);
+            new Authenticate().setVisible(true);
         });
     }
 
