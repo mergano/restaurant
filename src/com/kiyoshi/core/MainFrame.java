@@ -1,20 +1,17 @@
 package com.kiyoshi.core;
 
-import com.kiyoshi.gui.AuthenticateFrame;
 import com.kiyoshi.dao.Queuing;
 
 public class MainFrame extends javax.swing.JFrame {
 
     public MainFrame() {
-        setTitle("KIYOSHI JAPANESE RESTAURANT");
+
         addIcon();
         createMenuButton();
         initComponents();
         lblUser.setText(username);
         initDashboard();
         currentTime();
-        setLocationRelativeTo(null);
-        setResizable(false);
         queue = new Queuing();
     }
 
@@ -2069,7 +2066,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnStatisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatisticsActionPerformed
-        // TODO add your handling code here:
+        pnlContent.removeAll();
+        initStatistics();
     }//GEN-LAST:event_btnStatisticsActionPerformed
 
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
@@ -2078,7 +2076,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
-        // TODO add your handling code here:
+        pnlContent.removeAll();
+        initHistory();
     }//GEN-LAST:event_btnHistoryActionPerformed
 
     private void btnHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistoryMouseClicked
@@ -2087,7 +2086,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHistoryMouseClicked
 
     private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
-        // TODO add your handling code here:
+        pnlContent.removeAll();
+        initBilling();
     }//GEN-LAST:event_btnBillingActionPerformed
 
     private void btnBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBillingMouseClicked
@@ -2096,7 +2096,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBillingMouseClicked
 
     private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
-        // TODO add your handling code here:
+        pnlContent.removeAll();
+        initReserve();
     }//GEN-LAST:event_btnReserveActionPerformed
 
     private void btnReserveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReserveMouseClicked
@@ -2110,7 +2111,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDashboard1MouseClicked
 
     private void btnDashboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboard1ActionPerformed
-        // TODO add your handling code here:
+        pnlContent.removeAll();
+        initDashboard();
     }//GEN-LAST:event_btnDashboard1ActionPerformed
 
     private void addIcon() {
@@ -2632,29 +2634,4 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTable tblPopular;
     private javax.swing.JButton btnCheckPop;
 
-//        public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new AuthenticateFrame().setVisible(true);
-//            }
-//        });
-//    }
 }

@@ -1,8 +1,6 @@
-
 package com.kiyoshi.core;
 
 import com.kiyoshi.dao.Queuing;
-import com.kiyoshi.core.MainFrame;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,12 +16,10 @@ public class CheckAvailable extends javax.swing.JFrame {
     public CheckAvailable() {
         this.tableId = -1;
         this.dateTimeReserve = new GregorianCalendar();
-        
+
         addIcon();
-        setTitle("Check Available");
         initComponents();
         inputDateTime();
-        setLocationRelativeTo(null);
         queue = MainFrame.getQueue();
     }
 
@@ -240,46 +236,46 @@ public class CheckAvailable extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTenMouseClicked
 
     private void btnDoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoneMouseClicked
-        if(lblMessage.getText().equals(message[0] + tableId)) {
+        if (lblMessage.getText().equals(message[0] + tableId)) {
             MainFrame.setTableIdAndTime(tableId, dateTimeReserve);
-            
+
             DateFormat dateTimeFormat = new SimpleDateFormat("dd-MM-yyyy   HH:mm");
             dateTimeReserve.add(java.util.Calendar.YEAR, -543);
             String dateString = dateTimeFormat.format(dateTimeReserve.getTime());
-            
+
             MainFrame.setLabelDateAndTime(String.valueOf(tableId), dateString);
-            
+
             dispose();
         } else {
             javax.swing.JOptionPane.showMessageDialog(null, "You did not select the table");
         }
-        
+
     }//GEN-LAST:event_btnDoneMouseClicked
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
         dispose();
     }//GEN-LAST:event_btnCancelMouseClicked
-    
+
     private void btnChairsMouseClicked(int chairs) {
         lblMessage.setText("");
 
-        try {  
-            int tableId = queue.checkAvailable((Date)spnDate.getValue(), (Date)spnTime.getValue(), chairs);
-            
-            switch(tableId) {
-                case -1 :
+        try {
+            int tableId = queue.checkAvailable((Date) spnDate.getValue(), (Date) spnTime.getValue(), chairs);
+
+            switch (tableId) {
+                case -1:
                     lblMessage.setText(message[1]);
                     lblMessage.setForeground(new java.awt.Color(255, 0, 0));
                     break;
-                case -2 :
+                case -2:
                     lblMessage.setText(message[3]);
                     lblMessage.setForeground(new java.awt.Color(255, 0, 0));
                     break;
-                case -3 :                    
+                case -3:
                     lblMessage.setText("<HTML><I>" + message[2] + "</I></HTML>");
                     lblMessage.setForeground(new java.awt.Color(255, 0, 0));
                     break;
-                default :
+                default:
                     lblMessage.setText(message[0] + tableId);
                     lblMessage.setForeground(new java.awt.Color(0, 204, 0));
                     this.tableId = tableId;
@@ -288,67 +284,67 @@ public class CheckAvailable extends javax.swing.JFrame {
             Logger.getLogger(CheckAvailable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void inputDateTime() {
         spnDate = new javax.swing.JSpinner(new SpinnerDateModel());
         javax.swing.JSpinner.DateEditor dateEditor = new javax.swing.JSpinner.DateEditor(spnDate, "dd-MM-yyyy");
         spnDate.setEditor(dateEditor);
-        
+
         spnTime = new javax.swing.JSpinner(new SpinnerDateModel());
         javax.swing.JSpinner.DateEditor timeEditer = new javax.swing.JSpinner.DateEditor(spnTime, "HH:mm");
         spnTime.setEditor(timeEditer);
-        
+
         spnDate.setFont(new java.awt.Font("Tahoma", 0, 15));
         spnTime.setFont(new java.awt.Font("Tahoma", 0, 15));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnTime, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(spnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spnTime, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(spnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(spnTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(spnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(spnTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }
-    
+
     public static void setDateTimeReserve(Calendar time) {
         dateTimeReserve.setTime(time.getTime());
     }
-    
+
     private void addIcon() {
         javax.swing.ImageIcon img = new javax.swing.ImageIcon("icon.jpg");
         setIconImage(img.getImage());
     }
-    
+
     private Queuing queue;
-    
+
     private int tableId;
     private static Calendar dateTimeReserve;
-    
+
     private String[] message = {"Available - table No.", "Not Available", "Please reserve at least 1 hour in advance", "Bookable in 08:00 - 20:00"};
     private javax.swing.JSpinner spnDate;
     private javax.swing.JSpinner spnTime;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDone;
