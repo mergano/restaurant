@@ -1,6 +1,5 @@
 package com.kiyoshi.gui;
 
-import com.kiyoshi.core.MainFrame;
 import com.kiyoshi.dao.Queuing;
 import java.awt.event.KeyEvent;
 
@@ -55,12 +54,15 @@ public class Authenticate extends javax.swing.JFrame {
 
         forgot_password_dialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         forgot_password_dialog.setTitle("Forgot password");
+        forgot_password_dialog.setLocation(new java.awt.Point(0, 0));
+        forgot_password_dialog.setLocationByPlatform(true);
         forgot_password_dialog.setMaximumSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setMinimumSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setName("forgot_password_dialog"); // NOI18N
         forgot_password_dialog.setPreferredSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setResizable(false);
         forgot_password_dialog.setSize(new java.awt.Dimension(400, 150));
+        forgot_password_dialog.setType(java.awt.Window.Type.POPUP);
         forgot_password_dialog.getContentPane().setLayout(new javax.swing.BoxLayout(forgot_password_dialog.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jPanel2.setName("jPanel2"); // NOI18N
@@ -302,10 +304,11 @@ public class Authenticate extends javax.swing.JFrame {
                     break;
                 case 2:
                     auth_error_message_label.setText("");
-                    MainFrame.setUser(auth_username_input.getText());
+                    //MainFrame.setUser(auth_username_input.getText());
                     Queuing.disConnectDb();
                     this.dispose();
-                    new MainFrame().setVisible(true);
+
+                    new Main().setVisible(true);
             }
         }
     }
