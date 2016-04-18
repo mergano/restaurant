@@ -19,9 +19,10 @@ public class Preference extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
+        setTitle(bundle.getString("title")); // NOI18N
         setMaximumSize(new java.awt.Dimension(1024, 640));
         setMinimumSize(new java.awt.Dimension(1024, 640));
-        setPreferredSize(new java.awt.Dimension(1024, 640));
         setResizable(false);
         setSize(new java.awt.Dimension(1024, 640));
 

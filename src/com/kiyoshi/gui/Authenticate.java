@@ -2,6 +2,7 @@ package com.kiyoshi.gui;
 
 import com.kiyoshi.dao.Queuing;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class Authenticate extends javax.swing.JFrame {
 
@@ -55,7 +56,6 @@ public class Authenticate extends javax.swing.JFrame {
         forgot_password_dialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         forgot_password_dialog.setTitle("Forgot password");
         forgot_password_dialog.setLocation(new java.awt.Point(0, 0));
-        forgot_password_dialog.setLocationByPlatform(true);
         forgot_password_dialog.setMaximumSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setMinimumSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setName("forgot_password_dialog"); // NOI18N
@@ -95,7 +95,8 @@ public class Authenticate extends javax.swing.JFrame {
         forgot_password_dialog.getAccessibleContext().setAccessibleParent(this);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Kiyoshi Restaurant Queuing System");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
+        setTitle(bundle.getString("title")); // NOI18N
         setMinimumSize(new java.awt.Dimension(640, 480));
         setName("Form"); // NOI18N
         setResizable(false);
@@ -303,11 +304,14 @@ public class Authenticate extends javax.swing.JFrame {
                     auth_error_message_label.setText("Incorrect username or password");
                     break;
                 case 2:
+                    auth_error_message_label.setText("Error: No internet connection");
+                    JOptionPane.showMessageDialog(this, "Internet connection is broken or disconnected.", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 3:
                     auth_error_message_label.setText("");
-                    //MainFrame.setUser(auth_username_input.getText());
+                    //dMainFrame.setUser(auth_username_input.getText());
                     Queuing.disConnectDb();
                     this.dispose();
-
                     new Main().setVisible(true);
             }
         }

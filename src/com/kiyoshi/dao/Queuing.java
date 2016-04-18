@@ -314,7 +314,7 @@ public class Queuing {
 
         if (!user.isEmpty()) {
             if (String.valueOf(user.get("Pass")).equals(passwd)) {
-                return 2;
+                return 3;
             } else {
                 return 1;
             }

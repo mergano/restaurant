@@ -21,7 +21,6 @@ public class Main extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         property_popup_menu = new javax.swing.JPopupMenu();
         table_reserve_btn = new javax.swing.JMenuItem();
@@ -192,7 +191,8 @@ public class Main extends javax.swing.JFrame {
         property_popup_menu.add(table_detail_btn);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("KQRS Maximum Test");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
+        setTitle(bundle.getString("title")); // NOI18N
         setPreferredSize(new java.awt.Dimension(2147483647, 2147483647));
         setSize(new java.awt.Dimension(1024, 640));
 
@@ -1314,8 +1314,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_check_for_update_menuitemActionPerformed
 
     private void about_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_about_menuitemActionPerformed
-//        about a = new about();
-//        a.setVisible(true);
+        About a = new About();
+        a.setVisible(true);
     }//GEN-LAST:event_about_menuitemActionPerformed
 
     private void statistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistic_btnActionPerformed
