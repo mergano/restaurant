@@ -291,13 +291,13 @@ public class Main extends javax.swing.JFrame {
         body.setPreferredSize(new java.awt.Dimension(1024, 434));
         body.setLayout(new java.awt.CardLayout());
 
-        dashboard_pane.setBackground(new java.awt.Color(255, 0, 102));
+        dashboard_pane.setBackground(new java.awt.Color(255, 255, 255));
         dashboard_pane.setLayout(new java.awt.GridLayout(4, 5));
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Table 1");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -308,7 +308,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jButton2.setText("Table 2");
@@ -316,7 +316,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jButton3.setText("Table 3");
@@ -324,7 +324,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jButton4.setText("Table 4");
@@ -332,7 +332,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel4);
 
-        jPanel5.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jButton5.setText("Table 5");
@@ -340,7 +340,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
         jButton6.setText("Table 6");
@@ -348,7 +348,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel6);
 
-        jPanel7.setBackground(new java.awt.Color(102, 51, 255));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new java.awt.BorderLayout());
 
         jButton7.setText("Table 7");
@@ -356,7 +356,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel7);
 
-        jPanel8.setBackground(new java.awt.Color(153, 0, 255));
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jButton8.setText("Table 8");
@@ -364,7 +364,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel8);
 
-        jPanel9.setBackground(new java.awt.Color(204, 0, 255));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.BorderLayout());
 
         jButton9.setText("Table 9");
@@ -372,7 +372,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel9);
 
-        jPanel10.setBackground(new java.awt.Color(255, 0, 204));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
         jButton10.setText("Table 10");
@@ -380,7 +380,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel10);
 
-        jPanel11.setBackground(new java.awt.Color(255, 0, 153));
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new java.awt.BorderLayout());
 
         jButton11.setText("Table 11");
@@ -388,7 +388,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel11);
 
-        jPanel12.setBackground(new java.awt.Color(255, 0, 102));
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.BorderLayout());
 
         jButton12.setText("Table 12");
@@ -396,7 +396,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel12);
 
-        jPanel13.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.BorderLayout());
 
         jButton13.setText("Table 13");
@@ -404,7 +404,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel13);
 
-        jPanel14.setBackground(new java.awt.Color(255, 51, 0));
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setLayout(new java.awt.BorderLayout());
 
         jButton14.setText("Table 14");
@@ -412,7 +412,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel14);
 
-        jPanel15.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setLayout(new java.awt.BorderLayout());
 
         jButton15.setText("Table 15");
@@ -420,7 +420,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel15);
 
-        jPanel16.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setLayout(new java.awt.BorderLayout());
 
         jButton16.setText("Table 16");
@@ -428,7 +428,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel16);
 
-        jPanel18.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setLayout(new java.awt.BorderLayout());
 
         jButton17.setText("Table 17");
@@ -436,7 +436,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel18);
 
-        jPanel19.setBackground(new java.awt.Color(102, 255, 0));
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setLayout(new java.awt.BorderLayout());
 
         jButton18.setText("Table 18");
@@ -444,7 +444,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel19);
 
-        jPanel20.setBackground(new java.awt.Color(0, 255, 0));
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setLayout(new java.awt.BorderLayout());
 
         jButton19.setText("Table 19");
@@ -452,7 +452,7 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.add(jPanel20);
 
-        jPanel21.setBackground(new java.awt.Color(0, 255, 153));
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
         jPanel21.setLayout(new java.awt.BorderLayout());
 
         jButton20.setText("Table 20");
