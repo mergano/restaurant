@@ -178,16 +178,21 @@ public class Main extends javax.swing.JFrame {
         check_for_update_menuitem = new javax.swing.JMenuItem();
         about_menuitem = new javax.swing.JMenuItem();
 
-        table_reserve_btn.setText("jMenuItem2");
+        table_reserve_btn.setText("Reserve");
+        table_reserve_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_reserve_btnActionPerformed(evt);
+            }
+        });
         property_popup_menu.add(table_reserve_btn);
 
-        table_order_btn.setText("jMenuItem3");
+        table_order_btn.setText("Order");
         property_popup_menu.add(table_order_btn);
 
-        table_checkout_btn.setText("jMenuItem1");
+        table_checkout_btn.setText("Check out");
         property_popup_menu.add(table_checkout_btn);
 
-        table_detail_btn.setText("jMenuItem4");
+        table_detail_btn.setText("Detail");
         property_popup_menu.add(table_detail_btn);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -203,8 +208,10 @@ public class Main extends javax.swing.JFrame {
         main_dashboard_btn_box.setLayout(new java.awt.BorderLayout());
 
         dashboard_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dashboard_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/clipboard.png"))); // NOI18N
         dashboard_btn.setText("Dashboard");
         dashboard_btn.setActionCommand("dashboard");
+        dashboard_btn.setIconTextGap(8);
         dashboard_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dashboard_btnActionPerformed(evt);
@@ -218,8 +225,10 @@ public class Main extends javax.swing.JFrame {
         main_reserve_btn_box.setLayout(new java.awt.BorderLayout());
 
         reserve_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        reserve_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/triangular_flag_on_post.png"))); // NOI18N
         reserve_btn.setText("Reserve");
         reserve_btn.setActionCommand("reserve");
+        reserve_btn.setIconTextGap(8);
         reserve_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reserve_btnActionPerformed(evt);
@@ -233,8 +242,10 @@ public class Main extends javax.swing.JFrame {
         main_order_btn_box.setLayout(new java.awt.BorderLayout());
 
         order_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        order_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/hamburger.png"))); // NOI18N
         order_btn.setText("Order");
         order_btn.setActionCommand("order");
+        order_btn.setIconTextGap(8);
         order_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 order_btnActionPerformed(evt);
@@ -247,8 +258,11 @@ public class Main extends javax.swing.JFrame {
         main_billing_btn_box.setPreferredSize(new java.awt.Dimension(100, 85));
         main_billing_btn_box.setLayout(new java.awt.BorderLayout());
 
+        billing_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        billing_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/credit_card.png"))); // NOI18N
         billing_btn.setText("Billing");
         billing_btn.setActionCommand("billing");
+        billing_btn.setIconTextGap(8);
         billing_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 billing_btnActionPerformed(evt);
@@ -261,8 +275,11 @@ public class Main extends javax.swing.JFrame {
         main_statistic_btn_box.setPreferredSize(new java.awt.Dimension(100, 85));
         main_statistic_btn_box.setLayout(new java.awt.BorderLayout());
 
+        statistic_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        statistic_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bar_chart.png"))); // NOI18N
         statistic_btn.setText("Statistic");
         statistic_btn.setActionCommand("statistic");
+        statistic_btn.setIconTextGap(8);
         statistic_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statistic_btnActionPerformed(evt);
@@ -275,8 +292,11 @@ public class Main extends javax.swing.JFrame {
         main_history_btn_box.setPreferredSize(new java.awt.Dimension(100, 85));
         main_history_btn_box.setLayout(new java.awt.BorderLayout());
 
+        history_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        history_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/clock4.png"))); // NOI18N
         history_btn.setText("History");
         history_btn.setActionCommand("history");
+        history_btn.setIconTextGap(8);
         history_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 history_btnActionPerformed(evt);
@@ -298,7 +318,16 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton1.setText("Table 1");
+        jButton1.setToolTipText("Table number");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setDisabledIcon(null);
+        jButton1.setDisabledSelectedIcon(null);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setIconTextGap(0);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
@@ -309,153 +338,348 @@ public class Main extends javax.swing.JFrame {
         dashboard_pane.add(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton2.setText("Table 2");
+        jButton2.setToolTipText("Table number");
+        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton2.setDisabledIcon(null);
+        jButton2.setDisabledSelectedIcon(null);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setIconTextGap(0);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel3.setLayout(new java.awt.BorderLayout());
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton3.setText("Table 3");
+        jButton3.setToolTipText("Table number");
+        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton3.setDisabledIcon(null);
+        jButton3.setDisabledSelectedIcon(null);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setIconTextGap(0);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel3.add(jButton3, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel4.setLayout(new java.awt.BorderLayout());
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton4.setText("Table 4");
+        jButton4.setToolTipText("Table number");
+        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton4.setDisabledIcon(null);
+        jButton4.setDisabledSelectedIcon(null);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setIconTextGap(0);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel4.add(jButton4, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel5.setLayout(new java.awt.BorderLayout());
 
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton5.setText("Table 5");
+        jButton5.setToolTipText("Table number");
+        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton5.setDisabledIcon(null);
+        jButton5.setDisabledSelectedIcon(null);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setIconTextGap(0);
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel5.add(jButton5, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel6.setLayout(new java.awt.BorderLayout());
 
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton6.setText("Table 6");
+        jButton6.setToolTipText("Table number");
+        jButton6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton6.setDisabledIcon(null);
+        jButton6.setDisabledSelectedIcon(null);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setIconTextGap(0);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel6.add(jButton6, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel7.setLayout(new java.awt.BorderLayout());
 
+        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton7.setText("Table 7");
+        jButton7.setToolTipText("Table number");
+        jButton7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton7.setDisabledIcon(null);
+        jButton7.setDisabledSelectedIcon(null);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setIconTextGap(0);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel7.add(jButton7, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel8.setLayout(new java.awt.BorderLayout());
 
+        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton8.setText("Table 8");
+        jButton8.setToolTipText("Table number");
+        jButton8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton8.setDisabledIcon(null);
+        jButton8.setDisabledSelectedIcon(null);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton8.setIconTextGap(0);
+        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel8.add(jButton8, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel8);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel9.setLayout(new java.awt.BorderLayout());
 
+        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton9.setText("Table 9");
+        jButton9.setToolTipText("Table number");
+        jButton9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton9.setDisabledIcon(null);
+        jButton9.setDisabledSelectedIcon(null);
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.setIconTextGap(0);
+        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel9.add(jButton9, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel10.setLayout(new java.awt.BorderLayout());
 
+        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton10.setText("Table 10");
+        jButton10.setToolTipText("Table number");
+        jButton10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton10.setDisabledIcon(null);
+        jButton10.setDisabledSelectedIcon(null);
+        jButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton10.setIconTextGap(0);
+        jButton10.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel10.add(jButton10, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel11.setLayout(new java.awt.BorderLayout());
 
+        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton11.setText("Table 11");
+        jButton11.setToolTipText("Table number");
+        jButton11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton11.setDisabledIcon(null);
+        jButton11.setDisabledSelectedIcon(null);
+        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton11.setIconTextGap(0);
+        jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel11.add(jButton11, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel12.setLayout(new java.awt.BorderLayout());
 
+        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton12.setText("Table 12");
+        jButton12.setToolTipText("Table number");
+        jButton12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton12.setDisabledIcon(null);
+        jButton12.setDisabledSelectedIcon(null);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton12.setIconTextGap(0);
+        jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel12.add(jButton12, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel13.setLayout(new java.awt.BorderLayout());
 
+        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton13.setText("Table 13");
+        jButton13.setToolTipText("Table number");
+        jButton13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton13.setDisabledIcon(null);
+        jButton13.setDisabledSelectedIcon(null);
+        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton13.setIconTextGap(0);
+        jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel13.add(jButton13, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel13);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel14.setLayout(new java.awt.BorderLayout());
 
+        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton14.setText("Table 14");
+        jButton14.setToolTipText("Table number");
+        jButton14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton14.setDisabledIcon(null);
+        jButton14.setDisabledSelectedIcon(null);
+        jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton14.setIconTextGap(0);
+        jButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel14.add(jButton14, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel14);
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel15.setLayout(new java.awt.BorderLayout());
 
+        jButton15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton15.setText("Table 15");
+        jButton15.setToolTipText("Table number");
+        jButton15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton15.setDisabledIcon(null);
+        jButton15.setDisabledSelectedIcon(null);
+        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton15.setIconTextGap(0);
+        jButton15.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel15.add(jButton15, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel15);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel16.setLayout(new java.awt.BorderLayout());
 
+        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton16.setText("Table 16");
+        jButton16.setToolTipText("Table number");
+        jButton16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton16.setDisabledIcon(null);
+        jButton16.setDisabledSelectedIcon(null);
+        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton16.setIconTextGap(0);
+        jButton16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel16.add(jButton16, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel16);
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel18.setLayout(new java.awt.BorderLayout());
 
+        jButton17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton17.setText("Table 17");
+        jButton17.setToolTipText("Table number");
+        jButton17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton17.setDisabledIcon(null);
+        jButton17.setDisabledSelectedIcon(null);
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton17.setIconTextGap(0);
+        jButton17.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel18.add(jButton17, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel18);
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel19.setLayout(new java.awt.BorderLayout());
 
+        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton18.setText("Table 18");
+        jButton18.setToolTipText("Table number");
+        jButton18.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton18.setDisabledIcon(null);
+        jButton18.setDisabledSelectedIcon(null);
+        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton18.setIconTextGap(0);
+        jButton18.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel19.add(jButton18, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel19);
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel20.setLayout(new java.awt.BorderLayout());
 
+        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton19.setText("Table 19");
+        jButton19.setToolTipText("Table number");
+        jButton19.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton19.setDisabledIcon(null);
+        jButton19.setDisabledSelectedIcon(null);
+        jButton19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton19.setIconTextGap(0);
+        jButton19.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel20.add(jButton19, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel20);
 
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel21.setLayout(new java.awt.BorderLayout());
 
+        jButton20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         jButton20.setText("Table 20");
+        jButton20.setToolTipText("Table number");
+        jButton20.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton20.setDisabledIcon(null);
+        jButton20.setDisabledSelectedIcon(null);
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton20.setIconTextGap(0);
+        jButton20.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel21.add(jButton20, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel21);
@@ -488,7 +712,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(reserve_paneLayout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, Short.MAX_VALUE)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(364, 364, 364))
         );
@@ -518,7 +742,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(order_paneLayout.createSequentialGroup()
                 .addGap(301, 301, 301)
                 .addComponent(jRadioButton1)
-                .addContainerGap(630, Short.MAX_VALUE))
+                .addContainerGap(740, Short.MAX_VALUE))
         );
         order_paneLayout.setVerticalGroup(
             order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,12 +760,12 @@ public class Main extends javax.swing.JFrame {
         billing_pane.setLayout(billing_paneLayout);
         billing_paneLayout.setHorizontalGroup(
             billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGap(0, 1134, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(billing_paneLayout.createSequentialGroup()
                     .addGap(472, 472, 472)
                     .addComponent(jButton21)
-                    .addContainerGap(473, Short.MAX_VALUE)))
+                    .addContainerGap(583, Short.MAX_VALUE)))
         );
         billing_paneLayout.setVerticalGroup(
             billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,7 +788,7 @@ public class Main extends javax.swing.JFrame {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
+            .addGap(0, 1129, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,7 +801,7 @@ public class Main extends javax.swing.JFrame {
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
+            .addGap(0, 1129, Short.MAX_VALUE)
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,7 +823,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(history_paneLayout.createSequentialGroup()
                 .addGap(396, 396, 396)
                 .addComponent(jLabel2)
-                .addContainerGap(594, Short.MAX_VALUE))
+                .addContainerGap(704, Short.MAX_VALUE))
         );
         history_paneLayout.setVerticalGroup(
             history_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -632,7 +856,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(622, Short.MAX_VALUE))
+                .addContainerGap(732, Short.MAX_VALUE))
         );
         footerLayout.setVerticalGroup(
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -839,11 +1063,6 @@ public class Main extends javax.swing.JFrame {
 
         view_menu.setText("View");
         view_menu.setToolTipText("");
-        view_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                view_menuActionPerformed(evt);
-            }
-        });
 
         hint_menuitem.setText("Show hint");
         view_menu.add(hint_menuitem);
@@ -1184,31 +1403,27 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_toolbar_menuitemActionPerformed
 
     private void statusbar_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusbar_menuitemActionPerformed
-//        if (evt.getSource().equals(statusbar_menuitem)) {
-//            boolean stb_state = statusbar_menuitem.isSelected();
-//            int stb_status = 1;
-//            if (stb_state == true) {
-//                stb_status = 1;
-//            }
-//            if (stb_state == false) {
-//                stb_status = 0;
-//            }
-//            switch (stb_status) {
-//                case 1:
-//                status_bar_frame.setVisible(true);
-//                break;
-//                case 0:
-//                status_bar_frame.setVisible(false);
-//                break;
-//                default:
-//                status_bar_frame.setVisible(true);
-//            }
-//        }
+        if (evt.getSource().equals(statusbar_menuitem)) {
+            boolean stb_state = statusbar_menuitem.isSelected();
+            int stb_status = 1;
+            if (stb_state == true) {
+                stb_status = 1;
+            }
+            if (stb_state == false) {
+                stb_status = 0;
+            }
+            switch (stb_status) {
+                case 1:
+                    footer.setVisible(true);
+                    break;
+                case 0:
+                    footer.setVisible(false);
+                    break;
+                default:
+                    footer.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_statusbar_menuitemActionPerformed
-
-    private void view_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_menuActionPerformed
-
-    }//GEN-LAST:event_view_menuActionPerformed
 
     private void new_db_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_db_menuitemActionPerformed
 //        connects con = new connects();
@@ -1333,6 +1548,14 @@ public class Main extends javax.swing.JFrame {
     private void order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order_btnActionPerformed
         setPane(order_pane);
     }//GEN-LAST:event_order_btnActionPerformed
+
+    private void table_reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_reserve_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table_reserve_btnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void setPane(JPanel panel_name) {
         body.removeAll();

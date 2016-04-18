@@ -1,11 +1,7 @@
 package com.kiyoshi.core;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,9 +14,7 @@ public class ConnectDB {
     String DBname;
     String username;
     String password;
-    String url;
-    String status;
-    String error;
+    String URL;
     int port;
     Connection con;
 
@@ -31,28 +25,36 @@ public class ConnectDB {
         DBname = null;
         username = null;
         password = null;
-        status = null;
+        URL = null;
     }
 
-//    public Connection getConnection() {
-//        Connection conn = null;
-//        String dbname = null;
-//        String username = null;
-//        String passwd = null;
-//
-//        Properties connectionProps = new Properties();
-//        connectionProps.put(dbname, this.dbName);
-//        connectionProps.put(username, this.userName);
-//        connectionProps.put(passwd, this.passWord);
-//        connectionProps.
-//        if (this.dbms.equals("mysql")) {
-//            conn = DriverManager.getConnection("jdbc:" + this.dbms + "://" + this.serverName + ":" + this.portNumber + "/",
-//                    connectionProps);
-//
-//        } else if (this.dbms.equals("derby")) {
-//            conn = DriverManager.getConnection("jdbc:" + this.dbms + ":" + this.dbName + ";create=true",
-//                    connectionProps);
+    public Connection getConnection() {
+        Connection conn = null;
+        DBname = "kiyoshi";
+        username = "user";
+        password = "iloveoosd";
+        Properties prop = new Properties();
+        URL = "jdbc:mysql://128.199.117.93:3306/kiyoshi?"; //+ "user=user&password=iloveoosd"
+
+        prop.put("dbname", DBname);
+        prop.put("user", username);
+        prop.put("passwd", password);
+
+//        try {
+//            conn = DriverManager.getConnection(URL, props);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+//        try {
 //
-//    }
+//
+//        } catch (SQLException ex) {
+//            // handle any errors
+//            System.out.println("SQLException: " + ex.getMessage());
+//            System.out.println("SQLState: " + ex.getSQLState());
+//            System.out.println("VendorError: " + ex.getErrorCode());
+//        }
+        return conn;
+    }
+
 }

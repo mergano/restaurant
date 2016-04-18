@@ -24,12 +24,12 @@ public class Authenticate extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         forgot_password_dialog = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        forgot_title_box = new javax.swing.JPanel();
+        forgot_title = new javax.swing.JLabel();
+        forgot_input_box = new javax.swing.JPanel();
+        forgot_text_input = new javax.swing.JTextField();
+        forgot_submit_box = new javax.swing.JPanel();
+        forgot_submit_btn = new javax.swing.JButton();
         auth_header = new javax.swing.JPanel();
         auth_header_image = new javax.swing.JLabel();
         auth_body = new javax.swing.JPanel();
@@ -65,31 +65,31 @@ public class Authenticate extends javax.swing.JFrame {
         forgot_password_dialog.setType(java.awt.Window.Type.POPUP);
         forgot_password_dialog.getContentPane().setLayout(new javax.swing.BoxLayout(forgot_password_dialog.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel2.setName("jPanel2"); // NOI18N
+        forgot_title_box.setName("forgot_title_box"); // NOI18N
 
-        jLabel1.setText("Enter your email address account.");
-        jLabel1.setName("jLabel1"); // NOI18N
-        jPanel2.add(jLabel1);
+        forgot_title.setText("Enter your email address account.");
+        forgot_title.setName("forgot_title"); // NOI18N
+        forgot_title_box.add(forgot_title);
 
-        forgot_password_dialog.getContentPane().add(jPanel2);
+        forgot_password_dialog.getContentPane().add(forgot_title_box);
 
-        jPanel1.setName("jPanel1"); // NOI18N
+        forgot_input_box.setName("forgot_input_box"); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTextField1.setName("jTextField1"); // NOI18N
-        jTextField1.setPreferredSize(new java.awt.Dimension(350, 30));
-        jPanel1.add(jTextField1);
+        forgot_text_input.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        forgot_text_input.setName("forgot_text_input"); // NOI18N
+        forgot_text_input.setPreferredSize(new java.awt.Dimension(350, 30));
+        forgot_input_box.add(forgot_text_input);
 
-        forgot_password_dialog.getContentPane().add(jPanel1);
+        forgot_password_dialog.getContentPane().add(forgot_input_box);
 
-        jPanel3.setName("jPanel3"); // NOI18N
+        forgot_submit_box.setName("forgot_submit_box"); // NOI18N
 
-        jButton1.setText("Submit");
-        jButton1.setName("jButton1"); // NOI18N
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel3.add(jButton1);
+        forgot_submit_btn.setText("Submit");
+        forgot_submit_btn.setName("forgot_submit_btn"); // NOI18N
+        forgot_submit_btn.setPreferredSize(new java.awt.Dimension(100, 30));
+        forgot_submit_box.add(forgot_submit_btn);
 
-        forgot_password_dialog.getContentPane().add(jPanel3);
+        forgot_password_dialog.getContentPane().add(forgot_submit_box);
 
         forgot_password_dialog.getAccessibleContext().setAccessibleDescription("");
         forgot_password_dialog.getAccessibleContext().setAccessibleParent(this);
@@ -99,6 +99,7 @@ public class Authenticate extends javax.swing.JFrame {
         setTitle(bundle.getString("title")); // NOI18N
         setMinimumSize(new java.awt.Dimension(640, 480));
         setName("Form"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(640, 480));
         setResizable(false);
         setSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -360,12 +361,12 @@ public class Authenticate extends javax.swing.JFrame {
     private javax.swing.JTextField auth_username_input;
     private javax.swing.JLabel auth_username_label;
     private javax.swing.JPanel auth_username_label_box;
+    private javax.swing.JPanel forgot_input_box;
     private javax.swing.JDialog forgot_password_dialog;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel forgot_submit_box;
+    private javax.swing.JButton forgot_submit_btn;
+    private javax.swing.JTextField forgot_text_input;
+    private javax.swing.JLabel forgot_title;
+    private javax.swing.JPanel forgot_title_box;
     // End of variables declaration//GEN-END:variables
 }
