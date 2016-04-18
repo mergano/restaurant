@@ -1,9 +1,11 @@
 package com.kiyoshi.gui;
 
 import java.awt.Desktop;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -100,7 +102,7 @@ public class Main extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         footer = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        table_no_box = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         file_menu = new javax.swing.JMenu();
@@ -108,20 +110,11 @@ public class Main extends javax.swing.JFrame {
         save_menuitem = new javax.swing.JMenuItem();
         saveas_menuitem = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        welcome_menuitem = new javax.swing.JMenuItem();
-        dashboard_menuitem = new javax.swing.JMenuItem();
-        management_menuitem = new javax.swing.JMenuItem();
-        stock_menuitem = new javax.swing.JMenuItem();
-        operations_menuitem = new javax.swing.JMenuItem();
-        database_menuitem = new javax.swing.JMenuItem();
-        searching_menuitem = new javax.swing.JMenuItem();
-        report_menuitem = new javax.swing.JMenuItem();
         statistics_menuitem = new javax.swing.JMenuItem();
-        backlog_menuitem = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         print_menuitem = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        printtohtml_menuitem = new javax.swing.JMenuItem();
+        page_setup_menuitem = new javax.swing.JMenuItem();
         print_preview_menuitem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         exit_program = new javax.swing.JMenuItem();
@@ -140,7 +133,6 @@ public class Main extends javax.swing.JFrame {
         jMenuItem34 = new javax.swing.JMenuItem();
         jMenuItem35 = new javax.swing.JMenuItem();
         view_menu = new javax.swing.JMenu();
-        hint_menuitem = new javax.swing.JCheckBoxMenuItem();
         toolbar_menuitem = new javax.swing.JCheckBoxMenuItem();
         statusbar_menuitem = new javax.swing.JCheckBoxMenuItem();
         database_menu = new javax.swing.JMenu();
@@ -321,6 +313,7 @@ public class Main extends javax.swing.JFrame {
 
         table_1_btn.setBackground(new java.awt.Color(255, 255, 255));
         table_1_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        table_1_btn.setForeground(new java.awt.Color(51, 204, 0));
         table_1_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         table_1_btn.setText("Table 1");
         table_1_btn.setToolTipText("Table number");
@@ -335,6 +328,11 @@ public class Main extends javax.swing.JFrame {
                 table_1_btnMouseReleased(evt);
             }
         });
+        table_1_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel1.add(table_1_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel1);
@@ -344,8 +342,9 @@ public class Main extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         table_2_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        table_2_btn.setForeground(new java.awt.Color(255, 0, 0));
         table_2_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
-        table_2_btn.setText("Table 2");
+        table_2_btn.setText("Mr.Juk");
         table_2_btn.setToolTipText("Table number");
         table_2_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         table_2_btn.setDisabledIcon(null);
@@ -355,7 +354,7 @@ public class Main extends javax.swing.JFrame {
         table_2_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_2_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                table_2_btnActionPerformed(evt);
+                table_btnActionPerformed(evt);
             }
         });
         jPanel2.add(table_2_btn, java.awt.BorderLayout.CENTER);
@@ -376,6 +375,11 @@ public class Main extends javax.swing.JFrame {
         table_3_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_3_btn.setIconTextGap(0);
         table_3_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_3_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel3.add(table_3_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel3);
@@ -394,6 +398,11 @@ public class Main extends javax.swing.JFrame {
         table_4_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_4_btn.setIconTextGap(0);
         table_4_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_4_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel4.add(table_4_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel4);
@@ -403,8 +412,9 @@ public class Main extends javax.swing.JFrame {
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         table_5_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        table_5_btn.setForeground(new java.awt.Color(255, 0, 51));
         table_5_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
-        table_5_btn.setText("Table 5");
+        table_5_btn.setText("Reserved");
         table_5_btn.setToolTipText("Table number");
         table_5_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         table_5_btn.setDisabledIcon(null);
@@ -412,6 +422,11 @@ public class Main extends javax.swing.JFrame {
         table_5_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_5_btn.setIconTextGap(0);
         table_5_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_5_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel5.add(table_5_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel5);
@@ -430,6 +445,11 @@ public class Main extends javax.swing.JFrame {
         table_6_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_6_btn.setIconTextGap(0);
         table_6_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_6_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel6.add(table_6_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel6);
@@ -439,6 +459,7 @@ public class Main extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.BorderLayout());
 
         table_7_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        table_7_btn.setForeground(new java.awt.Color(0, 204, 51));
         table_7_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         table_7_btn.setText("Table 7");
         table_7_btn.setToolTipText("Table number");
@@ -448,6 +469,11 @@ public class Main extends javax.swing.JFrame {
         table_7_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_7_btn.setIconTextGap(0);
         table_7_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_7_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel7.add(table_7_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel7);
@@ -466,6 +492,11 @@ public class Main extends javax.swing.JFrame {
         table_8_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_8_btn.setIconTextGap(0);
         table_8_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_8_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel8.add(table_8_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel8);
@@ -484,6 +515,11 @@ public class Main extends javax.swing.JFrame {
         table_9_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_9_btn.setIconTextGap(0);
         table_9_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_9_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel9.add(table_9_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel9);
@@ -502,6 +538,11 @@ public class Main extends javax.swing.JFrame {
         table_10_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_10_btn.setIconTextGap(0);
         table_10_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_10_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel10.add(table_10_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel10);
@@ -520,6 +561,11 @@ public class Main extends javax.swing.JFrame {
         table_11_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_11_btn.setIconTextGap(0);
         table_11_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_11_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel11.add(table_11_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel11);
@@ -538,6 +584,11 @@ public class Main extends javax.swing.JFrame {
         table_12_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_12_btn.setIconTextGap(0);
         table_12_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_12_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel12.add(table_12_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel12);
@@ -556,6 +607,11 @@ public class Main extends javax.swing.JFrame {
         table_13_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_13_btn.setIconTextGap(0);
         table_13_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_13_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel13.add(table_13_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel13);
@@ -574,6 +630,11 @@ public class Main extends javax.swing.JFrame {
         table_14_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_14_btn.setIconTextGap(0);
         table_14_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_14_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel14.add(table_14_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel14);
@@ -592,6 +653,11 @@ public class Main extends javax.swing.JFrame {
         table_15_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_15_btn.setIconTextGap(0);
         table_15_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_15_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel15.add(table_15_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel15);
@@ -610,6 +676,11 @@ public class Main extends javax.swing.JFrame {
         table_16_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_16_btn.setIconTextGap(0);
         table_16_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_16_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel16.add(table_16_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel16);
@@ -628,6 +699,11 @@ public class Main extends javax.swing.JFrame {
         table_17_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_17_btn.setIconTextGap(0);
         table_17_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_17_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel18.add(table_17_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel18);
@@ -646,6 +722,11 @@ public class Main extends javax.swing.JFrame {
         table_18_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_18_btn.setIconTextGap(0);
         table_18_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_18_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel19.add(table_18_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel19);
@@ -664,6 +745,11 @@ public class Main extends javax.swing.JFrame {
         table_19_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_19_btn.setIconTextGap(0);
         table_19_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_19_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel20.add(table_19_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel20);
@@ -682,6 +768,11 @@ public class Main extends javax.swing.JFrame {
         table_20_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_20_btn.setIconTextGap(0);
         table_20_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_20_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_btnActionPerformed(evt);
+            }
+        });
         jPanel21.add(table_20_btn, java.awt.BorderLayout.CENTER);
 
         dashboard_pane.add(jPanel21);
@@ -837,11 +928,9 @@ public class Main extends javax.swing.JFrame {
 
         getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
-        footer.setBackground(new java.awt.Color(204, 204, 204));
-
         jTextField3.setText("Status");
 
-        jTextField4.setText("Members");
+        table_no_box.setEditable(false);
 
         jTextField5.setText("jTextField5");
 
@@ -850,23 +939,26 @@ public class Main extends javax.swing.JFrame {
         footerLayout.setHorizontalGroup(
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(25, 25, 25)
+                .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
+                .addGap(99, 99, 99)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(622, Short.MAX_VALUE))
+                .addContainerGap(624, Short.MAX_VALUE))
         );
         footerLayout.setVerticalGroup(
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
@@ -895,108 +987,26 @@ public class Main extends javax.swing.JFrame {
         file_menu.add(saveas_menuitem);
         file_menu.add(jSeparator3);
 
-        welcome_menuitem.setText("Welcome");
-        welcome_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                welcome_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(welcome_menuitem);
-
-        dashboard_menuitem.setText("Dashboard");
-        dashboard_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dashboard_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(dashboard_menuitem);
-
-        management_menuitem.setText("Management");
-        management_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                management_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(management_menuitem);
-
-        stock_menuitem.setLabel("Stock");
-        stock_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stock_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(stock_menuitem);
-
-        operations_menuitem.setText("Operations");
-        operations_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                operations_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(operations_menuitem);
-
-        database_menuitem.setText("Database");
-        database_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                database_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(database_menuitem);
-
-        searching_menuitem.setText("Searching");
-        searching_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searching_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(searching_menuitem);
-
-        report_menuitem.setText("Report");
-        report_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                report_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(report_menuitem);
-
         statistics_menuitem.setLabel("Statistics");
         statistics_menuitem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statistics_menuitemActionPerformed(evt);
+                statistic_btnActionPerformed(evt);
             }
         });
         file_menu.add(statistics_menuitem);
-
-        backlog_menuitem.setLabel("Backlog");
-        backlog_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backlog_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(backlog_menuitem);
         file_menu.add(jSeparator7);
 
         print_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         print_menuitem.setText("Print...");
-        print_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                print_menuitemActionPerformed(evt);
-            }
-        });
         file_menu.add(print_menuitem);
 
-        jMenuItem15.setText("Print to HTML");
-        file_menu.add(jMenuItem15);
+        printtohtml_menuitem.setText("Print to HTML");
+        file_menu.add(printtohtml_menuitem);
 
-        jMenuItem16.setText("Page Setup...");
-        file_menu.add(jMenuItem16);
+        page_setup_menuitem.setText("Page Setup...");
+        file_menu.add(page_setup_menuitem);
 
         print_preview_menuitem.setText("Print Preview...");
-        print_preview_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                print_preview_menuitemActionPerformed(evt);
-            }
-        });
         file_menu.add(print_preview_menuitem);
         file_menu.add(jSeparator2);
 
@@ -1064,9 +1074,6 @@ public class Main extends javax.swing.JFrame {
         view_menu.setText("View");
         view_menu.setToolTipText("");
 
-        hint_menuitem.setText("Show hint");
-        view_menu.add(hint_menuitem);
-
         toolbar_menuitem.setSelected(true);
         toolbar_menuitem.setText("Show Toolbar");
         toolbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
@@ -1088,48 +1095,13 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(view_menu);
 
         database_menu.setText("Database");
-        database_menu.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                database_menuStateChanged(evt);
-            }
-        });
-        database_menu.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                database_menuFocusGained(evt);
-            }
-        });
-        database_menu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                database_menuMouseClicked(evt);
-            }
-        });
-        database_menu.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                database_menuComponentShown(evt);
-            }
-        });
-        database_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                database_menuActionPerformed(evt);
-            }
-        });
 
         jMenu7.setText("Connect..");
 
         new_db_menuitem.setText("New...");
-        new_db_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_db_menuitemActionPerformed(evt);
-            }
-        });
         jMenu7.add(new_db_menuitem);
 
         del_db_menuitem.setText("Delete...");
-        del_db_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                del_db_menuitemActionPerformed(evt);
-            }
-        });
         jMenu7.add(del_db_menuitem);
 
         find_db_menuitem.setText("Find...");
@@ -1313,66 +1285,8 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_saveas_menuitemActionPerformed
 
-    private void welcome_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_welcome_menuitemActionPerformed
-
-    }//GEN-LAST:event_welcome_menuitemActionPerformed
-
-    private void dashboard_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_menuitemActionPerformed
-
-    }//GEN-LAST:event_dashboard_menuitemActionPerformed
-
-    private void management_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_management_menuitemActionPerformed
-
-    }//GEN-LAST:event_management_menuitemActionPerformed
-
-    private void stock_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_menuitemActionPerformed
-
-    }//GEN-LAST:event_stock_menuitemActionPerformed
-
-    private void operations_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operations_menuitemActionPerformed
-
-    }//GEN-LAST:event_operations_menuitemActionPerformed
-
-    private void database_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_database_menuitemActionPerformed
-
-    }//GEN-LAST:event_database_menuitemActionPerformed
-
-    private void searching_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_menuitemActionPerformed
-
-    }//GEN-LAST:event_searching_menuitemActionPerformed
-
-    private void report_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_report_menuitemActionPerformed
-
-    }//GEN-LAST:event_report_menuitemActionPerformed
-
-    private void statistics_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistics_menuitemActionPerformed
-
-    }//GEN-LAST:event_statistics_menuitemActionPerformed
-
-    private void backlog_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backlog_menuitemActionPerformed
-
-    }//GEN-LAST:event_backlog_menuitemActionPerformed
-
-    private void print_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_menuitemActionPerformed
-//        try {
-//            boolean complete = search_box.print();
-//            if (complete) {
-//                JOptionPane.showMessageDialog(null, "This job has been sent to the printer.", "Information", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        } catch (PrinterException ex) {
-//            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-    }//GEN-LAST:event_print_menuitemActionPerformed
-
-    private void print_preview_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_preview_menuitemActionPerformed
-
-    }//GEN-LAST:event_print_preview_menuitemActionPerformed
-
     private void exit_programActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_programActionPerformed
-        if (evt.getSource() == exit_program) {
-            System.exit(0);
-        }
+        System.exit(0);
     }//GEN-LAST:event_exit_programActionPerformed
 
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
@@ -1405,7 +1319,7 @@ public class Main extends javax.swing.JFrame {
     private void statusbar_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusbar_menuitemActionPerformed
         if (evt.getSource().equals(statusbar_menuitem)) {
             boolean stb_state = statusbar_menuitem.isSelected();
-            int stb_status = 1;
+            int stb_status = 1; //default value
             if (stb_state == true) {
                 stb_status = 1;
             }
@@ -1425,16 +1339,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_statusbar_menuitemActionPerformed
 
-    private void new_db_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_db_menuitemActionPerformed
-//        connects con = new connects();
-//        con.setVisible(true);
-    }//GEN-LAST:event_new_db_menuitemActionPerformed
-
-    private void del_db_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_db_menuitemActionPerformed
-//        delete_db del = new delete_db();
-//        del.setVisible(true);
-    }//GEN-LAST:event_del_db_menuitemActionPerformed
-
     private void login_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_menuitemActionPerformed
 //        if (lo == null) {
 //            lo = new login();
@@ -1453,31 +1357,6 @@ public class Main extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_logout_menuitemActionPerformed
 
-    private void database_menuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_database_menuStateChanged
-
-    }//GEN-LAST:event_database_menuStateChanged
-
-    private void database_menuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_database_menuFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_database_menuFocusGained
-
-    private void database_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_database_menuMouseClicked
-//        login logs = new login();
-//        if (logs.CurrentSession() == true) {
-//            login_menuitem.setEnabled(false);
-//            logout_menuitem.setEnabled(true);
-//            System.out.println(logs.CurrentSession());
-//        }
-    }//GEN-LAST:event_database_menuMouseClicked
-
-    private void database_menuComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_database_menuComponentShown
-
-    }//GEN-LAST:event_database_menuComponentShown
-
-    private void database_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_database_menuActionPerformed
-
-    }//GEN-LAST:event_database_menuActionPerformed
-
     private void preference_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preference_menuitemActionPerformed
 //        option o = new option();
 //        o.setVisible(true);
@@ -1492,10 +1371,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_help_contents_menuitemActionPerformed
 
     private void online_docs_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_online_docs_menuitemActionPerformed
-        try {
-            Desktop.getDesktop().browse(new URL("https://github.com/Mergano/restaurant/wiki").toURI());
-        } catch (URISyntaxException | IOException e) {
-        }
+        openWebsite("https://github.com/Mergano/restaurant/wiki");
     }//GEN-LAST:event_online_docs_menuitemActionPerformed
 
     private void keyboard_shortcuts_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keyboard_shortcuts_menuitemActionPerformed
@@ -1504,24 +1380,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_keyboard_shortcuts_menuitemActionPerformed
 
     private void report_bug_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_report_bug_menuitemActionPerformed
-        try {
-            Desktop.getDesktop().browse(new URL("https://github.com/Mergano/restaurant/issues").toURI());
-        } catch (URISyntaxException | IOException e) {
-        }
+        openWebsite("https://github.com/Mergano/restaurant/issues");
     }//GEN-LAST:event_report_bug_menuitemActionPerformed
 
     private void feedback_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedback_menuitemActionPerformed
-        try {
-            Desktop.getDesktop().browse(new URL("https://github.com/Mergano/restaurant").toURI());
-        } catch (URISyntaxException | IOException e) {
-        }
+        openWebsite("https://github.com/Mergano/restaurant");
     }//GEN-LAST:event_feedback_menuitemActionPerformed
 
     private void website_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_website_menuitemActionPerformed
-        try {
-            Desktop.getDesktop().browse(new URL("https://mergano.com").toURI());
-        } catch (URISyntaxException | IOException e) {
-        }
+        openWebsite("http://mergano.com");
     }//GEN-LAST:event_website_menuitemActionPerformed
 
     private void check_for_update_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_for_update_menuitemActionPerformed
@@ -1553,9 +1420,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_table_reserve_btnActionPerformed
 
-    private void table_2_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_2_btnActionPerformed
+    private void table_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_btnActionPerformed
+        setTable(evt);
+    }//GEN-LAST:event_table_btnActionPerformed
 
-    }//GEN-LAST:event_table_2_btnActionPerformed
+    private void openWebsite(String url) {
+        try {
+            Desktop.getDesktop().browse(new URL(url).toURI());
+        } catch (URISyntaxException | IOException e) {
+        }
+    }
+
+    private void setTable(ActionEvent e) {
+        String table_no = ((JButton) e.getSource()).getActionCommand();
+        table_no_box.setText(table_no);
+    }
 
     private void setPane(JPanel panel_name) {
         body.removeAll();
@@ -1566,7 +1445,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem about_menuitem;
-    private javax.swing.JMenuItem backlog_menuitem;
     private javax.swing.JMenuItem backup_menuitem;
     private javax.swing.JButton billing_btn;
     private javax.swing.JPanel billing_pane;
@@ -1574,10 +1452,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem bookmark_menuitem;
     private javax.swing.JMenuItem check_for_update_menuitem;
     private javax.swing.JButton dashboard_btn;
-    private javax.swing.JMenuItem dashboard_menuitem;
     private javax.swing.JPanel dashboard_pane;
     private javax.swing.JMenu database_menu;
-    private javax.swing.JMenuItem database_menuitem;
     private javax.swing.JMenuItem del_db_menuitem;
     private javax.swing.JMenu edit_menu;
     private javax.swing.JMenuItem exit_program;
@@ -1593,7 +1469,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel header;
     private javax.swing.JMenuItem help_contents_menuitem;
     private javax.swing.JMenu help_menu;
-    private javax.swing.JCheckBoxMenuItem hint_menuitem;
     private javax.swing.JButton history_btn;
     private javax.swing.JPanel history_pane;
     private javax.swing.JMenuItem import_csv_menuitem;
@@ -1604,8 +1479,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
@@ -1657,7 +1530,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JMenuItem keyboard_shortcuts_menuitem;
     private static javax.swing.JMenuItem login_menuitem;
@@ -1668,30 +1540,27 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel main_order_btn_box;
     private javax.swing.JPanel main_reserve_btn_box;
     private javax.swing.JPanel main_statistic_btn_box;
-    private javax.swing.JMenuItem management_menuitem;
     private javax.swing.JMenuItem new_db_menuitem;
     private javax.swing.JMenuItem online_docs_menuitem;
     private javax.swing.JMenuItem open_menuitem;
-    private javax.swing.JMenuItem operations_menuitem;
     private javax.swing.JButton order_btn;
     private javax.swing.JPanel order_pane;
+    private javax.swing.JMenuItem page_setup_menuitem;
     private javax.swing.JMenuItem preference_menuitem;
     private javax.swing.JMenuItem print_menuitem;
     private javax.swing.JMenuItem print_preview_menuitem;
+    private javax.swing.JMenuItem printtohtml_menuitem;
     private javax.swing.JPopupMenu property_popup_menu;
     private javax.swing.JMenuItem report_bug_menuitem;
-    private javax.swing.JMenuItem report_menuitem;
     private javax.swing.JButton reserve_btn;
     private javax.swing.JPanel reserve_pane;
     private javax.swing.JMenuItem save_menuitem;
     private javax.swing.JMenuItem saveas_menuitem;
     private javax.swing.JMenuItem search_menuitem;
-    private javax.swing.JMenuItem searching_menuitem;
     private javax.swing.JButton statistic_btn;
     private javax.swing.JPanel statistic_pane;
     private javax.swing.JMenuItem statistics_menuitem;
     private javax.swing.JCheckBoxMenuItem statusbar_menuitem;
-    private javax.swing.JMenuItem stock_menuitem;
     private javax.swing.JButton table_10_btn;
     private javax.swing.JButton table_11_btn;
     private javax.swing.JButton table_12_btn;
@@ -1714,12 +1583,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton table_9_btn;
     private javax.swing.JMenuItem table_checkout_btn;
     private javax.swing.JMenuItem table_detail_btn;
+    private javax.swing.JTextField table_no_box;
     private javax.swing.JMenuItem table_order_btn;
     private javax.swing.JMenuItem table_reserve_btn;
     private javax.swing.JCheckBoxMenuItem toolbar_menuitem;
     private javax.swing.JMenu tools_menu;
     private javax.swing.JMenu view_menu;
     private javax.swing.JMenuItem website_menuitem;
-    private javax.swing.JMenuItem welcome_menuitem;
     // End of variables declaration//GEN-END:variables
 }
