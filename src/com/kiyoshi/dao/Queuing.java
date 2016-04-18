@@ -1,6 +1,5 @@
 package com.kiyoshi.dao;
 
-import com.kiyoshi.core.CheckAvailable;
 import edu.sit.cs.db.CSDbDelegate;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -58,7 +57,7 @@ public class Queuing {
         for (HashMap table : tables) {
             if (Integer.parseInt(String.valueOf(table.get("available"))) == 1) {
                 tableId = Integer.parseInt(String.valueOf(table.get("tableID")));
-                CheckAvailable.setDateTimeReserve(dateTimeReserve);
+                //CheckAvailable.setDateTimeReserve(dateTimeReserve);
                 return tableId;
             }
         }
@@ -78,12 +77,12 @@ public class Queuing {
 
                 if (dateTimeReserve.getTime().before(minDate.getTime()) || dateTimeReserve.getTime().after(maxDate.getTime())) {
                     tableId = Integer.parseInt(String.valueOf(tables2.get("tableID")));
-                    CheckAvailable.setDateTimeReserve(dateTimeReserve);
+                    //CheckAvailable.setDateTimeReserve(dateTimeReserve);
                     return tableId;
                 }
             }
         }
-        CheckAvailable.setDateTimeReserve(dateTimeReserve);
+        //CheckAvailable.setDateTimeReserve(dateTimeReserve);
         return tableId;
     }
 
@@ -136,7 +135,7 @@ public class Queuing {
 
         for (HashMap order : allOrders) {
             if (tables == null) {
-                tables = new ArrayList<HashMap>();
+                tables = new ArrayList<>();
                 tables.add(order);
                 line++;
                 continue;
@@ -159,13 +158,13 @@ public class Queuing {
                 + "customerID = " + id;
         ArrayList<HashMap> orders = db.queryRows(sql);
 
-        ArrayList<HashMap> billing = new ArrayList<HashMap>();
+        ArrayList<HashMap> billing = new ArrayList<>();
 
         for (HashMap order : orders) {
             sql = "SELECT foodName, price FROM R_FOODS WHERE foodID = " + Integer.parseInt(String.valueOf(order.get("foodID")));
             HashMap data = db.queryRow(sql);
 
-            HashMap<String, Object> hashMap = new HashMap<String, Object>();
+            HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("qty", order.get("quantity"));
             hashMap.put("foodName", data.get("foodName"));
             hashMap.put("total", Integer.parseInt(String.valueOf(order.get("quantity"))) * Integer.parseInt(String.valueOf(data.get("price"))));
@@ -210,14 +209,14 @@ public class Queuing {
         ArrayList<HashMap> backlogs = db.queryRows(sql);
 
         double total = 0;
-        ArrayList<HashMap> aday = new ArrayList<HashMap>();
+        ArrayList<HashMap> aday = new ArrayList<>();
 
         for (HashMap backlog : backlogs) {
             String s = String.valueOf(backlog.get("date")).substring(0, 7);
 
             if (s.equals(date)) {
                 total += Double.parseDouble(String.valueOf(backlog.get("revenue")));
-                HashMap<String, Object> hashMap = new HashMap<String, Object>();
+                HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("date", String.valueOf(backlog.get("date")));
                 hashMap.put("noOfCustomer", String.valueOf(backlog.get("noOfCustomer")));
                 hashMap.put("revenue", String.valueOf(backlog.get("revenue")));
@@ -234,7 +233,7 @@ public class Queuing {
         String[] months = {"January", "Fabuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         int mpnt = -1;
         double total = 0;
-        ArrayList<HashMap> amonth = new ArrayList<HashMap>();
+        ArrayList<HashMap> amonth = new ArrayList<>();
         for (int i = 1; i <= 12; i++) {
             String num = i + "";
             if (i < 10) {
@@ -247,7 +246,7 @@ public class Queuing {
             if (!month.isEmpty()) {
                 int noOfCustomer = 0;
                 int revenue = 0;
-                HashMap<String, Object> hashMap = new HashMap<String, Object>();
+                HashMap<String, Object> hashMap = new HashMap<>();
                 for (HashMap m : month) {
                     noOfCustomer += Integer.parseInt(String.valueOf(m.get("noOfCustomer")));
                     revenue += Integer.parseInt(String.valueOf(m.get("revenue")));

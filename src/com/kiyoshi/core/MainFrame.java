@@ -859,8 +859,9 @@ public class MainFrame extends javax.swing.JFrame {
         btnCheck.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCheck.setText("Check Tables");
         btnCheck.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                new CheckAvailable().setVisible(true);
+                // new CheckAvailable().setVisible(true);
             }
         });
 
