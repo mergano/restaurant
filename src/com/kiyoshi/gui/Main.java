@@ -1,8 +1,8 @@
 package com.kiyoshi.gui;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -46,31 +46,18 @@ public class Main extends javax.swing.JFrame {
         history_btn = new javax.swing.JButton();
         body = new javax.swing.JPanel();
         dashboard_pane = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         table_1_btn = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         table_2_btn = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         table_3_btn = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
         table_4_btn = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
         table_5_btn = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
         table_6_btn = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
         table_7_btn = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
         table_8_btn = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
         table_9_btn = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
         table_10_btn = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
         table_11_btn = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
         table_12_btn = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
         table_13_btn = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         table_14_btn = new javax.swing.JButton();
@@ -198,7 +185,7 @@ public class Main extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(1024, 640));
-        setPreferredSize(new java.awt.Dimension(2147483647, 2147483647));
+        setPreferredSize(new java.awt.Dimension(1024, 640));
         setSize(new java.awt.Dimension(1024, 640));
 
         header.setBackground(new java.awt.Color(102, 0, 102));
@@ -211,6 +198,7 @@ public class Main extends javax.swing.JFrame {
         dashboard_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/clipboard.png"))); // NOI18N
         dashboard_btn.setText("Dashboard");
         dashboard_btn.setActionCommand("dashboard");
+        dashboard_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         dashboard_btn.setIconTextGap(8);
         dashboard_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +216,7 @@ public class Main extends javax.swing.JFrame {
         reserve_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/triangular_flag_on_post.png"))); // NOI18N
         reserve_btn.setText("Reserve");
         reserve_btn.setActionCommand("reserve");
+        reserve_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         reserve_btn.setIconTextGap(8);
         reserve_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,6 +234,7 @@ public class Main extends javax.swing.JFrame {
         order_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/hamburger.png"))); // NOI18N
         order_btn.setText("Order");
         order_btn.setActionCommand("order");
+        order_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         order_btn.setIconTextGap(8);
         order_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +252,7 @@ public class Main extends javax.swing.JFrame {
         billing_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/credit_card.png"))); // NOI18N
         billing_btn.setText("Billing");
         billing_btn.setActionCommand("billing");
+        billing_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         billing_btn.setIconTextGap(8);
         billing_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +270,7 @@ public class Main extends javax.swing.JFrame {
         statistic_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bar_chart.png"))); // NOI18N
         statistic_btn.setText("Statistic");
         statistic_btn.setActionCommand("statistic");
+        statistic_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         statistic_btn.setIconTextGap(8);
         statistic_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,6 +288,7 @@ public class Main extends javax.swing.JFrame {
         history_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/clock4.png"))); // NOI18N
         history_btn.setText("History");
         history_btn.setActionCommand("history");
+        history_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         history_btn.setIconTextGap(8);
         history_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,9 +306,6 @@ public class Main extends javax.swing.JFrame {
 
         dashboard_pane.setBackground(new java.awt.Color(255, 255, 255));
         dashboard_pane.setLayout(new java.awt.GridLayout(4, 5));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.BorderLayout());
 
         table_1_btn.setBackground(new java.awt.Color(255, 255, 255));
         table_1_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -339,13 +329,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel1.add(table_1_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel1);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_1_btn);
 
         table_2_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_2_btn.setForeground(new java.awt.Color(255, 0, 0));
@@ -368,13 +352,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(table_2_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel2);
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_2_btn);
 
         table_3_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_3_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -396,13 +374,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel3.add(table_3_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_3_btn);
 
         table_4_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_4_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -424,13 +396,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel4.add(table_4_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel4);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_4_btn);
 
         table_5_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_5_btn.setForeground(new java.awt.Color(255, 0, 51));
@@ -453,13 +419,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel5.add(table_5_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel5);
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_5_btn);
 
         table_6_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_6_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -481,13 +441,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel6.add(table_6_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel6);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel7.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_6_btn);
 
         table_7_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_7_btn.setForeground(new java.awt.Color(0, 204, 51));
@@ -510,13 +464,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel7.add(table_7_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel7);
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_7_btn);
 
         table_8_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_8_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -538,13 +486,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel8.add(table_8_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel8);
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel9.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_8_btn);
 
         table_9_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_9_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -566,13 +508,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel9.add(table_9_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel9);
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel10.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_9_btn);
 
         table_10_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_10_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -594,13 +530,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel10.add(table_10_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel10);
-
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel11.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_10_btn);
 
         table_11_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_11_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -622,13 +552,7 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel11.add(table_11_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel11);
-
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel12.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_11_btn);
 
         table_12_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_12_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
@@ -650,39 +574,28 @@ public class Main extends javax.swing.JFrame {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel12.add(table_12_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel12);
-
-        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel13.setLayout(new java.awt.BorderLayout());
+        dashboard_pane.add(table_12_btn);
 
         table_13_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         table_13_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         table_13_btn.setText("Table 13");
         table_13_btn.setToolTipText("Table number");
         table_13_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        table_13_btn.setComponentPopupMenu(property_popup_menu);
         table_13_btn.setDisabledIcon(null);
         table_13_btn.setDisabledSelectedIcon(null);
         table_13_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_13_btn.setIconTextGap(0);
         table_13_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        table_13_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                table_btnMouseReleased(evt);
-            }
-        });
         table_13_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
             }
         });
-        jPanel13.add(table_13_btn, java.awt.BorderLayout.CENTER);
-
-        dashboard_pane.add(jPanel13);
+        dashboard_pane.add(table_13_btn);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setComponentPopupMenu(property_popup_menu);
         jPanel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel14.setLayout(new java.awt.BorderLayout());
 
@@ -691,6 +604,7 @@ public class Main extends javax.swing.JFrame {
         table_14_btn.setText("Table 14");
         table_14_btn.setToolTipText("Table number");
         table_14_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        table_14_btn.setComponentPopupMenu(property_popup_menu);
         table_14_btn.setDisabledIcon(null);
         table_14_btn.setDisabledSelectedIcon(null);
         table_14_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -922,7 +836,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
         );
 
         body.add(reserve_pane, "card2");
@@ -943,7 +857,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(order_paneLayout.createSequentialGroup()
                 .addGap(195, 195, 195)
                 .addComponent(jRadioButton1)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
 
         body.add(order_pane, "card4");
@@ -963,12 +877,12 @@ public class Main extends javax.swing.JFrame {
         );
         billing_paneLayout.setVerticalGroup(
             billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addGap(0, 654, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(billing_paneLayout.createSequentialGroup()
                     .addGap(205, 205, 205)
                     .addComponent(jButton21)
-                    .addContainerGap(206, Short.MAX_VALUE)))
+                    .addContainerGap(426, Short.MAX_VALUE)))
         );
 
         body.add(billing_pane, "card4");
@@ -986,7 +900,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 626, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab1", jPanel17);
@@ -999,7 +913,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 626, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab2", jPanel22);
@@ -1052,7 +966,7 @@ public class Main extends javax.swing.JFrame {
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -1363,29 +1277,6 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dashboard_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_btnActionPerformed
-        setPane(dashboard_pane);
-    }//GEN-LAST:event_dashboard_btnActionPerformed
-
-    private void table_btnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_btnMouseReleased
-        if (evt.isPopupTrigger()) {
-
-            Point pos = new Point();
-            // get the preferred size of the menu...
-            Dimension size = property_popup_menu.getPreferredSize();
-            // Adjust the x position so that the left side of the popup
-            // appears at the center of  the component
-            pos.x = (this.getWidth() / 2);
-            // Adjust the y position so that the y postion (top corner)
-            // is positioned so that the bottom of the popup
-            // appears in the center
-            pos.y = (this.getHeight() / 2) - size.height;
-
-            property_popup_menu.show(this, pos.x, pos.y);
-            System.out.println(pos.x + " " + pos.y);
-        }
-    }//GEN-LAST:event_table_btnMouseReleased
-
     private void reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_btnActionPerformed
         setPane(reserve_pane);
     }//GEN-LAST:event_reserve_btnActionPerformed
@@ -1539,6 +1430,33 @@ public class Main extends javax.swing.JFrame {
         setTable(evt);
     }//GEN-LAST:event_table_btnActionPerformed
 
+    private void table_btnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_btnMouseReleased
+        if (evt.isPopupTrigger()) {
+            setTable(evt);
+            property_popup_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+            System.out.println(evt.getComponent());
+            Component[] components = getContentPane().getComponents();
+            for (int i = 0; i < components.length; ++i) {
+                if ((components[i] instanceof Container)) {
+                    Container subContainer = (Container) components[i];
+                    //do something here
+                } else {
+                    //do something here
+                }
+            }
+
+//            Point pos = new Point();//evt.getPoint();
+//            Dimension size = property_popup_menu.getPreferredSize();
+//            pos.x = (table_3_btn.getX());
+//            pos.y = (table_3_btn.getY());
+//            System.out.println(pos.x + " " + pos.y);
+//            System.out.println(evt.getSource() + "");
+    }//GEN-LAST:event_table_btnMouseReleased
+
+    private void dashboard_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_btnActionPerformed
+        setPane(dashboard_pane);
+    }//GEN-LAST:event_dashboard_btnActionPerformed
+
     private void openWebsite(String url) {
         try {
             Desktop.getDesktop().browse(new URL(url).toURI());
@@ -1608,28 +1526,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
