@@ -2,6 +2,7 @@ package com.kiyoshi.gui;
 
 import com.kiyoshi.dao.Queuing;
 import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Authenticate extends javax.swing.JFrame {
@@ -313,7 +314,11 @@ public class Authenticate extends javax.swing.JFrame {
                     //dMainFrame.setUser(auth_username_input.getText());
                     Queuing.disConnectDb();
                     this.dispose();
-                    new Main().setVisible(true);
+                    JFrame m = new Main();
+                    m.pack();
+                    m.setExtendedState(m.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+                    m.setVisible(true);
+
             }
         }
     }

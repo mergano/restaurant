@@ -1,6 +1,8 @@
 package com.kiyoshi.gui;
 
 import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -171,6 +173,8 @@ public class Main extends javax.swing.JFrame {
         check_for_update_menuitem = new javax.swing.JMenuItem();
         about_menuitem = new javax.swing.JMenuItem();
 
+        property_popup_menu.setMinimumSize(new java.awt.Dimension(103, 94));
+
         table_reserve_btn.setText("Reserve");
         table_reserve_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +195,8 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
         setTitle(bundle.getString("title")); // NOI18N
+        setLocation(new java.awt.Point(0, 0));
+        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(1024, 640));
         setPreferredSize(new java.awt.Dimension(2147483647, 2147483647));
         setSize(new java.awt.Dimension(1024, 640));
@@ -325,7 +331,7 @@ public class Main extends javax.swing.JFrame {
         table_1_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_1_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                table_1_btnMouseReleased(evt);
+                table_btnMouseReleased(evt);
             }
         });
         table_1_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -352,6 +358,11 @@ public class Main extends javax.swing.JFrame {
         table_2_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_2_btn.setIconTextGap(0);
         table_2_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_2_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_2_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -375,6 +386,11 @@ public class Main extends javax.swing.JFrame {
         table_3_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_3_btn.setIconTextGap(0);
         table_3_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_3_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_3_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -398,6 +414,11 @@ public class Main extends javax.swing.JFrame {
         table_4_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_4_btn.setIconTextGap(0);
         table_4_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_4_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_4_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -422,6 +443,11 @@ public class Main extends javax.swing.JFrame {
         table_5_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_5_btn.setIconTextGap(0);
         table_5_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_5_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_5_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -445,6 +471,11 @@ public class Main extends javax.swing.JFrame {
         table_6_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_6_btn.setIconTextGap(0);
         table_6_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_6_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_6_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -469,6 +500,11 @@ public class Main extends javax.swing.JFrame {
         table_7_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_7_btn.setIconTextGap(0);
         table_7_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_7_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_7_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -492,6 +528,11 @@ public class Main extends javax.swing.JFrame {
         table_8_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_8_btn.setIconTextGap(0);
         table_8_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_8_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_8_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -515,6 +556,11 @@ public class Main extends javax.swing.JFrame {
         table_9_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_9_btn.setIconTextGap(0);
         table_9_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_9_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_9_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -538,6 +584,11 @@ public class Main extends javax.swing.JFrame {
         table_10_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_10_btn.setIconTextGap(0);
         table_10_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_10_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_10_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -561,6 +612,11 @@ public class Main extends javax.swing.JFrame {
         table_11_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_11_btn.setIconTextGap(0);
         table_11_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_11_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_11_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -584,6 +640,11 @@ public class Main extends javax.swing.JFrame {
         table_12_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_12_btn.setIconTextGap(0);
         table_12_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_12_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_12_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -607,6 +668,11 @@ public class Main extends javax.swing.JFrame {
         table_13_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_13_btn.setIconTextGap(0);
         table_13_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_13_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_13_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -630,6 +696,11 @@ public class Main extends javax.swing.JFrame {
         table_14_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_14_btn.setIconTextGap(0);
         table_14_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_14_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_14_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -653,6 +724,11 @@ public class Main extends javax.swing.JFrame {
         table_15_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_15_btn.setIconTextGap(0);
         table_15_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_15_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_15_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -676,6 +752,11 @@ public class Main extends javax.swing.JFrame {
         table_16_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_16_btn.setIconTextGap(0);
         table_16_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_16_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_16_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -699,6 +780,11 @@ public class Main extends javax.swing.JFrame {
         table_17_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_17_btn.setIconTextGap(0);
         table_17_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_17_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_17_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -722,6 +808,11 @@ public class Main extends javax.swing.JFrame {
         table_18_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_18_btn.setIconTextGap(0);
         table_18_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_18_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_18_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -745,6 +836,11 @@ public class Main extends javax.swing.JFrame {
         table_19_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_19_btn.setIconTextGap(0);
         table_19_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_19_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_19_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -768,6 +864,11 @@ public class Main extends javax.swing.JFrame {
         table_20_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_20_btn.setIconTextGap(0);
         table_20_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        table_20_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table_btnMouseReleased(evt);
+            }
+        });
         table_20_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 table_btnActionPerformed(evt);
@@ -1259,17 +1360,31 @@ public class Main extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dashboard_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_btnActionPerformed
         setPane(dashboard_pane);
     }//GEN-LAST:event_dashboard_btnActionPerformed
 
-    private void table_1_btnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_1_btnMouseReleased
+    private void table_btnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_btnMouseReleased
         if (evt.isPopupTrigger()) {
-            property_popup_menu.show(this, evt.getX(), evt.getY());
+
+            Point pos = new Point();
+            // get the preferred size of the menu...
+            Dimension size = property_popup_menu.getPreferredSize();
+            // Adjust the x position so that the left side of the popup
+            // appears at the center of  the component
+            pos.x = (this.getWidth() / 2);
+            // Adjust the y position so that the y postion (top corner)
+            // is positioned so that the bottom of the popup
+            // appears in the center
+            pos.y = (this.getHeight() / 2) - size.height;
+
+            property_popup_menu.show(this, pos.x, pos.y);
+            System.out.println(pos.x + " " + pos.y);
         }
-    }//GEN-LAST:event_table_1_btnMouseReleased
+    }//GEN-LAST:event_table_btnMouseReleased
 
     private void reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_btnActionPerformed
         setPane(reserve_pane);
