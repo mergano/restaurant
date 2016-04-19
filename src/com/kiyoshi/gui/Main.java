@@ -1,7 +1,5 @@
 package com.kiyoshi.gui;
 
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -1432,18 +1430,10 @@ public class Main extends javax.swing.JFrame {
 
     private void table_btnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_btnMouseReleased
         if (evt.isPopupTrigger()) {
-            setTable(evt);
             property_popup_menu.show(evt.getComponent(), evt.getX(), evt.getY());
             System.out.println(evt.getComponent());
-            Component[] components = getContentPane().getComponents();
-            for (int i = 0; i < components.length; ++i) {
-                if ((components[i] instanceof Container)) {
-                    Container subContainer = (Container) components[i];
-                    //do something here
-                } else {
-                    //do something here
-                }
-            }
+            System.out.println(evt.getPoint());
+        }
 
 //            Point pos = new Point();//evt.getPoint();
 //            Dimension size = property_popup_menu.getPreferredSize();
