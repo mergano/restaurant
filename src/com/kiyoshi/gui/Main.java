@@ -307,7 +307,6 @@ public class Main extends javax.swing.JFrame {
 
         table_1_btn.setBackground(new java.awt.Color(255, 255, 255));
         table_1_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        table_1_btn.setForeground(new java.awt.Color(51, 204, 0));
         table_1_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         table_1_btn.setText("Table 1");
         table_1_btn.setToolTipText("Table number");
@@ -316,6 +315,7 @@ public class Main extends javax.swing.JFrame {
         table_1_btn.setDisabledSelectedIcon(null);
         table_1_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_1_btn.setIconTextGap(0);
+        table_1_btn.setRequestFocusEnabled(false);
         table_1_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_1_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -339,6 +339,7 @@ public class Main extends javax.swing.JFrame {
         table_2_btn.setDisabledSelectedIcon(null);
         table_2_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_2_btn.setIconTextGap(0);
+        table_2_btn.setRequestFocusEnabled(false);
         table_2_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_2_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -361,6 +362,7 @@ public class Main extends javax.swing.JFrame {
         table_3_btn.setDisabledSelectedIcon(null);
         table_3_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_3_btn.setIconTextGap(0);
+        table_3_btn.setRequestFocusEnabled(false);
         table_3_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_3_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -383,6 +385,7 @@ public class Main extends javax.swing.JFrame {
         table_4_btn.setDisabledSelectedIcon(null);
         table_4_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_4_btn.setIconTextGap(0);
+        table_4_btn.setRequestFocusEnabled(false);
         table_4_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_4_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -397,15 +400,15 @@ public class Main extends javax.swing.JFrame {
         dashboard_pane.add(table_4_btn);
 
         table_5_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        table_5_btn.setForeground(new java.awt.Color(255, 0, 51));
         table_5_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
-        table_5_btn.setText("Reserved");
+        table_5_btn.setText("Table 5");
         table_5_btn.setToolTipText("Table number");
         table_5_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         table_5_btn.setDisabledIcon(null);
         table_5_btn.setDisabledSelectedIcon(null);
         table_5_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_5_btn.setIconTextGap(0);
+        table_5_btn.setRequestFocusEnabled(false);
         table_5_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_5_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -428,6 +431,7 @@ public class Main extends javax.swing.JFrame {
         table_6_btn.setDisabledSelectedIcon(null);
         table_6_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_6_btn.setIconTextGap(0);
+        table_6_btn.setRequestFocusEnabled(false);
         table_6_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_6_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -442,7 +446,6 @@ public class Main extends javax.swing.JFrame {
         dashboard_pane.add(table_6_btn);
 
         table_7_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        table_7_btn.setForeground(new java.awt.Color(0, 204, 51));
         table_7_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         table_7_btn.setText("Table 7");
         table_7_btn.setToolTipText("Table number");
@@ -451,6 +454,7 @@ public class Main extends javax.swing.JFrame {
         table_7_btn.setDisabledSelectedIcon(null);
         table_7_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_7_btn.setIconTextGap(0);
+        table_7_btn.setRequestFocusEnabled(false);
         table_7_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_7_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -473,6 +477,7 @@ public class Main extends javax.swing.JFrame {
         table_8_btn.setDisabledSelectedIcon(null);
         table_8_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_8_btn.setIconTextGap(0);
+        table_8_btn.setRequestFocusEnabled(false);
         table_8_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_8_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -495,6 +500,7 @@ public class Main extends javax.swing.JFrame {
         table_9_btn.setDisabledSelectedIcon(null);
         table_9_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_9_btn.setIconTextGap(0);
+        table_9_btn.setRequestFocusEnabled(false);
         table_9_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_9_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -517,6 +523,7 @@ public class Main extends javax.swing.JFrame {
         table_10_btn.setDisabledSelectedIcon(null);
         table_10_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_10_btn.setIconTextGap(0);
+        table_10_btn.setRequestFocusEnabled(false);
         table_10_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_10_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -539,6 +546,7 @@ public class Main extends javax.swing.JFrame {
         table_11_btn.setDisabledSelectedIcon(null);
         table_11_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_11_btn.setIconTextGap(0);
+        table_11_btn.setRequestFocusEnabled(false);
         table_11_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_11_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -561,6 +569,7 @@ public class Main extends javax.swing.JFrame {
         table_12_btn.setDisabledSelectedIcon(null);
         table_12_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_12_btn.setIconTextGap(0);
+        table_12_btn.setRequestFocusEnabled(false);
         table_12_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_12_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -584,6 +593,7 @@ public class Main extends javax.swing.JFrame {
         table_13_btn.setDisabledSelectedIcon(null);
         table_13_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_13_btn.setIconTextGap(0);
+        table_13_btn.setRequestFocusEnabled(false);
         table_13_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_13_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -607,6 +617,7 @@ public class Main extends javax.swing.JFrame {
         table_14_btn.setDisabledSelectedIcon(null);
         table_14_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_14_btn.setIconTextGap(0);
+        table_14_btn.setRequestFocusEnabled(false);
         table_14_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_14_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -635,6 +646,7 @@ public class Main extends javax.swing.JFrame {
         table_15_btn.setDisabledSelectedIcon(null);
         table_15_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_15_btn.setIconTextGap(0);
+        table_15_btn.setRequestFocusEnabled(false);
         table_15_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_15_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -663,6 +675,7 @@ public class Main extends javax.swing.JFrame {
         table_16_btn.setDisabledSelectedIcon(null);
         table_16_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_16_btn.setIconTextGap(0);
+        table_16_btn.setRequestFocusEnabled(false);
         table_16_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_16_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -691,6 +704,7 @@ public class Main extends javax.swing.JFrame {
         table_17_btn.setDisabledSelectedIcon(null);
         table_17_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_17_btn.setIconTextGap(0);
+        table_17_btn.setRequestFocusEnabled(false);
         table_17_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_17_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -719,6 +733,7 @@ public class Main extends javax.swing.JFrame {
         table_18_btn.setDisabledSelectedIcon(null);
         table_18_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_18_btn.setIconTextGap(0);
+        table_18_btn.setRequestFocusEnabled(false);
         table_18_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_18_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -747,6 +762,7 @@ public class Main extends javax.swing.JFrame {
         table_19_btn.setDisabledSelectedIcon(null);
         table_19_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_19_btn.setIconTextGap(0);
+        table_19_btn.setRequestFocusEnabled(false);
         table_19_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_19_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -775,6 +791,7 @@ public class Main extends javax.swing.JFrame {
         table_20_btn.setDisabledSelectedIcon(null);
         table_20_btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         table_20_btn.setIconTextGap(0);
+        table_20_btn.setRequestFocusEnabled(false);
         table_20_btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         table_20_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
