@@ -100,7 +100,6 @@ public class Authenticate extends javax.swing.JFrame {
         setTitle(bundle.getString("title")); // NOI18N
         setMinimumSize(new java.awt.Dimension(640, 480));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(640, 480));
         setResizable(false);
         setSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -129,7 +128,7 @@ public class Authenticate extends javax.swing.JFrame {
 
         auth_title_box.setName("auth_title_box"); // NOI18N
 
-        auth_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        auth_title.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         auth_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         auth_title.setText("System Authentication");
         auth_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
