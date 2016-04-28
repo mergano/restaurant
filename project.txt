@@ -1,0 +1,29 @@
+OOSD Proeject
++ Kick off today@
+	- Each group must submit 2 projects
+	- Each project is a previous CSC105 project
+	- Each group need to create a wiki page
+	- daily scrum meeting
+	- weekly scrum report
+	- project documentation
+	- user backlog
+	- burndown chart
+	- Project means you have to re-design, refactoring and renovate the old one using OOSD concepts
+	* All functionals are required
+
++ Proposal .docx .pdf
+   - Deadline project proposal 10 Feb 2016
+   - Project name (base on your application)
+   - Group name
+   - Introduction - background of the project including motivation
+   - Objective - why we redesing it
+   - User backlog (based on previous version)
+   - Technology - list of Technology you have
+   - Team - list of team members + wikispaces account name
+
+submit to csc319@sit.kmutt.ac.th
+attach both docx and pdf files
+before 10 Feb 2016 at 23.00
++ Wikispace
+	- 
+
