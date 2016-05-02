@@ -9,6 +9,7 @@ import java.net.URL;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -83,6 +84,15 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         order_pane = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jEditorPane2 = new javax.swing.JEditorPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jRadioButton2 = new javax.swing.JRadioButton();
         billing_pane = new javax.swing.JPanel();
         jButton21 = new javax.swing.JButton();
         statistic_pane = new javax.swing.JPanel();
@@ -867,445 +877,527 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
-                .addGap(96, 96, 96)
+                .addGap(99, 99, 99)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         body.add(reserve_pane, "card2");
 
-        jRadioButton1.setText("jRadioButton1");
-
-        javax.swing.GroupLayout order_paneLayout = new javax.swing.GroupLayout(order_pane);
-        order_pane.setLayout(order_paneLayout);
-        order_paneLayout.setHorizontalGroup(
-            order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(order_paneLayout.createSequentialGroup()
-                .addGap(301, 301, 301)
-                .addComponent(jRadioButton1)
-                .addContainerGap(3575, Short.MAX_VALUE))
-        );
-        order_paneLayout.setVerticalGroup(
-            order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(order_paneLayout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addComponent(jRadioButton1)
-                .addContainerGap(738, Short.MAX_VALUE))
-        );
-
-        body.add(order_pane, "card4");
-
-        jButton21.setText("Billing");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButton1.setLabel("Eat here");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                jRadioButton1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout billing_paneLayout = new javax.swing.GroupLayout(billing_pane);
-        billing_pane.setLayout(billing_paneLayout);
-        billing_paneLayout.setHorizontalGroup(
-            billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(billing_paneLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jButton21)
-                .addContainerGap(3896, Short.MAX_VALUE))
-        );
-        billing_paneLayout.setVerticalGroup(
-            billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(billing_paneLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jButton21)
-                .addContainerGap(912, Short.MAX_VALUE))
-        );
+        jLabel4.setText("Customer Name:");
 
-        body.add(billing_pane, "card4");
-
-        statistic_pane.setLayout(new java.awt.BorderLayout());
-
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(32767, 32767));
-        jTabbedPane1.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3975, Short.MAX_VALUE)
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab1", jPanel17);
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3975, Short.MAX_VALUE)
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab2", jPanel22);
-
-        statistic_pane.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
-
-        body.add(statistic_pane, "card4");
-
-        history_pane.setLayout(new java.awt.BorderLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"1", "Salmon Sasimi", "250"},
+                {"2", "Salmon Teriyaki", "200"},
+                {"3", "California Roll", "300"},
+                {"4", "Tempura", null},
+                {"", null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No.", "Menu", "Prices"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        )
+        {public boolean isCellEditable(int row,int column){
+            return false;
+        }}
+    );
+    jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jTable2MouseClicked(evt);
+        }
+    });
+    jScrollPane4.setViewportView(jTable2);
 
-        history_pane.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+    jScrollPane5.setViewportView(jEditorPane2);
 
-        body.add(history_pane, "card4");
+    jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
 
-        getContentPane().add(body, java.awt.BorderLayout.CENTER);
+        },
+        new String [] {
+            "No.", "Order", "Quantities"
+        }
+    ));
+    jScrollPane6.setViewportView(jTable3);
 
-        jTextField3.setText("Status");
+    jLabel5.setText("Menu(s)");
 
-        table_no_box.setEditable(false);
+    jRadioButton2.setText("Take Home");
+    jRadioButton2.setToolTipText("");
 
-        jTextField5.setText("Here is Footer");
+    javax.swing.GroupLayout order_paneLayout = new javax.swing.GroupLayout(order_pane);
+    order_pane.setLayout(order_paneLayout);
+    order_paneLayout.setHorizontalGroup(
+        order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(order_paneLayout.createSequentialGroup()
+            .addContainerGap(31, Short.MAX_VALUE)
+            .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(order_paneLayout.createSequentialGroup()
+                    .addComponent(jLabel4)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(order_paneLayout.createSequentialGroup()
+                    .addComponent(jRadioButton1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jRadioButton2)))
+            .addGap(18, 18, 18)
+            .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_paneLayout.createSequentialGroup()
+                    .addComponent(jLabel5)
+                    .addGap(368, 368, 368))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_paneLayout.createSequentialGroup()
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(161, 161, 161))))
+    );
+    order_paneLayout.setVerticalGroup(
+        order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(order_paneLayout.createSequentialGroup()
+            .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(order_paneLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(jLabel5)
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(order_paneLayout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButton1)
+                        .addComponent(jRadioButton2))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(410, Short.MAX_VALUE))
+    );
 
-        javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
-        footer.setLayout(footerLayout);
-        footerLayout.setHorizontalGroup(
-            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(footerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(928, Short.MAX_VALUE))
-        );
-        footerLayout.setVerticalGroup(
-            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+    jLabel5.getAccessibleContext().setAccessibleName("Menu(S)");
+
+    body.add(order_pane, "card4");
+
+    jButton21.setText("Billing");
+    jButton21.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton21ActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout billing_paneLayout = new javax.swing.GroupLayout(billing_pane);
+    billing_pane.setLayout(billing_paneLayout);
+    billing_paneLayout.setHorizontalGroup(
+        billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(billing_paneLayout.createSequentialGroup()
+            .addGap(17, 17, 17)
+            .addComponent(jButton21)
+            .addContainerGap(926, Short.MAX_VALUE))
+    );
+    billing_paneLayout.setVerticalGroup(
+        billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(billing_paneLayout.createSequentialGroup()
+            .addGap(15, 15, 15)
+            .addComponent(jButton21)
+            .addContainerGap(383, Short.MAX_VALUE))
+    );
+
+    body.add(billing_pane, "card4");
+
+    statistic_pane.setLayout(new java.awt.BorderLayout());
+
+    jTabbedPane1.setPreferredSize(new java.awt.Dimension(32767, 32767));
+    jTabbedPane1.setRequestFocusEnabled(false);
+
+    javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+    jPanel17.setLayout(jPanel17Layout);
+    jPanel17Layout.setHorizontalGroup(
+        jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 1005, Short.MAX_VALUE)
+    );
+    jPanel17Layout.setVerticalGroup(
+        jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 381, Short.MAX_VALUE)
+    );
+
+    jTabbedPane1.addTab("tab1", jPanel17);
+
+    javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+    jPanel22.setLayout(jPanel22Layout);
+    jPanel22Layout.setHorizontalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 1005, Short.MAX_VALUE)
+    );
+    jPanel22Layout.setVerticalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 381, Short.MAX_VALUE)
+    );
+
+    jTabbedPane1.addTab("tab2", jPanel22);
+
+    statistic_pane.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+
+    body.add(statistic_pane, "card4");
+
+    history_pane.setLayout(new java.awt.BorderLayout());
+
+    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String [] {
+            "Title 1", "Title 2", "Title 3", "Title 4"
+        }
+    ));
+    jScrollPane2.setViewportView(jTable1);
+
+    history_pane.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+    body.add(history_pane, "card4");
+
+    getContentPane().add(body, java.awt.BorderLayout.CENTER);
+
+    jTextField3.setText("Status");
+
+    table_no_box.setEditable(false);
+
+    jTextField5.setText("Here is Footer");
+
+    javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
+    footer.setLayout(footerLayout);
+    footerLayout.setHorizontalGroup(
+        footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(footerLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
-
-        file_menu.setText("File");
-
-        open_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        open_menuitem.setText("Open...");
-        open_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                open_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(open_menuitem);
-
-        save_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        save_menuitem.setText("Save");
-        file_menu.add(save_menuitem);
-
-        saveas_menuitem.setText("Save as...");
-        saveas_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveas_menuitemActionPerformed(evt);
-            }
-        });
-        file_menu.add(saveas_menuitem);
-        file_menu.add(jSeparator3);
-
-        statistics_menuitem.setLabel("Statistics");
-        statistics_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statistic_btnActionPerformed(evt);
-            }
-        });
-        file_menu.add(statistics_menuitem);
-        file_menu.add(jSeparator7);
-
-        print_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        print_menuitem.setText("Print...");
-        file_menu.add(print_menuitem);
-
-        printtohtml_menuitem.setText("Print to HTML");
-        file_menu.add(printtohtml_menuitem);
-
-        page_setup_menuitem.setText("Page Setup...");
-        file_menu.add(page_setup_menuitem);
-
-        print_preview_menuitem.setText("Print Preview...");
-        file_menu.add(print_preview_menuitem);
-        file_menu.add(jSeparator2);
-
-        exit_program.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
-        exit_program.setText("Exit");
-        exit_program.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit_programActionPerformed(evt);
-            }
-        });
-        file_menu.add(exit_program);
-
-        jMenuBar1.add(file_menu);
-
-        edit_menu.setText("Edit");
-
-        jMenuItem25.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem25.setText("Undo");
-        jMenuItem25.setEnabled(false);
-        edit_menu.add(jMenuItem25);
-
-        jMenuItem26.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem26.setText("Redo");
-        jMenuItem26.setEnabled(false);
-        jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem26ActionPerformed(evt);
-            }
-        });
-        edit_menu.add(jMenuItem26);
-        edit_menu.add(jSeparator8);
-
-        jMenuItem27.setText("Cut");
-        edit_menu.add(jMenuItem27);
-
-        jMenuItem28.setText("Copy");
-        edit_menu.add(jMenuItem28);
-
-        jMenuItem30.setText("Paste");
-        jMenuItem30.setEnabled(false);
-        edit_menu.add(jMenuItem30);
-
-        jMenuItem31.setText("Paste from History");
-        jMenuItem31.setEnabled(false);
-        edit_menu.add(jMenuItem31);
-
-        jMenuItem33.setText("Delete");
-        edit_menu.add(jMenuItem33);
-
-        jMenuItem32.setText("Select All");
-        edit_menu.add(jMenuItem32);
-        edit_menu.add(jSeparator9);
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(928, Short.MAX_VALUE))
+    );
+    footerLayout.setVerticalGroup(
+        footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(10, Short.MAX_VALUE))
+    );
+
+    getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
+
+    file_menu.setText("File");
+
+    open_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+    open_menuitem.setText("Open...");
+    open_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            open_menuitemActionPerformed(evt);
+        }
+    });
+    file_menu.add(open_menuitem);
+
+    save_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+    save_menuitem.setText("Save");
+    file_menu.add(save_menuitem);
+
+    saveas_menuitem.setText("Save as...");
+    saveas_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            saveas_menuitemActionPerformed(evt);
+        }
+    });
+    file_menu.add(saveas_menuitem);
+    file_menu.add(jSeparator3);
+
+    statistics_menuitem.setLabel("Statistics");
+    statistics_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            statistic_btnActionPerformed(evt);
+        }
+    });
+    file_menu.add(statistics_menuitem);
+    file_menu.add(jSeparator7);
+
+    print_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+    print_menuitem.setText("Print...");
+    file_menu.add(print_menuitem);
+
+    printtohtml_menuitem.setText("Print to HTML");
+    file_menu.add(printtohtml_menuitem);
+
+    page_setup_menuitem.setText("Page Setup...");
+    file_menu.add(page_setup_menuitem);
+
+    print_preview_menuitem.setText("Print Preview...");
+    file_menu.add(print_preview_menuitem);
+    file_menu.add(jSeparator2);
+
+    exit_program.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+    exit_program.setText("Exit");
+    exit_program.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            exit_programActionPerformed(evt);
+        }
+    });
+    file_menu.add(exit_program);
+
+    jMenuBar1.add(file_menu);
+
+    edit_menu.setText("Edit");
+
+    jMenuItem25.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem25.setText("Undo");
+    jMenuItem25.setEnabled(false);
+    edit_menu.add(jMenuItem25);
+
+    jMenuItem26.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem26.setText("Redo");
+    jMenuItem26.setEnabled(false);
+    jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem26ActionPerformed(evt);
+        }
+    });
+    edit_menu.add(jMenuItem26);
+    edit_menu.add(jSeparator8);
+
+    jMenuItem27.setText("Cut");
+    edit_menu.add(jMenuItem27);
+
+    jMenuItem28.setText("Copy");
+    edit_menu.add(jMenuItem28);
+
+    jMenuItem30.setText("Paste");
+    jMenuItem30.setEnabled(false);
+    edit_menu.add(jMenuItem30);
 
-        jMenuItem36.setText("Find/Replace...");
-        edit_menu.add(jMenuItem36);
+    jMenuItem31.setText("Paste from History");
+    jMenuItem31.setEnabled(false);
+    edit_menu.add(jMenuItem31);
 
-        jMenuItem34.setText("Find Next");
-        edit_menu.add(jMenuItem34);
+    jMenuItem33.setText("Delete");
+    edit_menu.add(jMenuItem33);
 
-        jMenuItem35.setText("Find Previous");
-        edit_menu.add(jMenuItem35);
+    jMenuItem32.setText("Select All");
+    edit_menu.add(jMenuItem32);
+    edit_menu.add(jSeparator9);
 
-        jMenuBar1.add(edit_menu);
+    jMenuItem36.setText("Find/Replace...");
+    edit_menu.add(jMenuItem36);
 
-        view_menu.setText("View");
-        view_menu.setToolTipText("");
+    jMenuItem34.setText("Find Next");
+    edit_menu.add(jMenuItem34);
 
-        toolbar_menuitem.setSelected(true);
-        toolbar_menuitem.setText("Show Toolbar");
-        toolbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toolbar_menuitemActionPerformed(evt);
-            }
-        });
-        view_menu.add(toolbar_menuitem);
+    jMenuItem35.setText("Find Previous");
+    edit_menu.add(jMenuItem35);
 
-        statusbar_menuitem.setSelected(true);
-        statusbar_menuitem.setText("Show Status bar");
-        statusbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusbar_menuitemActionPerformed(evt);
-            }
-        });
-        view_menu.add(statusbar_menuitem);
+    jMenuBar1.add(edit_menu);
 
-        jMenuBar1.add(view_menu);
+    view_menu.setText("View");
+    view_menu.setToolTipText("");
 
-        database_menu.setText("Database");
+    toolbar_menuitem.setSelected(true);
+    toolbar_menuitem.setText("Show Toolbar");
+    toolbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            toolbar_menuitemActionPerformed(evt);
+        }
+    });
+    view_menu.add(toolbar_menuitem);
 
-        jMenu7.setText("Connect..");
+    statusbar_menuitem.setSelected(true);
+    statusbar_menuitem.setText("Show Status bar");
+    statusbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            statusbar_menuitemActionPerformed(evt);
+        }
+    });
+    view_menu.add(statusbar_menuitem);
 
-        new_db_menuitem.setText("New...");
-        jMenu7.add(new_db_menuitem);
+    jMenuBar1.add(view_menu);
 
-        del_db_menuitem.setText("Delete...");
-        jMenu7.add(del_db_menuitem);
+    database_menu.setText("Database");
 
-        find_db_menuitem.setText("Find...");
-        jMenu7.add(find_db_menuitem);
+    jMenu7.setText("Connect..");
 
-        database_menu.add(jMenu7);
+    new_db_menuitem.setText("New...");
+    jMenu7.add(new_db_menuitem);
 
-        login_menuitem.setText("Login");
-        login_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                login_menuitemActionPerformed(evt);
-            }
-        });
-        database_menu.add(login_menuitem);
+    del_db_menuitem.setText("Delete...");
+    jMenu7.add(del_db_menuitem);
 
-        logout_menuitem.setText("Logout");
-        logout_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logout_menuitemActionPerformed(evt);
-            }
-        });
-        database_menu.add(logout_menuitem);
-        database_menu.add(jSeparator1);
-
-        import_menuitem.setText("Import...");
-
-        import_csv_menuitem.setText("From CSV");
-        import_menuitem.add(import_csv_menuitem);
-
-        database_menu.add(import_menuitem);
-
-        export_menuitem.setText("Export...");
-
-        export_csv_menuitem.setText("To CSV");
-        export_menuitem.add(export_csv_menuitem);
-
-        export_txt_menuitem.setText("To TXT");
-        export_menuitem.add(export_txt_menuitem);
-
-        export_sql_menuitem.setText("To SQL");
-        export_menuitem.add(export_sql_menuitem);
-
-        database_menu.add(export_menuitem);
-
-        jMenuBar1.add(database_menu);
-
-        folder_menu.setText("Folder");
-
-        jMenuItem5.setText("Add...");
-        folder_menu.add(jMenuItem5);
-
-        jMenuItem6.setText("Edit...");
-        folder_menu.add(jMenuItem6);
-
-        jMenuItem7.setText("Remove...");
-        folder_menu.add(jMenuItem7);
-
-        jMenuBar1.add(folder_menu);
-
-        tools_menu.setText("Tools");
-
-        search_menuitem.setText("Search...");
-        tools_menu.add(search_menuitem);
-
-        backup_menuitem.setText("Backup");
-        tools_menu.add(backup_menuitem);
-
-        bookmark_menuitem.setText("Bookmarks");
-        tools_menu.add(bookmark_menuitem);
-        tools_menu.add(jSeparator6);
-
-        preference_menuitem.setText("Preference");
-        preference_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                preference_menuitemActionPerformed(evt);
-            }
-        });
-        tools_menu.add(preference_menuitem);
-
-        jMenuBar1.add(tools_menu);
-
-        help_menu.setText("Help");
-
-        help_contents_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        help_contents_menuitem.setText("Help Contents");
-        help_contents_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                help_contents_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(help_contents_menuitem);
-
-        online_docs_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
-        online_docs_menuitem.setText("Online Docs and Support");
-        online_docs_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                online_docs_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(online_docs_menuitem);
-
-        keyboard_shortcuts_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        keyboard_shortcuts_menuitem.setText("Keyboard shortcuts");
-        keyboard_shortcuts_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                keyboard_shortcuts_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(keyboard_shortcuts_menuitem);
-        help_menu.add(jSeparator5);
-
-        report_bug_menuitem.setText("Report Bug...");
-        report_bug_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                report_bug_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(report_bug_menuitem);
-
-        feedback_menuitem.setText("Feedback...");
-        feedback_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                feedback_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(feedback_menuitem);
-
-        website_menuitem.setText("Website..");
-        website_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                website_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(website_menuitem);
-        help_menu.add(jSeparator4);
-
-        check_for_update_menuitem.setText("Check for Updates");
-        check_for_update_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                check_for_update_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(check_for_update_menuitem);
-
-        about_menuitem.setText("About");
-        about_menuitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                about_menuitemActionPerformed(evt);
-            }
-        });
-        help_menu.add(about_menuitem);
-
-        jMenuBar1.add(help_menu);
-
-        setJMenuBar(jMenuBar1);
-
-        pack();
-        setLocationRelativeTo(null);
+    find_db_menuitem.setText("Find...");
+    jMenu7.add(find_db_menuitem);
+
+    database_menu.add(jMenu7);
+
+    login_menuitem.setText("Login");
+    login_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            login_menuitemActionPerformed(evt);
+        }
+    });
+    database_menu.add(login_menuitem);
+
+    logout_menuitem.setText("Logout");
+    logout_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            logout_menuitemActionPerformed(evt);
+        }
+    });
+    database_menu.add(logout_menuitem);
+    database_menu.add(jSeparator1);
+
+    import_menuitem.setText("Import...");
+
+    import_csv_menuitem.setText("From CSV");
+    import_menuitem.add(import_csv_menuitem);
+
+    database_menu.add(import_menuitem);
+
+    export_menuitem.setText("Export...");
+
+    export_csv_menuitem.setText("To CSV");
+    export_menuitem.add(export_csv_menuitem);
+
+    export_txt_menuitem.setText("To TXT");
+    export_menuitem.add(export_txt_menuitem);
+
+    export_sql_menuitem.setText("To SQL");
+    export_menuitem.add(export_sql_menuitem);
+
+    database_menu.add(export_menuitem);
+
+    jMenuBar1.add(database_menu);
+
+    folder_menu.setText("Folder");
+
+    jMenuItem5.setText("Add...");
+    folder_menu.add(jMenuItem5);
+
+    jMenuItem6.setText("Edit...");
+    folder_menu.add(jMenuItem6);
+
+    jMenuItem7.setText("Remove...");
+    folder_menu.add(jMenuItem7);
+
+    jMenuBar1.add(folder_menu);
+
+    tools_menu.setText("Tools");
+
+    search_menuitem.setText("Search...");
+    tools_menu.add(search_menuitem);
+
+    backup_menuitem.setText("Backup");
+    tools_menu.add(backup_menuitem);
+
+    bookmark_menuitem.setText("Bookmarks");
+    tools_menu.add(bookmark_menuitem);
+    tools_menu.add(jSeparator6);
+
+    preference_menuitem.setText("Preference");
+    preference_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            preference_menuitemActionPerformed(evt);
+        }
+    });
+    tools_menu.add(preference_menuitem);
+
+    jMenuBar1.add(tools_menu);
+
+    help_menu.setText("Help");
+
+    help_contents_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+    help_contents_menuitem.setText("Help Contents");
+    help_contents_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            help_contents_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(help_contents_menuitem);
+
+    online_docs_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
+    online_docs_menuitem.setText("Online Docs and Support");
+    online_docs_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            online_docs_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(online_docs_menuitem);
+
+    keyboard_shortcuts_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+    keyboard_shortcuts_menuitem.setText("Keyboard shortcuts");
+    keyboard_shortcuts_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            keyboard_shortcuts_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(keyboard_shortcuts_menuitem);
+    help_menu.add(jSeparator5);
+
+    report_bug_menuitem.setText("Report Bug...");
+    report_bug_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            report_bug_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(report_bug_menuitem);
+
+    feedback_menuitem.setText("Feedback...");
+    feedback_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            feedback_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(feedback_menuitem);
+
+    website_menuitem.setText("Website..");
+    website_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            website_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(website_menuitem);
+    help_menu.add(jSeparator4);
+
+    check_for_update_menuitem.setText("Check for Updates");
+    check_for_update_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            check_for_update_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(check_for_update_menuitem);
+
+    about_menuitem.setText("About");
+    about_menuitem.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            about_menuitemActionPerformed(evt);
+        }
+    });
+    help_menu.add(about_menuitem);
+
+    jMenuBar1.add(help_menu);
+
+    setJMenuBar(jMenuBar1);
+
+    pack();
+    setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_btnActionPerformed
@@ -1525,6 +1617,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton21ActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        System.out.println(jTable2.getValueAt(jTable2.getSelectedRow(),1));
+        DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
+        model.addRow(new Object[]{"1", jTable2.getValueAt(jTable2.getSelectedRow(),1) ,"1"});
+        
+    }//GEN-LAST:event_jTable2MouseClicked
+
     private void openWebsite(String url) {
         try {
             Desktop.getDesktop().browse(new URL(url).toURI());
@@ -1576,9 +1680,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu import_menuitem;
     private javax.swing.JButton jButton21;
     private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
@@ -1606,9 +1713,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -1620,6 +1731,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
