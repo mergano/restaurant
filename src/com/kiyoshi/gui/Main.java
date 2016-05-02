@@ -12,9 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
-
-    public Main() {
+    String username = "";
+    public Main(String username) {
         initComponents();
+        this.username = username;
+        table_no_box.setText(username);
     }
 
     /**
@@ -103,9 +105,9 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         footer = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
         table_no_box = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         file_menu = new javax.swing.JMenu();
         open_menuitem = new javax.swing.JMenuItem();
@@ -1069,11 +1071,11 @@ public class Main extends javax.swing.JFrame {
 
     getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
-    jTextField3.setText("Status");
-
     table_no_box.setEditable(false);
 
     jTextField5.setText("Here is Footer");
+
+    jLabel6.setText("Emploee's Name");
 
     javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
     footer.setLayout(footerLayout);
@@ -1082,10 +1084,12 @@ public class Main extends javax.swing.JFrame {
         .addGroup(footerLayout.createSequentialGroup()
             .addContainerGap()
             .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(928, Short.MAX_VALUE))
+                .addGroup(footerLayout.createSequentialGroup()
+                    .addComponent(jLabel6)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(813, Short.MAX_VALUE))
     );
     footerLayout.setVerticalGroup(
         footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1093,10 +1097,10 @@ public class Main extends javax.swing.JFrame {
             .addContainerGap()
             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6))
+            .addContainerGap(42, Short.MAX_VALUE))
     );
 
     getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
@@ -1686,6 +1690,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
@@ -1733,7 +1738,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenuItem keyboard_shortcuts_menuitem;
