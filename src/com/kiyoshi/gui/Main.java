@@ -1,5 +1,6 @@
 package com.kiyoshi.gui;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -210,6 +211,7 @@ public class Main extends javax.swing.JFrame {
         main_reserve_btn_box.setPreferredSize(new java.awt.Dimension(100, 85));
         main_reserve_btn_box.setLayout(new java.awt.BorderLayout());
 
+        reserve_btn.setBackground(new java.awt.Color(204, 204, 204));
         reserve_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         reserve_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/triangular_flag_on_post.png"))); // NOI18N
         reserve_btn.setText("Reserve");
@@ -829,29 +831,26 @@ public class Main extends javax.swing.JFrame {
         reserve_paneLayout.setHorizontalGroup(
             reserve_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reserve_paneLayout.createSequentialGroup()
-                .addGap(292, 292, 292)
+                .addGap(229, 229, 229)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(reserve_paneLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addGap(153, 562, Short.MAX_VALUE)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(364, 364, 364))
         );
         reserve_paneLayout.setVerticalGroup(
             reserve_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reserve_paneLayout.createSequentialGroup()
-                .addGroup(reserve_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(reserve_paneLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jLabel1))
-                    .addGroup(reserve_paneLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(114, 114, 114)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGroup(reserve_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         body.add(reserve_pane, "card2");
@@ -883,7 +882,7 @@ public class Main extends javax.swing.JFrame {
         billing_pane.setLayout(billing_paneLayout);
         billing_paneLayout.setHorizontalGroup(
             billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGap(0, 1050, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(billing_paneLayout.createSequentialGroup()
                     .addGap(472, 472, 472)
@@ -892,7 +891,7 @@ public class Main extends javax.swing.JFrame {
         );
         billing_paneLayout.setVerticalGroup(
             billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 654, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(billing_paneLayout.createSequentialGroup()
                     .addGap(205, 205, 205)
@@ -911,11 +910,11 @@ public class Main extends javax.swing.JFrame {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
+            .addGap(0, 1005, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
+            .addGap(0, 381, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab1", jPanel17);
@@ -924,11 +923,11 @@ public class Main extends javax.swing.JFrame {
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
+            .addGap(0, 1005, Short.MAX_VALUE)
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
+            .addGap(0, 381, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab2", jPanel22);
@@ -1294,6 +1293,13 @@ public class Main extends javax.swing.JFrame {
 
     private void reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_btnActionPerformed
         setPane(reserve_pane);
+        main_reserve_btn_box.setBackground(Color.gray);
+        main_dashboard_btn_box.setBackground(Color.white);
+        main_billing_btn_box.setBackground(Color.white);
+        main_history_btn_box.setBackground(Color.white);
+        main_order_btn_box.setBackground(Color.white);
+        main_statistic_btn_box.setBackground(Color.white);
+        
     }//GEN-LAST:event_reserve_btnActionPerformed
 
     private void open_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_menuitemActionPerformed
@@ -1423,18 +1429,44 @@ public class Main extends javax.swing.JFrame {
 
     private void statistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statistic_btnActionPerformed
         setPane(statistic_pane);
+        main_statistic_btn_box.setBackground(Color.gray);
+        main_dashboard_btn_box.setBackground(Color.white);
+        main_reserve_btn_box.setBackground(Color.white);
+        main_history_btn_box.setBackground(Color.white);
+        main_order_btn_box.setBackground(Color.white);
+        main_billing_btn_box.setBackground(Color.white);
     }//GEN-LAST:event_statistic_btnActionPerformed
 
     private void billing_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billing_btnActionPerformed
         setPane(billing_pane);
+        main_billing_btn_box.setBackground(Color.gray);
+        main_dashboard_btn_box.setBackground(Color.white);
+        main_reserve_btn_box.setBackground(Color.white);
+        main_history_btn_box.setBackground(Color.white);
+        main_order_btn_box.setBackground(Color.white);
+        main_statistic_btn_box.setBackground(Color.white);
+        
+                                        
     }//GEN-LAST:event_billing_btnActionPerformed
 
     private void history_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_history_btnActionPerformed
         setPane(history_pane);
+        main_history_btn_box.setBackground(Color.gray);
+        main_dashboard_btn_box.setBackground(Color.white);
+        main_reserve_btn_box.setBackground(Color.white);
+        main_billing_btn_box.setBackground(Color.white);
+        main_order_btn_box.setBackground(Color.white);
+        main_statistic_btn_box.setBackground(Color.white);
     }//GEN-LAST:event_history_btnActionPerformed
 
     private void order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order_btnActionPerformed
         setPane(order_pane);
+        main_order_btn_box.setBackground(Color.gray);
+        main_dashboard_btn_box.setBackground(Color.white);
+        main_reserve_btn_box.setBackground(Color.white);
+        main_history_btn_box.setBackground(Color.white);
+        main_billing_btn_box.setBackground(Color.white);
+        main_statistic_btn_box.setBackground(Color.white);
     }//GEN-LAST:event_order_btnActionPerformed
 
     private void table_reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_reserve_btnActionPerformed
@@ -1462,6 +1494,14 @@ public class Main extends javax.swing.JFrame {
 
     private void dashboard_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_btnActionPerformed
         setPane(dashboard_pane);
+        main_dashboard_btn_box.setBackground(Color.gray);
+        main_reserve_btn_box.setBackground(Color.white);
+        main_billing_btn_box.setBackground(Color.white);
+        main_history_btn_box.setBackground(Color.white);
+        main_order_btn_box.setBackground(Color.white);
+        main_statistic_btn_box.setBackground(Color.white);
+        
+                                        
     }//GEN-LAST:event_dashboard_btnActionPerformed
 
     private void openWebsite(String url) {
