@@ -2,7 +2,7 @@ package com.kiyoshi.core;
 
 public class LoadDriver {
 
-    public static void main(String[] args) {
+    public static void LoadDBDriver() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();  // The newInstance() call is a work around for some
         } catch (ClassNotFoundException a) {

@@ -7,7 +7,7 @@ import java.util.Properties;
  *
  * @author JukBot
  */
-public class ConnectDB {
+public class ConnectDB extends LoadDriver {
 
     String hostname;
     String DBtype;

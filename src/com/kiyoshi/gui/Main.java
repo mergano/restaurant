@@ -995,7 +995,7 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(jButton2)
                                     .addComponent(jButton3)))
                             .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         body.add(reserve_pane, "card2");
@@ -1056,7 +1056,7 @@ public class Main extends javax.swing.JFrame {
     order_paneLayout.setHorizontalGroup(
         order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(order_paneLayout.createSequentialGroup()
-            .addContainerGap(31, Short.MAX_VALUE)
+            .addContainerGap(433, Short.MAX_VALUE)
             .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(order_paneLayout.createSequentialGroup()
@@ -1160,7 +1160,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jButton21)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jButton1)))
-            .addContainerGap(725, Short.MAX_VALUE))
+            .addContainerGap(1168, Short.MAX_VALUE))
     );
     billing_paneLayout.setVerticalGroup(
         billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1175,7 +1175,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel9)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton21)
                 .addComponent(jButton1))
@@ -1193,11 +1193,11 @@ public class Main extends javax.swing.JFrame {
     jPanel17.setLayout(jPanel17Layout);
     jPanel17Layout.setHorizontalGroup(
         jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1005, Short.MAX_VALUE)
+        .addGap(0, 1421, Short.MAX_VALUE)
     );
     jPanel17Layout.setVerticalGroup(
         jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 381, Short.MAX_VALUE)
+        .addGap(0, 449, Short.MAX_VALUE)
     );
 
     jTabbedPane1.addTab("tab1", jPanel17);
@@ -1206,11 +1206,11 @@ public class Main extends javax.swing.JFrame {
     jPanel22.setLayout(jPanel22Layout);
     jPanel22Layout.setHorizontalGroup(
         jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1005, Short.MAX_VALUE)
+        .addGap(0, 1421, Short.MAX_VALUE)
     );
     jPanel22Layout.setVerticalGroup(
         jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 381, Short.MAX_VALUE)
+        .addGap(0, 449, Short.MAX_VALUE)
     );
 
     jTabbedPane1.addTab("tab2", jPanel22);
@@ -1258,7 +1258,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(813, Short.MAX_VALUE))
+            .addContainerGap(1204, Short.MAX_VALUE))
     );
     footerLayout.setVerticalGroup(
         footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

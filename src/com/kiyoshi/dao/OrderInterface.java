@@ -9,6 +9,6 @@ package com.kiyoshi.dao;
  *
  * @author vchuk
  */
-public class ReportingDAO {
+public interface OrderInterface {
 
 }
