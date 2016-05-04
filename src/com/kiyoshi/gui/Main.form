@@ -2171,7 +2171,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="table_no_box" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="username_box" min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="813" max="32767" attributes="0"/>
@@ -2185,7 +2185,7 @@
                   <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="table_no_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="username_box" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="42" max="32767" attributes="0"/>
@@ -2194,7 +2194,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="table_no_box">
+        <Component class="javax.swing.JTextField" name="username_box">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>

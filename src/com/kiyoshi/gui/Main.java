@@ -12,11 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
-    String username = "";
+
+    String username;
+
     public Main(String username) {
         initComponents();
         this.username = username;
-        table_no_box.setText(username);
+        username_box.setText(username);
     }
 
     /**
@@ -116,7 +118,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         footer = new javax.swing.JPanel();
-        table_no_box = new javax.swing.JTextField();
+        username_box = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -1199,7 +1201,7 @@ public class Main extends javax.swing.JFrame {
 
     getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
-    table_no_box.setEditable(false);
+    username_box.setEditable(false);
 
     jTextField5.setText("Here is Footer");
 
@@ -1216,7 +1218,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(footerLayout.createSequentialGroup()
                     .addComponent(jLabel6)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(813, Short.MAX_VALUE))
     );
     footerLayout.setVerticalGroup(
@@ -1226,7 +1228,7 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(table_no_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel6))
             .addContainerGap(42, Short.MAX_VALUE))
     );
@@ -1540,7 +1542,7 @@ public class Main extends javax.swing.JFrame {
         main_history_btn_box.setBackground(Color.white);
         main_order_btn_box.setBackground(Color.white);
         main_statistic_btn_box.setBackground(Color.white);
-        
+
     }//GEN-LAST:event_reserve_btnActionPerformed
 
     private void open_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_menuitemActionPerformed
@@ -1608,26 +1610,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_statusbar_menuitemActionPerformed
 
     private void login_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_menuitemActionPerformed
-//        if (lo == null) {
-//            lo = new login();
-//            lo.setVisible(true);
-//        }
+
     }//GEN-LAST:event_login_menuitemActionPerformed
 
     private void logout_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_menuitemActionPerformed
-//        if (lo == null) {
-//            lo = new login();
-//            int logoutconfirm = JOptionPane.showConfirmDialog(this, "Are you sure do you want to Logout?", "Logout confirm", YES_NO_OPTION, QUESTION_MESSAGE);
-//            if (logoutconfirm == JOptionPane.YES_OPTION) {
-//                JOptionPane.showMessageDialog(null, "Logout sucessfully");
-//                lo.SetCurrentSession(false);
-//            }
-//        }
+
     }//GEN-LAST:event_logout_menuitemActionPerformed
 
     private void preference_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preference_menuitemActionPerformed
-//        option o = new option();
-//        o.setVisible(true);
+
     }//GEN-LAST:event_preference_menuitemActionPerformed
 
     private void help_contents_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_help_contents_menuitemActionPerformed
@@ -1686,8 +1677,7 @@ public class Main extends javax.swing.JFrame {
         main_history_btn_box.setBackground(Color.white);
         main_order_btn_box.setBackground(Color.white);
         main_statistic_btn_box.setBackground(Color.white);
-        
-                                        
+
     }//GEN-LAST:event_billing_btnActionPerformed
 
     private void history_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_history_btnActionPerformed
@@ -1741,8 +1731,7 @@ public class Main extends javax.swing.JFrame {
         main_history_btn_box.setBackground(Color.white);
         main_order_btn_box.setBackground(Color.white);
         main_statistic_btn_box.setBackground(Color.white);
-        
-                                        
+
     }//GEN-LAST:event_dashboard_btnActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -1755,10 +1744,10 @@ public class Main extends javax.swing.JFrame {
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
-        System.out.println(jTable2.getValueAt(jTable2.getSelectedRow(),1));
-        DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
-        model.addRow(new Object[]{"1", jTable2.getValueAt(jTable2.getSelectedRow(),1) ,"1"});
-        
+        System.out.println(jTable2.getValueAt(jTable2.getSelectedRow(), 1));
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.addRow(new Object[]{"1", jTable2.getValueAt(jTable2.getSelectedRow(), 1), "1"});
+
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -1798,7 +1787,7 @@ public class Main extends javax.swing.JFrame {
 
     private void setTable(ActionEvent e) {
         String table_no = ((JButton) e.getSource()).getActionCommand();
-        table_no_box.setText(table_no);
+        username_box.setText(table_no);
     }
 
     private void setPane(JPanel panel_name) {
@@ -1959,11 +1948,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton table_9_btn;
     private javax.swing.JMenuItem table_checkout_btn;
     private javax.swing.JMenuItem table_detail_btn;
-    private javax.swing.JTextField table_no_box;
     private javax.swing.JMenuItem table_order_btn;
     private javax.swing.JMenuItem table_reserve_btn;
     private javax.swing.JCheckBoxMenuItem toolbar_menuitem;
     private javax.swing.JMenu tools_menu;
+    private javax.swing.JTextField username_box;
     private javax.swing.JMenu view_menu;
     private javax.swing.JMenuItem website_menuitem;
     // End of variables declaration//GEN-END:variables
