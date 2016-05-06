@@ -9,6 +9,21 @@ package com.kiyoshi.dao;
  *
  * @author vchuk
  */
-public class OrderDAO {
+public class OrderDAO extends MainDAO implements Order {
+
+    @Override
+    public void AddOrder(String ordername, int amount, int tableno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void DeleteOrder(String ordername, int tableno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void EditOrder(String ordername, int amount, int tableno) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

@@ -2,22 +2,25 @@ package com.kiyoshi.core;
 
 public class LoadDriver {
 
-    public static void LoadDBDriver() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();  // The newInstance() call is a work around for some
-        } catch (ClassNotFoundException a) {
-            System.out.println("Error: unable to load driver class!");
-            System.err.println(a);
-            System.exit(1);
-        } catch (IllegalAccessException b) {
-            System.out.println("Error: access problem while loading!");
-            System.err.println(b);
-            System.exit(2);
-        } catch (InstantiationException c) {
-            System.out.println("Error: unable to instantiate driver!");
-            System.err.println(c);
-            System.exit(3);
-        }
+    private static String driver;
+
+    public LoadDriver() {
+        driver = null;
     }
 
+    public static void LoadDBDriver(int DriverType) {
+        switch (DriverType) {
+            case 1: // MySQL
+                driver = "com.mysql.jdbc.Driver";
+                break;
+            case 2: // Poes
+                driver = "org.postgresql.Driver";
+                break;
+            case 3: // MS SQL SERVER
+                break;
+            default:
+                break;
+        }
+
+    }
 }

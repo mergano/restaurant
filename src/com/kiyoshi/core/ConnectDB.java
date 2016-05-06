@@ -3,25 +3,21 @@ package com.kiyoshi.core;
 import java.sql.Connection;
 import java.util.Properties;
 
-/**
- *
- * @author JukBot
- */
 public class ConnectDB extends LoadDriver {
 
     String hostname;
-    String DBtype;
     String DBname;
     String username;
     String password;
     String URL;
     int port;
-    Connection con;
+    Connection conn;
+    Properties prop = new Properties();
 
     public ConnectDB() {
+        conn = null;
         hostname = null;
         port = 3306;
-        DBtype = null;
         DBname = null;
         username = null;
         password = null;
@@ -29,16 +25,32 @@ public class ConnectDB extends LoadDriver {
     }
 
     public Connection getConnection() {
-        Connection conn = null;
+
         DBname = "kiyoshi";
         username = "user";
         password = "iloveoosd";
-        Properties prop = new Properties();
+
         URL = "jdbc:mysql://128.199.117.93:3306/kiyoshi?"; //+ "user=user&password=iloveoosd"
 
         prop.put("dbname", DBname);
         prop.put("user", username);
         prop.put("passwd", password);
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();  // The newInstance() call is a work around for some
+        } catch (ClassNotFoundException a) {
+            System.out.println("Error: unable to load driver class!");
+            System.err.println(a);
+            System.exit(1);
+        } catch (IllegalAccessException b) {
+            System.out.println("Error: access problem while loading!");
+            System.err.println(b);
+            System.exit(2);
+        } catch (InstantiationException c) {
+            System.out.println("Error: unable to instantiate driver!");
+            System.err.println(c);
+            System.exit(3);
+        }
 
 //        try {
 //            conn = DriverManager.getConnection(URL, props);
