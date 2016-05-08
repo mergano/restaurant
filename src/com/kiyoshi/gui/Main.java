@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -125,6 +126,8 @@ public class Main extends javax.swing.JFrame {
         username_box = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         file_menu = new javax.swing.JMenu();
         open_menuitem = new javax.swing.JMenuItem();
@@ -214,6 +217,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
         setTitle(bundle.getString("title")); // NOI18N
+        setIconImage(new ImageIcon(getClass().getResource("/com/kiyoshi/ico/icon.png")).getImage());
         setLocation(new java.awt.Point(0, 0));
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(1024, 640));
@@ -1175,7 +1179,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel9)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton21)
                 .addComponent(jButton1))
@@ -1197,7 +1201,7 @@ public class Main extends javax.swing.JFrame {
     );
     jPanel17Layout.setVerticalGroup(
         jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 449, Short.MAX_VALUE)
+        .addGap(0, 448, Short.MAX_VALUE)
     );
 
     jTabbedPane1.addTab("tab1", jPanel17);
@@ -1210,7 +1214,7 @@ public class Main extends javax.swing.JFrame {
     );
     jPanel22Layout.setVerticalGroup(
         jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 449, Short.MAX_VALUE)
+        .addGap(0, 448, Short.MAX_VALUE)
     );
 
     jTabbedPane1.addTab("tab2", jPanel22);
@@ -1240,11 +1244,16 @@ public class Main extends javax.swing.JFrame {
 
     getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
+    footer.setPreferredSize(new java.awt.Dimension(1426, 100));
+
     username_box.setEditable(false);
+    username_box.setBackground(new java.awt.Color(255, 255, 255));
 
     jTextField5.setText("Here is Footer");
 
     jLabel6.setText("Emploee's Name");
+
+    jLabel1.setText("Search order");
 
     javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
     footer.setLayout(footerLayout);
@@ -1258,18 +1267,29 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(1204, Short.MAX_VALUE))
+            .addGap(54, 54, 54)
+            .addComponent(jLabel1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(935, Short.MAX_VALUE))
     );
     footerLayout.setVerticalGroup(
         footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel6))
-            .addContainerGap(42, Short.MAX_VALUE))
+        .addGroup(footerLayout.createSequentialGroup()
+            .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(footerLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
+                .addGroup(footerLayout.createSequentialGroup()
+                    .addGap(24, 24, 24)
+                    .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap(43, Short.MAX_VALUE))
     );
 
     getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
@@ -1872,6 +1892,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JEditorPane jEditorPane3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1937,6 +1958,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JMenuItem keyboard_shortcuts_menuitem;

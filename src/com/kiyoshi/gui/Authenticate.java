@@ -1,8 +1,9 @@
 package com.kiyoshi.gui;
 
-
+import com.kiyoshi.core.TextFieldLimit;
 import com.kiyoshi.dao.Queuing;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,8 @@ public class Authenticate extends javax.swing.JFrame {
 
     public Authenticate() {
         initComponents();
+        auth_username_input.setDocument(new TextFieldLimit(25));
+        auth_password_input.setDocument(new TextFieldLimit(25));
         queue = new Queuing();
     }
 
@@ -99,6 +102,7 @@ public class Authenticate extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
         setTitle(bundle.getString("title")); // NOI18N
+        setIconImage(new ImageIcon(getClass().getResource("/com/kiyoshi/ico/icon.png")).getImage());
         setMinimumSize(new java.awt.Dimension(640, 480));
         setName("Form"); // NOI18N
         setResizable(false);
