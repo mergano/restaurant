@@ -2,6 +2,7 @@ package com.kiyoshi.gui;
 
 import com.kiyoshi.core.TextFieldLimit;
 import com.kiyoshi.dao.Queuing;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -164,6 +165,11 @@ public class Authenticate extends javax.swing.JFrame {
         auth_username_input.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         auth_username_input.setName("auth_username_input"); // NOI18N
         auth_username_input.setPreferredSize(new java.awt.Dimension(300, 30));
+        auth_username_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                auth_username_inputActionPerformed(evt);
+            }
+        });
         auth_username_box.add(auth_username_input);
 
         auth_input_layout_box.add(auth_username_box);
@@ -290,6 +296,11 @@ public class Authenticate extends javax.swing.JFrame {
             this.signin();
         }
     }//GEN-LAST:event_auth_password_inputKeyPressed
+
+    private void auth_username_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auth_username_inputActionPerformed
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.getFocusOwner().transferFocus();
+    }//GEN-LAST:event_auth_username_inputActionPerformed
 
     private void signin() {
         if (auth_username_input.getText().isEmpty() && auth_password_input.getText().isEmpty()) {
