@@ -1,22 +1,27 @@
 package com.kiyoshi.gui;
 
+import com.kiyoshi.bean.LoginBean;
+import com.kiyoshi.core.AuthenticateUser;
+import static com.kiyoshi.core.ClearGC.ClearGarbageCollection;
+import com.kiyoshi.core.Encryption;
 import com.kiyoshi.core.TextFieldLimit;
 import com.kiyoshi.dao.Queuing;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class Authenticate extends javax.swing.JFrame {
 
-    Queuing queue;
+    Queuing queue; // delete this
+    public static boolean session;
+    LoginBean login;
 
     public Authenticate() {
         initComponents();
         auth_username_input.setDocument(new TextFieldLimit(25));
         auth_password_input.setDocument(new TextFieldLimit(25));
         queue = new Queuing();
+        login = new LoginBean();
     }
 
     /**
@@ -69,7 +74,6 @@ public class Authenticate extends javax.swing.JFrame {
         forgot_password_dialog.setResizable(false);
         forgot_password_dialog.setSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setType(java.awt.Window.Type.POPUP);
-        forgot_password_dialog.getContentPane().setLayout(new javax.swing.BoxLayout(forgot_password_dialog.getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         forgot_title_box.setName("forgot_title_box"); // NOI18N
 
@@ -77,25 +81,33 @@ public class Authenticate extends javax.swing.JFrame {
         forgot_title.setName("forgot_title"); // NOI18N
         forgot_title_box.add(forgot_title);
 
-        forgot_password_dialog.getContentPane().add(forgot_title_box);
+        forgot_password_dialog.getContentPane().add(forgot_title_box, java.awt.BorderLayout.NORTH);
 
         forgot_input_box.setName("forgot_input_box"); // NOI18N
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout();
+        flowLayout1.setAlignOnBaseline(true);
+        forgot_input_box.setLayout(flowLayout1);
 
         forgot_text_input.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         forgot_text_input.setName("forgot_text_input"); // NOI18N
         forgot_text_input.setPreferredSize(new java.awt.Dimension(350, 30));
         forgot_input_box.add(forgot_text_input);
 
-        forgot_password_dialog.getContentPane().add(forgot_input_box);
-
         forgot_submit_box.setName("forgot_submit_box"); // NOI18N
 
         forgot_submit_btn.setText("Submit");
         forgot_submit_btn.setName("forgot_submit_btn"); // NOI18N
         forgot_submit_btn.setPreferredSize(new java.awt.Dimension(100, 30));
+        forgot_submit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forgot_submit_btnActionPerformed(evt);
+            }
+        });
         forgot_submit_box.add(forgot_submit_btn);
 
-        forgot_password_dialog.getContentPane().add(forgot_submit_box);
+        forgot_input_box.add(forgot_submit_box);
+
+        forgot_password_dialog.getContentPane().add(forgot_input_box, java.awt.BorderLayout.CENTER);
 
         forgot_password_dialog.getAccessibleContext().setAccessibleDescription("");
         forgot_password_dialog.getAccessibleContext().setAccessibleParent(this);
@@ -224,6 +236,7 @@ public class Authenticate extends javax.swing.JFrame {
         auth_error_box.setName("auth_error_box"); // NOI18N
         auth_error_box.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        auth_error_message_label.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         auth_error_message_label.setForeground(new java.awt.Color(255, 0, 0));
         auth_error_message_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         auth_error_message_label.setName("auth_error_message_label"); // NOI18N
@@ -302,40 +315,78 @@ public class Authenticate extends javax.swing.JFrame {
         manager.getFocusOwner().transferFocus();
     }//GEN-LAST:event_auth_username_inputActionPerformed
 
-    private void signin() {
-        if (auth_username_input.getText().isEmpty() && auth_password_input.getText().isEmpty()) {
-            auth_error_message_label.setText("Please fill in username and password");
-        } else if (auth_username_input.getText().isEmpty()) {
-            auth_error_message_label.setText("Please fill in username");
-        } else if (auth_password_input.getText().isEmpty()) {
-            auth_error_message_label.setText("Please fill in password");
-        } else {
-            int res;
-            res = queue.checkLogin(auth_username_input.getText(), auth_password_input.getPassword());
-            System.out.println(res + "");
-            switch (res) {
-                case 0:
-                    auth_error_message_label.setText("No user found");
-                    break;
-                case 1:
-                    auth_error_message_label.setText("Incorrect username or password");
-                    break;
-                case 2:
-                    auth_error_message_label.setText("Error: No internet connection");
-                    JOptionPane.showMessageDialog(this, "Internet connection is broken or disconnected.", "Error", JOptionPane.ERROR_MESSAGE);
-                    break;
-                case 3:
-                    auth_error_message_label.setText("");
-                    //dMainFrame.setUser(auth_username_input.getText());
-                    Queuing.disConnectDb();
-                    this.dispose();
-                    JFrame m = new Main(auth_username_input.getText());
-                    m.pack();
-                    m.setExtendedState(m.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-                    m.setVisible(true);
+    private void forgot_submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgot_submit_btnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_forgot_submit_btnActionPerformed
 
+    private void signin() {
+        final String user;
+        final char[] pwd;
+        user = auth_username_input.getText();
+        pwd = auth_password_input.getPassword();
+
+        if (user.length() != 0 && pwd.length != 0) {
+            String encryptedUsername = Encryption.encrypt(user);
+            String encryptedPassword = Encryption.encrypt(String.valueOf(pwd));
+            //String decryptedPassword = Encryption.decrypt("tm+m/bhBMk+fc6a/2ScztLdY+PzGUhih1oNUiGKv97lfHAeiRclBKyU6Wi2elCri");
+            AuthenticateUser auth = new AuthenticateUser();
+            int flag = auth.VerifyUser(encryptedUsername, encryptedPassword);
+
+            switch (flag) {
+                case 1:
+                    session = true;
+                    SetCurrentSession(session);
+                    ResetLoginInput("");
+                    this.dispose();
+                    Main m = new Main(LoginBean.getUserTxt());
+                    ClearLoginPassword();
+                    m.pack();
+                    m.setExtendedState(m.getExtendedState() | Main.MAXIMIZED_BOTH);
+                    m.setVisible(true);
+                    break;
+                case 0:
+                    // NO INTERNET CONNECTION
+                    session = false;
+                    SetCurrentSession(session);
+                    ResetLoginInput("Error: No internet connection");
+                    break;
+                case -1:
+                    // LOGIN FAILED USER OR PASSWORD WRONG
+                    session = false;
+                    SetCurrentSession(session);
+                    ResetLoginInput("Error: Username or password incorrect.");
+                    break;
+                default:
+                    break;
             }
+        } else if (user.length() == 0) {
+            ResetLoginInput("Please fill in username.");
+        } else if (pwd.length == 0) {
+            ResetLoginInput("Please fill in password.");
+        } else if (user.length() == 0 && pwd.length == 0) {
+            ResetLoginInput("Please fill in username and password.");
         }
+    }
+
+    private void ResetLoginInput(String err) {
+        auth_error_message_label.setText(err);
+        auth_username_input.setText("");
+        auth_password_input.setText("");
+    }
+
+    private void ClearLoginPassword() {
+        // Clear Password after finished login process to prevent unauthorized access
+        login.setPassword("");
+        // To decrease the memory usage by cleanup unused garbage collection
+        ClearGarbageCollection();
+    }
+
+    public void SetCurrentSession(boolean s) {
+        session = s;
+    }
+
+    public static boolean CurrentSession() {
+        return session;
     }
 
     /**

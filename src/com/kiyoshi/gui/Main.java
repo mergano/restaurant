@@ -1,5 +1,6 @@
 package com.kiyoshi.gui;
 
+import com.kiyoshi.dao.TableDAO;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,10 @@ public class Main extends javax.swing.JFrame {
     public Main(String username) {
         initComponents();
         this.username = username;
-        username_box.setText(username);
+        user_box.setText(username);
+        TableDAO tabDAO = new TableDAO();
+        tabDAO.getTable();
+
     }
 
     /**
@@ -128,9 +132,8 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         footer = new javax.swing.JPanel();
-        username_box = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        username_label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -1158,15 +1161,13 @@ public class Main extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(billing_paneLayout.createSequentialGroup()
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(69, 69, 69))))
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(billing_paneLayout.createSequentialGroup()
                     .addGap(106, 106, 106)
                     .addComponent(jButton21)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jButton1)))
-            .addGap(79, 79, 79)
+            .addGap(94, 94, 94)
             .addComponent(jLabel13)
             .addContainerGap(788, Short.MAX_VALUE))
     );
@@ -1251,11 +1252,12 @@ public class Main extends javax.swing.JFrame {
 
     footer.setPreferredSize(new java.awt.Dimension(1426, 100));
 
-    username_box.setEditable(false);
+    user_box.setEditable(false);
+    user_box.setBackground(new java.awt.Color(255, 255, 255));
 
     jTextField5.setText("Here is Footer");
 
-    jLabel6.setText("Emploee's Name");
+    username_label.setText("Emploee's Name");
 
     jLabel1.setText("Search order");
 
@@ -1265,35 +1267,37 @@ public class Main extends javax.swing.JFrame {
         footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(footerLayout.createSequentialGroup()
             .addContainerGap()
+            .addComponent(username_label)
             .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(footerLayout.createSequentialGroup()
-                    .addComponent(jLabel6)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(54, 54, 54)
-            .addComponent(jLabel1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(941, Short.MAX_VALUE))
+                    .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(38, 38, 38)
+                    .addComponent(jLabel1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(footerLayout.createSequentialGroup()
+                    .addGap(213, 213, 213)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(983, Short.MAX_VALUE))
     );
     footerLayout.setVerticalGroup(
         footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(footerLayout.createSequentialGroup()
             .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(footerLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(16, 16, 16)
                     .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(username_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)))
+                        .addComponent(username_label)
+                        .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(footerLayout.createSequentialGroup()
                     .addGap(24, 24, 24)
                     .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addContainerGap(43, Short.MAX_VALUE))
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(30, Short.MAX_VALUE))
     );
 
     getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
@@ -1838,7 +1842,7 @@ public class Main extends javax.swing.JFrame {
 
     private void setTable(ActionEvent e) {
         String table_no = ((JButton) e.getSource()).getActionCommand();
-        username_box.setText(table_no);
+        user_box.setText(table_no);
     }
 
     private void setPane(JPanel panel_name) {
@@ -1894,7 +1898,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2014,7 +2017,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem table_reserve_btn;
     private javax.swing.JCheckBoxMenuItem toolbar_menuitem;
     private javax.swing.JMenu tools_menu;
-    private javax.swing.JTextField username_box;
+    private static final javax.swing.JTextField user_box = new javax.swing.JTextField();
+    private javax.swing.JLabel username_label;
     private javax.swing.JMenu view_menu;
     private javax.swing.JMenuItem website_menuitem;
     // End of variables declaration//GEN-END:variables

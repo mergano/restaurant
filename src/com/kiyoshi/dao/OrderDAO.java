@@ -5,11 +5,31 @@
  */
 package com.kiyoshi.dao;
 
-/**
- *
- * @author vchuk
- */
+import com.kiyoshi.core.ConnectDB;
+import com.kiyoshi.core.InternetStatus;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class OrderDAO extends MainDAO implements Order {
+
+    private final String table = "order";
+    private ConnectDB c;
+    private Connection conn;
+    private PreparedStatement p = null;
+    private ResultSet rs = null;
+
+    private OrderDAO() {
+        try {
+            c = new ConnectDB();
+            conn = c.getconnection();
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+        if (InternetStatus.getInternetDisconnect() || conn == null) {
+            System.out.println("No internet connection");
+        }
+    }
 
     @Override
     public void AddOrder(String ordername, int amount, int tableno) {

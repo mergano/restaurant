@@ -1,72 +1,94 @@
 package com.kiyoshi.core;
 
+import com.kiyoshi.bean.StatusBean;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectDB extends LoadDriver {
 
-    String hostname;
-    String DBname;
-    String username;
-    String password;
-    String URL;
-    int port;
-    Connection conn;
-    Properties prop = new Properties();
+    private Connection conn;
+    private String URL_HEADER;
+    private String URL;
+    private final String hostName;
+    private final int port;
+    private final String databaseName;
+    private final String username;
+    private final String password;
+    private String status;
+    private DatabaseMetaData meta;
+    private final Properties info = new Properties();
 
     public ConnectDB() {
         conn = null;
-        hostname = null;
+        URL_HEADER = "";
+        URL = "";
+        hostName = "128.199.117.93";
         port = 3306;
-        DBname = null;
-        username = null;
-        password = null;
-        URL = null;
-    }
-
-    public Connection getConnection() {
-
-        DBname = "kiyoshi";
+        databaseName = "kiyoshi";
         username = "user";
         password = "iloveoosd";
+        status = "";
+        meta = null;
 
-        URL = "jdbc:mysql://128.199.117.93:3306/kiyoshi?"; //+ "user=user&password=iloveoosd"
+    }
 
-        prop.put("dbname", DBname);
-        prop.put("user", username);
-        prop.put("passwd", password);
+    public Connection getconnection() {
+        super.LoadDBDriver(1); // Load MySQL driver
+        URL_HEADER = LoadDriver.getUrlHeader();
+        URL = URL_HEADER + hostName + ":" + port + "/" + databaseName + "?useCompression=true" + "&autoReconnnect=true" + "&useSSL=false";
+        info.put("user", username);
+        info.put("password", password);
 
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();  // The newInstance() call is a work around for some
-        } catch (ClassNotFoundException a) {
-            System.out.println("Error: unable to load driver class!");
-            System.err.println(a);
+            boolean internet = "127.0.0.1".equals(InetAddress.getLocalHost().getHostAddress());
+            System.out.println(internet);
+            Class.forName(LoadDriver.getDriver()); // Registed JDBC DRIVER
+            conn = DriverManager.getConnection(URL, info);
+            conn.setAutoCommit(true);
+            meta = conn.getMetaData();
+            if (conn == null) {
+                status = "Disconnnect";
+                System.out.println("Connect to database failed");
+                System.exit(1);
+            } else {
+                status = "Connected";
+                StatusBean.setStatus(status);
+                StatusBean.setDbType(meta.getDatabaseProductName());
+                StatusBean.setDbName(conn.getCatalog());
+                StatusBean.setPort(port + "");
+                StatusBean.setUrl(hostName);
+                System.out.println("Connected to database " + conn);
+            }
+        } catch (ClassNotFoundException | SQLException | UnknownHostException ex) {
+            System.err.println("Error " + ex);
             System.exit(1);
-        } catch (IllegalAccessException b) {
-            System.out.println("Error: access problem while loading!");
-            System.err.println(b);
-            System.exit(2);
-        } catch (InstantiationException c) {
-            System.out.println("Error: unable to instantiate driver!");
-            System.err.println(c);
-            System.exit(3);
         }
-
-//        try {
-//            conn = DriverManager.getConnection(URL, props);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        try {
-//
-//
-//        } catch (SQLException ex) {
-//            // handle any errors
-//            System.out.println("SQLException: " + ex.getMessage());
-//            System.out.println("SQLState: " + ex.getSQLState());
-//            System.out.println("VendorError: " + ex.getErrorCode());
-//        }
         return conn;
+    }
+
+    public void commit() {
+        try {
+            conn.commit();
+        } catch (SQLException ex) {
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                System.exit(1);
+            }
+        }
+    }
+
+    public void closeDB() {
+        try {
+            conn.close();
+            System.out.println("Connection closed");
+        } catch (SQLException ex) {
+        }
     }
 
 }
