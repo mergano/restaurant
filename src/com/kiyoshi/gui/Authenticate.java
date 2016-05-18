@@ -66,9 +66,11 @@ public class Authenticate extends javax.swing.JFrame {
 
         forgot_password_dialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         forgot_password_dialog.setTitle("Forgot password");
+        forgot_password_dialog.setAlwaysOnTop(true);
         forgot_password_dialog.setLocation(new java.awt.Point(0, 0));
         forgot_password_dialog.setMaximumSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setMinimumSize(new java.awt.Dimension(400, 150));
+        forgot_password_dialog.setModal(true);
         forgot_password_dialog.setName("forgot_password_dialog"); // NOI18N
         forgot_password_dialog.setPreferredSize(new java.awt.Dimension(400, 150));
         forgot_password_dialog.setResizable(false);
@@ -110,7 +112,7 @@ public class Authenticate extends javax.swing.JFrame {
         forgot_password_dialog.getContentPane().add(forgot_input_box, java.awt.BorderLayout.CENTER);
 
         forgot_password_dialog.getAccessibleContext().setAccessibleDescription("");
-        forgot_password_dialog.getAccessibleContext().setAccessibleParent(this);
+        forgot_password_dialog.getAccessibleContext().setAccessibleParent(auth_body);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
@@ -293,6 +295,7 @@ public class Authenticate extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void auth_forgot_passwd_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auth_forgot_passwd_btnActionPerformed
+        forgot_password_dialog.setLocationRelativeTo(null);
         forgot_password_dialog.setVisible(true);
     }//GEN-LAST:event_auth_forgot_passwd_btnActionPerformed
 
@@ -316,7 +319,7 @@ public class Authenticate extends javax.swing.JFrame {
     }//GEN-LAST:event_auth_username_inputActionPerformed
 
     private void forgot_submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgot_submit_btnActionPerformed
-        this.dispose();
+        forgot_password_dialog.dispose();
     }//GEN-LAST:event_forgot_submit_btnActionPerformed
 
     private void signin() {
