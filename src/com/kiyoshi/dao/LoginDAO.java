@@ -59,7 +59,7 @@ public class LoginDAO {
             try {
                 System.err.println(se);
                 conn.close();
-                return -1;
+                return -3;
             } catch (SQLException ex) {
                 Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -64,7 +64,6 @@ public class TableDAO {
                         for (int i = 1; i <= columns; i++) {
                             map.put(md.getColumnName(i), rs.getObject(i));
                         }
-                        //System.out.println(rs.getInt("table_no") + " " + rs.getString("table_status") + " " + rs.getInt("table_seat"));
 //            HashMap<String, Object> hashMap = new HashMap<>();
 //            hashMap.put("qty", order.get("quantity"));
 //            hashMap.put("foodName", data.get("foodName"));
@@ -73,9 +72,6 @@ public class TableDAO {
                         System.out.println("MAP 1:" + Arrays.asList(map)); // method 1
                         System.out.println("MAP 2:" + Collections.singletonList(map)); // method 2
                     } while (rs.next());
-//                        bean.setProductID(rs.getLong("table_no"));
-//                        bean.setCategory(rs.getString("table_status"));
-//                        bean.setManufacture(rs.getString("table_seat"));
                     // Benchmark time
                     long stop = java.lang.System.currentTimeMillis();
                     System.out.println("JDBC query table time: " + String.valueOf((stop - start)) + " ms");
@@ -90,12 +86,6 @@ public class TableDAO {
             }
         }
         return table_list;
-    }
-
-    public void printTable() {
-//        for (int i = 0; i < getTable().size(); i++) {
-//            System.out.println(getTable().get(i)); //prints element i
-//        }
     }
 
 }

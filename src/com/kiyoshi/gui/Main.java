@@ -1,6 +1,5 @@
 package com.kiyoshi.gui;
 
-import com.kiyoshi.dao.TableDAO;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -21,9 +20,6 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         this.username = username;
         user_box.setText(username);
-        TableDAO tabDAO = new TableDAO();
-        tabDAO.getTable();
-
     }
 
     /**
@@ -135,7 +131,7 @@ public class Main extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         username_label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        search_table_box = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         file_menu = new javax.swing.JMenu();
         open_menuitem = new javax.swing.JMenuItem();
@@ -1011,7 +1007,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(28, 28, 28)
                 .addComponent(jButton4)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         body.add(reserve_pane, "card2");
@@ -1072,7 +1068,7 @@ public class Main extends javax.swing.JFrame {
     order_paneLayout.setHorizontalGroup(
         order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(order_paneLayout.createSequentialGroup()
-            .addContainerGap(479, Short.MAX_VALUE)
+            .addContainerGap(481, Short.MAX_VALUE)
             .addGroup(order_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(order_paneLayout.createSequentialGroup()
@@ -1169,7 +1165,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jButton1)))
             .addGap(94, 94, 94)
             .addComponent(jLabel13)
-            .addContainerGap(788, Short.MAX_VALUE))
+            .addContainerGap(831, Short.MAX_VALUE))
     );
     billing_paneLayout.setVerticalGroup(
         billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1185,7 +1181,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel9)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
             .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton21)
                 .addComponent(jButton1))
@@ -1203,11 +1199,11 @@ public class Main extends javax.swing.JFrame {
     jPanel17.setLayout(jPanel17Layout);
     jPanel17Layout.setHorizontalGroup(
         jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1453, Short.MAX_VALUE)
+        .addGap(0, 1469, Short.MAX_VALUE)
     );
     jPanel17Layout.setVerticalGroup(
         jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 429, Short.MAX_VALUE)
+        .addGap(0, 448, Short.MAX_VALUE)
     );
 
     jTabbedPane1.addTab("tab1", jPanel17);
@@ -1216,11 +1212,11 @@ public class Main extends javax.swing.JFrame {
     jPanel22.setLayout(jPanel22Layout);
     jPanel22Layout.setHorizontalGroup(
         jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1453, Short.MAX_VALUE)
+        .addGap(0, 1469, Short.MAX_VALUE)
     );
     jPanel22Layout.setVerticalGroup(
         jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 429, Short.MAX_VALUE)
+        .addGap(0, 448, Short.MAX_VALUE)
     );
 
     jTabbedPane1.addTab("tab2", jPanel22);
@@ -1259,7 +1255,16 @@ public class Main extends javax.swing.JFrame {
 
     username_label.setText("Emploee's Name");
 
-    jLabel1.setText("Search order");
+    jLabel1.setText("Search Table");
+
+    search_table_box.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            search_table_boxFocusGained(evt);
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            search_table_boxFocusLost(evt);
+        }
+    });
 
     javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
     footer.setLayout(footerLayout);
@@ -1272,14 +1277,14 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(footerLayout.createSequentialGroup()
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(38, 38, 38)
-                    .addComponent(jLabel1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(317, 317, 317)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(footerLayout.createSequentialGroup()
-                    .addGap(213, 213, 213)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(983, Short.MAX_VALUE))
+                    .addGap(65, 65, 65)
+                    .addComponent(jLabel1)
+                    .addGap(18, 18, 18)
+                    .addComponent(search_table_box, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(831, Short.MAX_VALUE))
     );
     footerLayout.setVerticalGroup(
         footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1292,12 +1297,12 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(footerLayout.createSequentialGroup()
                     .addGap(24, 24, 24)
-                    .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(30, Short.MAX_VALUE))
+            .addGap(18, 18, 18)
+            .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(search_table_box, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+            .addContainerGap())
     );
 
     getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
@@ -1833,6 +1838,25 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void search_table_boxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_search_table_boxFocusGained
+        try {
+            String sysroot = System.getenv("SystemRoot");
+            //  ProcessBuilder pb = new ProcessBuilder("C:/Program Files/Common Files/microsoft shared/ink/tabtip.exe");
+            // pb.start();
+            Runtime.getRuntime().exec("tabtip");
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_search_table_boxFocusGained
+
+    private void search_table_boxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_search_table_boxFocusLost
+
+        try {
+            Runtime.getRuntime().exec("cmd /c taskkill /IM tabtip.exe");
+        } catch (IOException e) {
+        }
+    }//GEN-LAST:event_search_table_boxFocusLost
+
     private void openWebsite(String url) {
         try {
             Desktop.getDesktop().browse(new URL(url).toURI());
@@ -1955,7 +1979,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
@@ -1987,6 +2010,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem save_menuitem;
     private javax.swing.JMenuItem saveas_menuitem;
     private javax.swing.JMenuItem search_menuitem;
+    private javax.swing.JTextField search_table_box;
     private javax.swing.JButton statistic_btn;
     private javax.swing.JPanel statistic_pane;
     private javax.swing.JMenuItem statistics_menuitem;

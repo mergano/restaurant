@@ -334,8 +334,7 @@ public class Authenticate extends javax.swing.JFrame {
 
             switch (flag) {
                 case 1:
-                    session = true;
-                    SetCurrentSession(session);
+                    SetCurrentSession(true);
                     ResetLoginInput("");
                     this.dispose();
                     Main m = new Main(LoginBean.getUserTxt());
@@ -346,15 +345,23 @@ public class Authenticate extends javax.swing.JFrame {
                     break;
                 case 0:
                     // NO INTERNET CONNECTION
-                    session = false;
-                    SetCurrentSession(session);
-                    ResetLoginInput("Error: No internet connection");
+                    SetCurrentSession(false);
+                    ResetLoginInput("ERR20 No internet connection");
                     break;
                 case -1:
                     // LOGIN FAILED USER OR PASSWORD WRONG
-                    session = false;
-                    SetCurrentSession(session);
-                    ResetLoginInput("Error: Username or password incorrect.");
+                    SetCurrentSession(false);
+                    ResetLoginInput("Incorrect username or password.");
+                    break;
+                case -2:
+                    // LOGIN FAILED USER EXCEED THE LOGIN ATTEMPS
+                    SetCurrentSession(false);
+                    ResetLoginInput("ERR21 System temporary locked.\n Please contact your administrator.");
+                    break;
+                case -3:
+                    // LOGIN FAILED UNEXPECTED ERROR OCCUR
+                    SetCurrentSession(false);
+                    ResetLoginInput("ERR22 Unexpect error occur.\n Please contact your administrator.");
                     break;
                 default:
                     break;
