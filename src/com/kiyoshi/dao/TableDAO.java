@@ -21,8 +21,9 @@ import javax.swing.JOptionPane;
  *
  * @author vchuk
  */
-public class TableDAO {
+public class TableDAO implements Table {
 
+    private final String table = "user";
     private ConnectDB connect;
     private Connection conn;
     private PreparedStatement p = null;
@@ -39,6 +40,7 @@ public class TableDAO {
     }
 
 // Display all data from product table
+    @Override
     public ArrayList<HashMap> getTable() {
         ArrayList<HashMap> table_list = new ArrayList<>();
 
@@ -48,15 +50,16 @@ public class TableDAO {
                     JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
-            String sql = "SELECT table_no,table_status,table_seat FROM " + StatusBean.getDbName() + ".table ORDER BY table_no ASC;";
+            String sql = "SELECT table_no,table_status,table_seat FROM " + StatusBean.getDbName() + "." + table + " ORDER BY table_no ASC;";
             System.out.println(sql);
             try {
                 long start = java.lang.System.currentTimeMillis();
                 p = conn.prepareStatement(sql);
                 rs = p.executeQuery();
+
                 ResultSetMetaData md = rs.getMetaData();
                 int columns = md.getColumnCount();
-                System.out.println("column no: " + columns);
+
                 if (rs.next()) {
                     // If have table create hashmap
                     HashMap<String, Object> map = new HashMap<>(columns); // store keyname as string and value as object
@@ -77,15 +80,21 @@ public class TableDAO {
                     System.out.println("JDBC query table time: " + String.valueOf((stop - start)) + " ms");
                 } else {
                     // ERROR CODE QUERY ERROR
+                    System.out.println("SOMETHING ERROR");
                 }
                 p.close();
                 rs.close();
                 conn.close();
             } catch (Exception e) {
-                System.err.print(e);
+                System.err.print("Tabel Query error: " + e);
             }
         }
         return table_list;
+    }
+
+    @Override
+    public ArrayList<HashMap> setTable(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

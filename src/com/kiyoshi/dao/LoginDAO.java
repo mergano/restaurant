@@ -32,7 +32,7 @@ public class LoginDAO {
         if (InternetStatus.getInternetDisconnect() || conn == null) {
             return 0;
         }
-        String sql = "SELECT * FROM " + table + " WHERE username =? AND password =? ;";
+        String sql = "SELECT username, password, type, email, type FROM " + table + " WHERE username =? AND password =? ;";
         String decryptUser;
         try {
             p = conn.prepareStatement(sql);
@@ -54,17 +54,17 @@ public class LoginDAO {
             rs.close();
             conn.close();
             System.out.println("=== CLOSED CONNECTION SUCCESSFULLY ===");
-            return 1;
+            return 1; // Query success
         } catch (SQLException se) {
             try {
                 System.err.println(se);
                 conn.close();
-                return -3;
+                return -3; // SQL Error
             } catch (SQLException ex) {
                 Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return -1;
+        return -1; // Wrong username or password
     }
 
 }

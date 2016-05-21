@@ -3,14 +3,13 @@ package com.kiyoshi.core;
 import com.kiyoshi.bean.LoginBean;
 import com.kiyoshi.dao.LoginDAO;
 
-public class AuthenticateUser {
+public class AuthenticateUser extends LoginDAO {
 
     private static int attemps = 0;
     private final int max = 5;
 
     public int VerifyUser(String encryptedUser, String encryptedPass) {
-        LoginDAO log = new LoginDAO();
-        int flag = log.getUser(encryptedUser, encryptedPass);
+        int flag = super.getUser(encryptedUser, encryptedPass);
 
         switch (flag) {
             case 1:
@@ -22,7 +21,6 @@ public class AuthenticateUser {
                         attemps++;
                         return -1; // LOGIN FAILED WRONG USER OR PASSWORD
                     }
-                    return 1;
                 } else {
                     return -2; // BAN THE SYSTEM TEMPORARY
                 }

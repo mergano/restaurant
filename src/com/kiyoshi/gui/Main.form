@@ -5,7 +5,10 @@
     <Container class="javax.swing.JPopupMenu" name="property_popup_menu">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[103, 94]"/>
+          <Dimension value="[300, 200]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[300, 200]"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -18,6 +21,9 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="table_reserve_btn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Reserve"/>
           </Properties>
           <Events>
@@ -26,16 +32,33 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="table_order_btn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Order"/>
           </Properties>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="table_checkout_btn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Check out"/>
           </Properties>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="table_detail_btn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Detail"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="table_cancel_reserve_btn">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Detail"/>
           </Properties>
         </MenuItem>
@@ -48,35 +71,6 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="open_menuitem">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+O"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Open..."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="open_menuitemActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="save_menuitem">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+S"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Save"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="saveas_menuitem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Save as..."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveas_menuitemActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="statistics_menuitem">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Statistics"/>
@@ -112,6 +106,17 @@
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="logout_menuitem">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+L"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logout_menuitemActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exit_program">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
@@ -130,7 +135,7 @@
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem25">
+            <MenuItem class="javax.swing.JMenuItem" name="undo_menu_item">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+Z"/>
@@ -139,7 +144,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem26">
+            <MenuItem class="javax.swing.JMenuItem" name="redo_menu_item">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+Y"/>
@@ -148,59 +153,54 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem26ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="redo_menu_itemActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator8">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem27">
+            <MenuItem class="javax.swing.JMenuItem" name="cut_menu_item">
               <Properties>
+                <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="KeyEvent.VK_X" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cut"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cut_menu_itemActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JMenuItem(new DefaultEditorKit.CutAction())"/>
+              </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem28">
+            <MenuItem class="javax.swing.JMenuItem" name="copy_menu_item">
               <Properties>
+                <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="KeyEvent.VK_C" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Copy"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JMenuItem(new DefaultEditorKit.CopyAction())"/>
+              </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem30">
+            <MenuItem class="javax.swing.JMenuItem" name="paste_menu_item">
               <Properties>
+                <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="KeyEvent.VK_V" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Paste"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JMenuItem(new DefaultEditorKit.PasteAction())"/>
+              </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem31">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Paste from History"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem33">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Delete"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem32">
+            <MenuItem class="javax.swing.JMenuItem" name="select_all_menu_item">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Select All"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator9">
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem36">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Find/Replace..."/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem34">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Find Next"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem35">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Find Previous"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="select_all_menu_itemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -227,115 +227,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statusbar_menuitemActionPerformed"/>
               </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="database_menu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Database"/>
-          </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Connect.."/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="new_db_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="New..."/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="del_db_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Delete..."/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="find_db_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Find..."/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <MenuItem class="javax.swing.JMenuItem" name="login_menuitem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Login"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="login_menuitemActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-              </AuxValues>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="logout_menuitem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Logout"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logout_menuitemActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-              </AuxValues>
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
-            </MenuItem>
-            <Menu class="javax.swing.JMenu" name="import_menuitem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Import..."/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="import_csv_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="From CSV"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="export_menuitem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Export..."/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="export_csv_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="To CSV"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="export_txt_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="To TXT"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="export_sql_menuitem">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="To SQL"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="folder_menu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Folder"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Add..."/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Edit..."/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Remove..."/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -495,7 +386,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-86,0,0,5,-62"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,103,0,0,5,-110"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -528,8 +419,11 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="dashboard_btn">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/clipboard.png"/>
@@ -537,10 +431,13 @@
                 <Property name="text" type="java.lang.String" value="Dashboard"/>
                 <Property name="actionCommand" type="java.lang.String" value="dashboard"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="8"/>
               </Properties>
               <Events>
@@ -556,6 +453,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="main_reserve_btn_box">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 85]"/>
             </Property>
@@ -566,21 +466,24 @@
             <Component class="javax.swing.JButton" name="reserve_btn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/kiyoshi/ico/triangular_flag_on_post.png"/>
+                  <Image iconType="3" name="/com/kiyoshi/ico/1f38e.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reserve"/>
                 <Property name="actionCommand" type="java.lang.String" value="reserve"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="8"/>
               </Properties>
               <Events>
@@ -596,6 +499,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="main_order_btn_box">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 85]"/>
             </Property>
@@ -605,19 +511,25 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="order_btn">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/kiyoshi/ico/hamburger.png"/>
+                  <Image iconType="3" name="/com/kiyoshi/ico/1f364.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Order"/>
                 <Property name="actionCommand" type="java.lang.String" value="order"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="8"/>
               </Properties>
               <Events>
@@ -633,6 +545,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="main_billing_btn_box">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 85]"/>
             </Property>
@@ -642,8 +557,11 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="billing_btn">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/credit_card.png"/>
@@ -651,10 +569,13 @@
                 <Property name="text" type="java.lang.String" value="Billing"/>
                 <Property name="actionCommand" type="java.lang.String" value="billing"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="8"/>
               </Properties>
               <Events>
@@ -670,6 +591,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="main_statistic_btn_box">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 85]"/>
             </Property>
@@ -679,8 +603,11 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="statistic_btn">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bar_chart.png"/>
@@ -688,10 +615,13 @@
                 <Property name="text" type="java.lang.String" value="Statistic"/>
                 <Property name="actionCommand" type="java.lang.String" value="statistic"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="8"/>
               </Properties>
               <Events>
@@ -707,6 +637,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="main_history_btn_box">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 85]"/>
             </Property>
@@ -716,8 +649,11 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="history_btn">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/clock4.png"/>
@@ -725,10 +661,13 @@
                 <Property name="text" type="java.lang.String" value="History"/>
                 <Property name="actionCommand" type="java.lang.String" value="history"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="iconTextGap" type="int" value="8"/>
               </Properties>
               <Events>
@@ -781,7 +720,10 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -789,10 +731,13 @@
                 <Property name="text" type="java.lang.String" value="Table 1"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -801,6 +746,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="1" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -812,7 +758,7 @@
             <Component class="javax.swing.JButton" name="table_2_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -820,13 +766,16 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Mr.Juk"/>
+                <Property name="text" type="java.lang.String" value="Table 2"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -835,6 +784,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="2" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -846,7 +796,10 @@
             <Component class="javax.swing.JButton" name="table_3_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -854,10 +807,13 @@
                 <Property name="text" type="java.lang.String" value="Table 3"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -866,6 +822,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="3" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -877,7 +834,10 @@
             <Component class="javax.swing.JButton" name="table_4_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -885,10 +845,13 @@
                 <Property name="text" type="java.lang.String" value="Table 4"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -897,6 +860,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="4" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -907,8 +871,14 @@
             </Component>
             <Component class="javax.swing.JButton" name="table_5_btn">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -916,10 +886,13 @@
                 <Property name="text" type="java.lang.String" value="Table 5"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -928,6 +901,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="5" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -939,7 +913,10 @@
             <Component class="javax.swing.JButton" name="table_6_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -947,10 +924,13 @@
                 <Property name="text" type="java.lang.String" value="Table 6"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -959,6 +939,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="6" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -970,7 +951,10 @@
             <Component class="javax.swing.JButton" name="table_7_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -978,10 +962,13 @@
                 <Property name="text" type="java.lang.String" value="Table 7"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -990,6 +977,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="7" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1001,7 +989,10 @@
             <Component class="javax.swing.JButton" name="table_8_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1009,10 +1000,13 @@
                 <Property name="text" type="java.lang.String" value="Table 8"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -1021,6 +1015,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="8" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1032,7 +1027,10 @@
             <Component class="javax.swing.JButton" name="table_9_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1040,10 +1038,13 @@
                 <Property name="text" type="java.lang.String" value="Table 9"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -1052,6 +1053,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="9" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1063,7 +1065,10 @@
             <Component class="javax.swing.JButton" name="table_10_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="33" red="33" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1071,10 +1076,13 @@
                 <Property name="text" type="java.lang.String" value="Table 10"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -1083,6 +1091,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="10" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1094,7 +1103,10 @@
             <Component class="javax.swing.JButton" name="table_11_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1102,10 +1114,13 @@
                 <Property name="text" type="java.lang.String" value="Table 11"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -1114,6 +1129,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="11" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1125,7 +1141,10 @@
             <Component class="javax.swing.JButton" name="table_12_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1133,10 +1152,13 @@
                 <Property name="text" type="java.lang.String" value="Table 12"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -1145,6 +1167,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="12" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1156,7 +1179,10 @@
             <Component class="javax.swing.JButton" name="table_13_btn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1164,13 +1190,16 @@
                 <Property name="text" type="java.lang.String" value="Table 13"/>
                 <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="property_popup_menu"/>
                 </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="0" name="null"/>
                 </Property>
@@ -1179,6 +1208,7 @@
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="name" type="java.lang.String" value="13" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -1204,7 +1234,10 @@
                 <Component class="javax.swing.JButton" name="table_14_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1212,13 +1245,16 @@
                     <Property name="text" type="java.lang.String" value="Table 14"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="property_popup_menu"/>
                     </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="0" name="null"/>
                     </Property>
@@ -1227,6 +1263,7 @@
                     </Property>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="14" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1257,7 +1294,10 @@
                 <Component class="javax.swing.JButton" name="table_15_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1265,10 +1305,13 @@
                     <Property name="text" type="java.lang.String" value="Table 15"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="0" name="null"/>
                     </Property>
@@ -1277,6 +1320,7 @@
                     </Property>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="15" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1307,7 +1351,10 @@
                 <Component class="javax.swing.JButton" name="table_16_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
@@ -1315,10 +1362,13 @@
                     <Property name="text" type="java.lang.String" value="Table 16"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="0" name="null"/>
                     </Property>
@@ -1327,6 +1377,7 @@
                     </Property>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="16" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1357,26 +1408,27 @@
                 <Component class="javax.swing.JButton" name="table_17_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
+                      <Image iconType="3" name="/com/kiyoshi/ico/1f465.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Table 17"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
-                    <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="17" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1407,26 +1459,27 @@
                 <Component class="javax.swing.JButton" name="table_18_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
+                      <Image iconType="3" name="/com/kiyoshi/ico/1f465.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Table 18"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
-                    <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="18" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1457,26 +1510,27 @@
                 <Component class="javax.swing.JButton" name="table_19_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
+                      <Image iconType="3" name="/com/kiyoshi/ico/1f465.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Table 19"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
-                    <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="19" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1507,26 +1561,27 @@
                 <Component class="javax.swing.JButton" name="table_20_btn">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
+                      <Font name="Segoe UI" size="18" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="99" red="0" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/kiyoshi/ico/bust_in_silhouette.png"/>
+                      <Image iconType="3" name="/com/kiyoshi/ico/1f465.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Table 20"/>
                     <Property name="toolTipText" type="java.lang.String" value="Table number"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
-                    <Property name="disabledSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="0" name="null"/>
-                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="iconTextGap" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="20" noResource="true"/>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
@@ -1551,283 +1606,96 @@
             </Constraint>
           </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane3" min="-2" pref="113" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="533" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="436" max="-2" attributes="0"/>
-                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="398" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel3" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel11" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="jScrollPane7" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="337" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="2"/>
+            <Property name="rows" type="int" value="1"/>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
+            <Container class="javax.swing.JPanel" name="left_reserve_panel">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="252" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
-            </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextPane" name="jTextPane1">
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="person"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Table no :"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton3">
-              <Properties>
-                <Property name="label" type="java.lang.String" value="Eat here"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Customer Name:"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane8">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JEditorPane" name="jEditorPane3">
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Take Home"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton4ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="comfirm"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="reset"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Customer Information"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable4">
+                <Container class="javax.swing.JPanel" name="jPanel1">
                   <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="No." type="java.lang.Object"/>
-                        <Column editable="true" title="Customer Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Persons" type="java.lang.Object"/>
-                        <Column editable="true" title="Queue number" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Reserve Table"/>
+                      </Border>
                     </Property>
                   </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabel12">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Queue List"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane7">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextPane" name="jTextPane2">
-                </Component>
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="565" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="148" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton4"/>
-              </Properties>
-            </Component>
+            <Container class="javax.swing.JPanel" name="right_reserve_panel">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="reserve_list_scroll" alignment="1" pref="713" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="reserve_list_scroll" min="-2" pref="356" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="reserve_list_scroll">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Reserve List"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="reserve_list_table">
+                      <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="order_pane">
@@ -1844,13 +1712,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="481" max="32767" attributes="0"/>
+                      <EmptySpace pref="433" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane6" min="-2" pref="362" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
+                              <Component id="order_customer_name_input" min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
@@ -1880,15 +1748,15 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" pref="381" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="order_customer_name_input" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1958,17 +1826,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JEditorPane" name="jEditorPane2">
-                </Component>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JScrollPane" name="jScrollPane6">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -2025,6 +1882,8 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JTextField" name="order_customer_name_input">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="billing_pane">
@@ -2064,7 +1923,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="831" max="32767" attributes="0"/>
+                      <EmptySpace pref="783" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2084,7 +1943,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="270" max="32767" attributes="0"/>
+                      <EmptySpace pref="228" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton21" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2182,11 +2041,11 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel17">
+                <Container class="javax.swing.JPanel" name="jPanel23">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="tab1">
-                        <Property name="tabTitle" type="java.lang.String" value="tab1"/>
+                      <JTabbedPaneConstraints tabName="Overview">
+                        <Property name="tabTitle" type="java.lang.String" value="Overview"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2194,12 +2053,34 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1469" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="1421" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="406" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel17">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Revenue">
+                        <Property name="tabTitle" type="java.lang.String" value="Revenue"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="1421" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="406" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2207,8 +2088,8 @@
                 <Container class="javax.swing.JPanel" name="jPanel22">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="tab2">
-                        <Property name="tabTitle" type="java.lang.String" value="tab2"/>
+                      <JTabbedPaneConstraints tabName="Order stat">
+                        <Property name="tabTitle" type="java.lang.String" value="Order stat"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>
@@ -2216,12 +2097,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="1469" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="1421" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="406" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2272,7 +2153,7 @@
     <Container class="javax.swing.JPanel" name="footer">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1426, 100]"/>
+          <Dimension value="[1426, 75]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -2281,89 +2162,185 @@
         </Constraint>
       </Constraints>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="username_label" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="user_box" min="-2" pref="141" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="search_table_box" min="-2" pref="411" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="831" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="username_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="user_box" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="search_table_box" alignment="3" pref="27" max="32767" attributes="0"/>
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="user_box">
+        <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[343, 75]"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="26"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Here is Footer"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="username_label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Emploee&apos;s Name"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Search Table"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="search_table_box">
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="search_table_boxFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="search_table_boxFocusLost"/>
-          </Events>
-        </Component>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Center"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="search_table_box" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="search_table_btn" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="username_label1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="queue_box" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="username_label2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="time_box" min="-2" pref="117" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="username_label" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="user_box" min="-2" pref="139" max="-2" attributes="0"/>
+                      <EmptySpace pref="228" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="search_table_btn" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="username_label1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="user_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="username_label2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="time_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="username_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="queue_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="search_table_box" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="username_label2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Search Table"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="search_table_box">
+              <Properties>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 35]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="search_table_boxFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="search_table_boxFocusLost"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="search_table_btn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Search"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="username_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Username"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="user_box">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[45, 35]"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="26"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="queue_box">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="26"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="username_label1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Current Queue"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="time_box">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="26"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
