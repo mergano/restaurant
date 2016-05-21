@@ -1,6 +1,6 @@
 package com.kiyoshi.core;
 
-public class LoadDriver {
+public abstract class LoadDriver {
 
     private static String driver;
     private static String url_head;

@@ -49,7 +49,7 @@ public class ConnectDB extends LoadDriver {
             System.out.println(internet);
             Class.forName(LoadDriver.getDriver()); // Registed JDBC DRIVER
             conn = DriverManager.getConnection(URL, info);
-            conn.setAutoCommit(true);
+            conn.setAutoCommit(false);
             meta = conn.getMetaData();
             if (conn == null) {
                 status = "Disconnnect";

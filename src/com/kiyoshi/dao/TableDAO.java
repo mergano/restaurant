@@ -12,19 +12,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author vchuk
- */
-public class TableDAO implements Table {
+public class TableDAO extends ConnectDB implements Table {
 
-    private final String table = "user";
-    private ConnectDB connect;
+    private final String table = "table";
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;
@@ -32,17 +26,20 @@ public class TableDAO implements Table {
 
     public TableDAO() {
         try {
-            connect = new ConnectDB();
-            conn = connect.getconnection();
+            conn = super.getconnection();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
 
 // Display all data from product table
+    /**
+     *
+     * @return
+     */
     @Override
-    public ArrayList<HashMap> getTable() {
-        ArrayList<HashMap> table_list = new ArrayList<>();
+    public List<HashMap> getTable() {
+        List<HashMap> table_list = new ArrayList<>();
 
         if (conn == null) {
             System.err.println("ERROR: NO INTERNET CONNECTION");
@@ -71,10 +68,16 @@ public class TableDAO implements Table {
 //            hashMap.put("qty", order.get("quantity"));
 //            hashMap.put("foodName", data.get("foodName"));
 //            hashMap.put("total", Integer.parseInt(String.valueOf(order.get("quantity"))) * Integer.parseInt(String.valueOf(data.get("price"))));
+                        // table_list.add(map);
                         table_list.add(map);
-                        System.out.println("MAP 1:" + Arrays.asList(map)); // method 1
-                        System.out.println("MAP 2:" + Collections.singletonList(map)); // method 2
+                        //System.out.println("MAP 1:" + Arrays.asList(map)); // method 1
+                        //System.out.println("MAP 2:" + Collections.singletonList(map)); // method 2
+                        if (map.get("table_status").equals("Unavailable")) {
+                            System.out.println("Unavailable table are :" + map.get("table_no"));
+                        }
+
                     } while (rs.next());
+
                     // Benchmark time
                     long stop = java.lang.System.currentTimeMillis();
                     System.out.println("JDBC query table time: " + String.valueOf((stop - start)) + " ms");

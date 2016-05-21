@@ -8,6 +8,7 @@ public class StatusBean {
     private static String url;
     private static String dbName;
 
+    //Setter and Getter for Connection status information
     public static String getStatus() {
         return status;
     }

@@ -11,18 +11,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoginDAO {
+public class LoginDAO extends ConnectDB {
 
     private final String table = "user";
-    private ConnectDB c;
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;
 
     public LoginDAO() {
         try {
-            c = new ConnectDB();
-            conn = c.getconnection();
+            conn = super.getconnection();
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
@@ -38,9 +36,8 @@ public class LoginDAO {
             p = conn.prepareStatement(sql);
             p.setString(1, users);
             p.setString(2, passwd);
-
             rs = p.executeQuery();
-            while (rs.next()) {
+            do {
                 LoginBean bean = new LoginBean();
                 bean.setUsername(rs.getString("username"));
                 bean.setPassword(rs.getString("password"));
@@ -48,8 +45,9 @@ public class LoginDAO {
                 bean.setUserEmail(rs.getString("email"));
                 decryptUser = Encryption.decrypt(rs.getString("username"));
                 bean.setUserTxt(decryptUser);
-            }
+            } while (rs.next());
             //Clean-up environment
+            conn.commit();
             p.close();
             rs.close();
             conn.close();
@@ -66,5 +64,4 @@ public class LoginDAO {
         }
         return -1; // Wrong username or password
     }
-
 }

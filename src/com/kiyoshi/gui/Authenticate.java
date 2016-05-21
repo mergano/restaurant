@@ -5,14 +5,18 @@ import com.kiyoshi.core.AuthenticateUser;
 import static com.kiyoshi.core.ClearGC.ClearGarbageCollection;
 import com.kiyoshi.core.Encryption;
 import com.kiyoshi.core.TextFieldLimit;
-import com.kiyoshi.dao.Queuing;
+import java.awt.Desktop;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 public class Authenticate extends javax.swing.JFrame {
 
-    Queuing queue; // delete this
     public static boolean session;
     LoginBean login;
 
@@ -20,7 +24,6 @@ public class Authenticate extends javax.swing.JFrame {
         initComponents();
         auth_username_input.setDocument(new TextFieldLimit(25));
         auth_password_input.setDocument(new TextFieldLimit(25));
-        queue = new Queuing();
         login = new LoginBean();
     }
 
@@ -79,7 +82,7 @@ public class Authenticate extends javax.swing.JFrame {
 
         forgot_title_box.setName("forgot_title_box"); // NOI18N
 
-        forgot_title.setText("Enter your email address account.");
+        forgot_title.setText("Enter your username account.");
         forgot_title.setName("forgot_title"); // NOI18N
         forgot_title_box.add(forgot_title);
 
@@ -131,7 +134,11 @@ public class Authenticate extends javax.swing.JFrame {
         auth_header_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/img/auth_header.png"))); // NOI18N
         auth_header_image.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         auth_header_image.setFocusable(false);
+        auth_header_image.setMaximumSize(new java.awt.Dimension(640, 100));
+        auth_header_image.setMinimumSize(new java.awt.Dimension(640, 100));
         auth_header_image.setName("auth_header_image"); // NOI18N
+        auth_header_image.setPreferredSize(new java.awt.Dimension(640, 100));
+        auth_header_image.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         auth_header.add(auth_header_image, java.awt.BorderLayout.CENTER);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -148,7 +155,7 @@ public class Authenticate extends javax.swing.JFrame {
 
         auth_title_box.setName("auth_title_box"); // NOI18N
 
-        auth_title.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        auth_title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         auth_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         auth_title.setText("System Authentication");
         auth_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -166,6 +173,7 @@ public class Authenticate extends javax.swing.JFrame {
         auth_username_label_box.setName("auth_username_label_box"); // NOI18N
         auth_username_label_box.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
+        auth_username_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         auth_username_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         auth_username_label.setText("Username");
         auth_username_label.setName("auth_username_label"); // NOI18N
@@ -176,9 +184,9 @@ public class Authenticate extends javax.swing.JFrame {
         auth_username_box.setName("auth_username_box"); // NOI18N
         auth_username_box.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
-        auth_username_input.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        auth_username_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         auth_username_input.setName("auth_username_input"); // NOI18N
-        auth_username_input.setPreferredSize(new java.awt.Dimension(300, 30));
+        auth_username_input.setPreferredSize(new java.awt.Dimension(350, 40));
         auth_username_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 auth_username_inputActionPerformed(evt);
@@ -191,6 +199,7 @@ public class Authenticate extends javax.swing.JFrame {
         auth_password_label_box.setName("auth_password_label_box"); // NOI18N
         auth_password_label_box.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
+        auth_password_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         auth_password_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         auth_password_label.setText("Password");
         auth_password_label.setName("auth_password_label"); // NOI18N
@@ -201,9 +210,9 @@ public class Authenticate extends javax.swing.JFrame {
         auth_password_box.setName("auth_password_box"); // NOI18N
         auth_password_box.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
-        auth_password_input.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        auth_password_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         auth_password_input.setName("auth_password_input"); // NOI18N
-        auth_password_input.setPreferredSize(new java.awt.Dimension(300, 30));
+        auth_password_input.setPreferredSize(new java.awt.Dimension(350, 40));
         auth_password_input.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 auth_password_inputKeyPressed(evt);
@@ -213,7 +222,9 @@ public class Authenticate extends javax.swing.JFrame {
 
         auth_input_layout_box.add(auth_password_box);
 
+        auth_forgot_box.setMinimumSize(new java.awt.Dimension(97, 35));
         auth_forgot_box.setName("auth_forgot_box"); // NOI18N
+        auth_forgot_box.setPreferredSize(new java.awt.Dimension(97, 35));
         auth_forgot_box.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
         auth_forgot_passwd_btn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -256,12 +267,12 @@ public class Authenticate extends javax.swing.JFrame {
         auth_footer.setMinimumSize(new java.awt.Dimension(100, 45));
         auth_footer.setName("auth_footer"); // NOI18N
         auth_footer.setPreferredSize(new java.awt.Dimension(100, 45));
-        auth_footer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
+        auth_footer.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 25));
 
-        auth_signin_btn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        auth_signin_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         auth_signin_btn.setText("Sign in");
         auth_signin_btn.setName("auth_signin_btn"); // NOI18N
-        auth_signin_btn.setPreferredSize(new java.awt.Dimension(140, 35));
+        auth_signin_btn.setPreferredSize(new java.awt.Dimension(160, 40));
         auth_signin_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 auth_signin_btnActionPerformed(evt);
@@ -269,10 +280,10 @@ public class Authenticate extends javax.swing.JFrame {
         });
         auth_footer.add(auth_signin_btn);
 
-        auth_cancel_btn.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        auth_cancel_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         auth_cancel_btn.setText("Cancel");
         auth_cancel_btn.setName("auth_cancel_btn"); // NOI18N
-        auth_cancel_btn.setPreferredSize(new java.awt.Dimension(140, 35));
+        auth_cancel_btn.setPreferredSize(new java.awt.Dimension(160, 40));
         auth_cancel_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 auth_cancel_btnActionPerformed(evt);
@@ -319,6 +330,23 @@ public class Authenticate extends javax.swing.JFrame {
     }//GEN-LAST:event_auth_username_inputActionPerformed
 
     private void forgot_submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgot_submit_btnActionPerformed
+        // Open e-mail box to recovery password
+        Desktop desktop;
+        if (Desktop.isDesktopSupported() && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
+            URI mailto = null;
+            try {
+                mailto = new URI("mailto:admin@kiyoshi.com?subject=Forgot%20Password" + forgot_text_input.getText());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(Authenticate.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                desktop.mail(mailto);
+            } catch (IOException ex) {
+                Logger.getLogger(Authenticate.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            throw new RuntimeException("desktop doesn't support mailto;");
+        }
         forgot_password_dialog.dispose();
     }//GEN-LAST:event_forgot_submit_btnActionPerformed
 

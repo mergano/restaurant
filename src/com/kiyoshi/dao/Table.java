@@ -1,11 +1,11 @@
 package com.kiyoshi.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 interface Table {
 
-    public ArrayList<HashMap> getTable();
+    public List<HashMap> getTable();
 
-    public ArrayList<HashMap> setTable(int i);
+    public List<HashMap> setTable(int i);
 }

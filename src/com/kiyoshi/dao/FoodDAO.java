@@ -1,6 +1,6 @@
 package com.kiyoshi.dao;
 
-import com.kiyoshi.bean.OrderBean;
+import com.kiyoshi.bean.FoodBean;
 import com.kiyoshi.core.ConnectDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,16 +11,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class OrderDAO extends ConnectDB {
+public class FoodDAO extends ConnectDB {
 
-    private final String order_table = "order";
+    private final String food_table = "food";
     private final String history_table = "history";
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;
     private boolean flag;
 
-    public OrderDAO() {
+    public FoodDAO() {
         try {
             conn = super.getconnection();
         } catch (Exception ex) {
@@ -29,8 +29,8 @@ public class OrderDAO extends ConnectDB {
     }
 
 // Display all data from product table
-    public ArrayList<OrderBean> getOrder() {
-        ArrayList<OrderBean> order_list = new ArrayList<>();
+    public ArrayList<FoodBean> getData() {
+        ArrayList<FoodBean> food_list = new ArrayList<>();
 
         if (conn == null) {
             System.err.println("ERROR: NO INTERNET CONNECTION");
@@ -38,7 +38,7 @@ public class OrderDAO extends ConnectDB {
                     JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
-            String sql = "SELECT idorder, tableno, food_name, quantity, price, create_datetime FROM " + order_table + " ORDER BY " + "category;";
+            String sql = "SELECT idfood, category, name, price, quantity, status, image_name FROM " + food_table + " ORDER BY " + "category;";
             try {
                 long start = java.lang.System.currentTimeMillis();
                 p = conn.prepareStatement(sql);
@@ -46,13 +46,15 @@ public class OrderDAO extends ConnectDB {
 
                 if (rs.next()) {
                     do {
-                        OrderBean bean = new OrderBean();
-                        bean.setIdorder(rs.getInt("idorder"));
-                        bean.setTableno(rs.getInt("tableno"));
-                        bean.setFoodName(rs.getString("food_name"));
-                        bean.setQuantity(rs.getInt("quantity"));
+                        FoodBean bean = new FoodBean();
+                        bean.setIdfood(rs.getInt("idfood"));
+                        bean.setCategory(rs.getString("category"));
+                        bean.setName(rs.getString("name"));
                         bean.setPrice(rs.getDouble("price"));
-                        order_list.add(bean);
+                        bean.setQuantity(rs.getInt("quantity"));
+                        bean.setStatus(rs.getString("status"));
+                        bean.setImage_name(rs.getString("image_name"));
+                        food_list.add(bean);
                     } while (rs.next());
                     // Benchmark time
                     long stop = java.lang.System.currentTimeMillis();
@@ -68,28 +70,31 @@ public class OrderDAO extends ConnectDB {
                 System.err.print(e);
             }
         }
-        return order_list;
+        return food_list;
     }
 
 // Insert data into product table
-    public boolean addOrder(OrderBean bean) {
+    public boolean insertFood(FoodBean bean) {
         flag = false;
         try {
             //String querySetLimit = "SET GLOBAL max_allows_packet = 104857600"; // 10 MB
             //PreparedStatement ps = conn.prepareStatement(querySetLimit);
             //ps.execute();
-            String sql_insert = "INSERT INTO " + order_table + " VALUES(DEFAULT,?,?,?,?,current_date());";
+            String sql_insert = "INSERT INTO " + food_table + " VALUES(?,?,?,?,?,?,?);";
             p = conn.prepareStatement(sql_insert);
-            p.setInt(2, bean.getTableno());
-            p.setString(3, bean.getFoodName());
-            p.setInt(4, bean.getQuantity());
-            p.setDouble(5, bean.getPrice());
+            p.setInt(1, bean.getIdfood());
+            p.setString(2, bean.getCategory());
+            p.setString(3, bean.getName());
+            p.setDouble(4, bean.getPrice());
+            p.setInt(5, bean.getQuantity());
+            p.setString(6, bean.getStatus());
+            p.setString(7, bean.getImage_name());
             p.executeUpdate();
 
             String sql_insert_his = "INSERT INTO " + history_table + " VALUES(DEFAULT,?,?,current_date(),current_time(),?);";
             p = conn.prepareStatement(sql_insert_his);
-            p.setString(2, "Added order to Table ");
-            p.setObject(3, bean.getTableno());
+            p.setString(2, "Added food");
+            p.setString(3, bean.getName());
             p.setString(6, bean.getCurrentUser());
             p.executeUpdate();
             conn.commit();
@@ -104,22 +109,24 @@ public class OrderDAO extends ConnectDB {
     }
 
     // Update data into product table
-    public boolean editOrder(OrderBean bean, int n) {
+    public boolean updateFood(FoodBean bean, long n) {
         flag = false;
         try {
-            String sql_update = "UPDATE " + order_table + " SET idorder =?, tableno=?, food_name=?, quantity=?, price=?, create_datetime=current_date() WHERE idorder =" + n + ";";
+            String sql_update = "UPDATE " + food_table + " SET product_id =?,category=?,manufacture=?,name=?,model=?,description=?,cost=?,location=?,warranty=?,quantity=?,import_date=?,status_?,user_lastmodified=?,image=? WHERE product_id =" + n + ";";
             p = conn.prepareStatement(sql_update);
-            p.setInt(1, bean.getIdorder());
-            p.setInt(2, bean.getTableno());
-            p.setString(3, bean.getFoodName());
-            p.setInt(4, bean.getQuantity());
-            p.setDouble(5, bean.getPrice());
+            p.setInt(1, bean.getIdfood());
+            p.setString(2, bean.getCategory());
+            p.setString(3, bean.getName());
+            p.setDouble(4, bean.getPrice());
+            p.setInt(5, bean.getQuantity());
+            p.setString(6, bean.getStatus());
+            p.setString(7, bean.getImage_name());
             p.executeUpdate();
 
             String sql_edit_his = "INSERT INTO " + history_table + " VALUES(DEFAULT,?,?,current_date(),current_time(),?);";
             p = conn.prepareStatement(sql_edit_his);
-            p.setString(2, "Edited order table ");
-            p.setObject(3, bean.getTableno());
+            p.setString(2, "Update food");
+            p.setString(3, bean.getName());
             p.setString(6, bean.getCurrentUser());
             p.executeUpdate();
             conn.commit();
@@ -133,13 +140,13 @@ public class OrderDAO extends ConnectDB {
     }
 
     // Delete data from database
-    public boolean deleteOrder(OrderBean bean, int n) {
+    public boolean deleteData(FoodBean bean, int n) {
         flag = false;
         try {
-            String sql_delete = "DELETE FROM " + order_table + " WHERE idfood =" + n + ";";
+            String sql_delete = "DELETE FROM " + food_table + " WHERE idfood =" + n + ";";
             p = conn.prepareStatement(sql_delete);
-            p.setString(2, "Cancel order table");
-            p.setObject(3, bean.getTableno());
+            p.setString(2, "Delete food");
+            p.setString(3, bean.getName());
             p.setString(6, bean.getCurrentUser());
             p.executeUpdate();
 
@@ -157,3 +164,12 @@ public class OrderDAO extends ConnectDB {
         return flag;
     }
 }
+
+// DEBUG CODE
+//           ResultSetMetaData metadata = (ResultSetMetaData) rs.getMetaData();
+//           int cols = metadata.getColumnCount();
+//           String columnNames[] = new String[cols];
+//           for(int i=1; i<= cols; i++){
+//               System.out.println(metadata.getColumnLabel(i));
+//           }
+

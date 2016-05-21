@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kiyoshi.dao;
+package com.kiyoshi.bean;
 
 /**
  *
  * @author vchuk
  */
-public class MainDAO {
+public class ReserveBean {
 
 }

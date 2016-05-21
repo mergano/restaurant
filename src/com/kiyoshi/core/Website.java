@@ -11,6 +11,7 @@ public class Website {
         try {
             Desktop.getDesktop().browse(new URL(url).toURI());
         } catch (URISyntaxException | IOException e) {
+            System.out.println(e);
         }
     }
 }

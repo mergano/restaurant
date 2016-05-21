@@ -5,10 +5,6 @@
  */
 package com.kiyoshi.dao;
 
-/**
- *
- * @author vchuk
- */
 public interface Order {
 
     public void AddOrder(String ordername, int amount, int tableno);

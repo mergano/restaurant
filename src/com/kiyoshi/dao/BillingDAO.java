@@ -5,6 +5,10 @@
  */
 package com.kiyoshi.dao;
 
-public class ReportDAO {
+/**
+ *
+ * @author vchuk
+ */
+public class BillingDAO {
 
 }
