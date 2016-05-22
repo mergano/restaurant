@@ -59,6 +59,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Detail"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="table_cancel_reserve_btnActionPerformed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>
@@ -68,7 +71,7 @@
           <Dimension value="[300, 200]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[300, 200]"/>
+          <Dimension value="[300, 100]"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -95,7 +98,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Detail"/>
+            <Property name="text" type="java.lang.String" value="Cancel Reserve"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancel_reserve_menuitem_btnActionPerformed"/>
@@ -323,6 +326,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear_history_menuitemActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator6">
             </MenuItem>
@@ -776,6 +782,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="dashboard" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -1674,6 +1681,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="reserve_pane">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="reserve" noResource="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card2"/>
@@ -1694,7 +1704,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="reserve_table_panel" pref="796" max="32767" attributes="0"/>
-                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <Component id="edit_reserve_panel" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1706,7 +1716,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="reserve_table_panel" min="-2" pref="77" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="edit_reserve_panel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="221" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1815,7 +1825,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel1">
+                <Container class="javax.swing.JPanel" name="edit_reserve_panel">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -2068,6 +2078,7 @@
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
                   <Constraints>
@@ -2170,6 +2181,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="order_pane">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="order" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Main_order_pane"/>
           </AuxValues>
@@ -2258,6 +2272,9 @@
                           <Dimension value="[100, 30]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="order_customer_name_inputKeyPressed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="take_home_option">
                       <Properties>
@@ -2296,7 +2313,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ScrollPanelForHistory1" pref="764" max="32767" attributes="0"/>
+                              <Component id="ScrollPanelForHistory1" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -2350,6 +2367,9 @@
                           <Border info="null"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
@@ -2374,6 +2394,7 @@
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
                             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;OrderBean&gt; olist = null;&#xa;OrderDAO odb = new OrderDAO();&#xa;int tableno = Integer.parseInt(order_customer_name_input.getText());&#xa;try {&#xa;    olist = odb.getOrderData(tableno);&#xa;}&#xa;catch (Exception e) {&#xa;    e.printStackTrace();&#xa;}&#xa;String[] ocolumns = {&quot;Order ID&quot;, &quot;Name&quot;, &quot;Quantity&quot;, &quot;Price&quot;, &quot;Datetime&quot;};&#xa;Object[][] orows = new Object[olist.size()][14];&#xa;for(int i =0; i&lt; olist.size(); i++) {&#xa;        orows[i][0] = olist.get(i).getIdorder();&#xa;        orows[i][1] = olist.get(i).getFoodName();&#xa;        orows[i][2] = olist.get(i).getQuantity();&#xa;        orows[i][3] = olist.get(i).getPrice();&#xa;        orows[i][4] = olist.get(i).getCurrentUser();&#xa;}"/>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>
@@ -2405,7 +2426,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="ScrollPanelForQueryTable1" min="-2" pref="792" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -2449,6 +2470,7 @@
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
 
@@ -2511,12 +2533,18 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_order_buttonActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="billing_pane">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="billing" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Main_order_pane"/>
           </AuxValues>
@@ -2680,6 +2708,9 @@
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="table_no_billing_inputKeyPressed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="total_price">
                   <Properties>
@@ -2691,6 +2722,12 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="total_priceActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
@@ -2718,6 +2755,9 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -2742,8 +2782,12 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cash_input_boxActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cash_input_boxKeyPressed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
@@ -2768,6 +2812,9 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
@@ -2790,6 +2837,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="statistic_pane">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="statistic" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Main_order_pane"/>
           </AuxValues>
@@ -2829,26 +2879,15 @@
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel14">
-                      <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/kiyoshi/gui/265125.png"/>
-                        </Property>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Center"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="history_pane">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="history" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Main_order_pane"/>
           </AuxValues>
@@ -2866,6 +2905,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="Center"/>
@@ -2891,6 +2933,7 @@
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="if (history_table.getRowCount() == 0) {&#xa;    clear_history_menuitem.setEnabled(false);&#xa;}"/>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ArrayList&lt;com.kiyoshi.bean.HistoryBean&gt; listHIS = null;&#xa;com.kiyoshi.dao.HistoryDAO hisdao = new com.kiyoshi.dao.HistoryDAO(); &#xa;            try {&#xa;                    listHIS = hisdao.getHistoryData();&#xa;                } catch (Exception e) {&#xa;                    e.printStackTrace();&#xa;                }&#xa;        List&lt;String[]&gt; valuesHIS = new ArrayList&lt;&gt;();&#xa;        List&lt;String&gt; columnsHIS = new ArrayList&lt;&gt;();&#xa;        columnsHIS.add(&quot;#&quot;);&#xa;        columnsHIS.add(&quot;Type&quot;);&#xa;        columnsHIS.add(&quot;Action detail&quot;);&#xa;        columnsHIS.add(&quot;Date modified&quot;);&#xa;        columnsHIS.add(&quot;Time&quot;);&#xa;        columnsHIS.add(&quot;Username&quot;);&#xa;        &#xa;        for(int i =0; i&lt; listHIS.size(); i++) {&#xa;            valuesHIS.add(new String[] {&quot;&quot; +&#xa;            listHIS.get(i).getHistoryID(),&#xa;            listHIS.get(i).getActionType(),&#xa;            listHIS.get(i).getActionDetail(),&#xa;            listHIS.get(i).getHistoryDate(),&#xa;            listHIS.get(i).getHistoryTime(),&#xa;            listHIS.get(i).getUser()&#xa;    });&#xa;}"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

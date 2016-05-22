@@ -2,16 +2,20 @@ package com.kiyoshi.gui;
 
 import com.kiyoshi.bean.BillingBean;
 import com.kiyoshi.bean.FoodBean;
-import com.kiyoshi.bean.HistoryBean;
 import com.kiyoshi.bean.OrderBean;
 import com.kiyoshi.bean.ReserveBean;
+import com.kiyoshi.core.Checkout;
 import com.kiyoshi.core.LogOut;
+import com.kiyoshi.core.UpdateFoodTable;
+import com.kiyoshi.core.UpdateOrderTable;
+import com.kiyoshi.core.UpdateReserveTable;
 import com.kiyoshi.core.Website;
 import com.kiyoshi.dao.BillingDAO;
 import com.kiyoshi.dao.FoodDAO;
 import com.kiyoshi.dao.HistoryDAO;
 import com.kiyoshi.dao.OrderDAO;
 import com.kiyoshi.dao.ReserveDAO;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -36,13 +40,24 @@ public class Main extends javax.swing.JFrame {
     UndoManager manager = new UndoManager(); // UNDO, REDO
     Website w = new Website();
     DefaultTableModel mod;
+    UpdateOrderTable udtb;
+    UpdateReserveTable urtb;
+    UpdateFoodTable udftb;
+
+    public Main() {
+        udtb = new UpdateOrderTable();
+        urtb = new UpdateReserveTable();
+        udftb = new UpdateFoodTable();
+        setClock();
+        initialReserveNo();
+        initialOrderNo();
+        drawChart();
+    }
 
     public Main(String username) {
         initComponents();
         user_box.setText(username);
-        setClock();
-        initialReserveNo();
-        initialOrderNo();
+
     }
 
     /**
@@ -114,7 +129,7 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         reserve_seat_input = new javax.swing.JSpinner();
         reserve_table_btn = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        edit_reserve_panel = new javax.swing.JPanel();
         edit_reserve_table_no_input = new javax.swing.JTextField();
         edit_res_table_no_label = new javax.swing.JLabel();
         edit_reserve_date_input = new javax.swing.JTextField();
@@ -172,7 +187,6 @@ public class Main extends javax.swing.JFrame {
         statistic_pane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         chart_panel = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         history_pane = new javax.swing.JPanel();
         ScrollPanelForHistory = new javax.swing.JScrollPane();
         history_table = new javax.swing.JTable();
@@ -261,10 +275,15 @@ public class Main extends javax.swing.JFrame {
 
         table_cancel_reserve_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         table_cancel_reserve_btn.setText("Detail");
+        table_cancel_reserve_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_cancel_reserve_btnActionPerformed(evt);
+            }
+        });
         property_popup_menu.add(table_cancel_reserve_btn);
 
         reserve_popup_menu.setMinimumSize(new java.awt.Dimension(300, 200));
-        reserve_popup_menu.setPreferredSize(new java.awt.Dimension(300, 200));
+        reserve_popup_menu.setPreferredSize(new java.awt.Dimension(300, 100));
 
         edit_reserve_menuitem_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         edit_reserve_menuitem_btn.setText("Reserve");
@@ -276,7 +295,7 @@ public class Main extends javax.swing.JFrame {
         reserve_popup_menu.add(edit_reserve_menuitem_btn);
 
         cancel_reserve_menuitem_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cancel_reserve_menuitem_btn.setText("Detail");
+        cancel_reserve_menuitem_btn.setText("Cancel Reserve");
         cancel_reserve_menuitem_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancel_reserve_menuitem_btnActionPerformed(evt);
@@ -428,6 +447,7 @@ public class Main extends javax.swing.JFrame {
         body.setLayout(new java.awt.CardLayout());
 
         dashboard_pane.setBackground(new java.awt.Color(255, 255, 255));
+        dashboard_pane.setName("dashboard"); // NOI18N
         dashboard_pane.setLayout(new java.awt.GridLayout(4, 5));
 
         table_1_btn.setBackground(new java.awt.Color(255, 255, 255));
@@ -986,6 +1006,7 @@ public class Main extends javax.swing.JFrame {
 
         body.add(dashboard_pane, "card3");
 
+        reserve_pane.setName("reserve"); // NOI18N
         reserve_pane.setLayout(new java.awt.GridLayout(1, 2));
 
         reserve_table_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reserve Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -1032,7 +1053,7 @@ public class Main extends javax.swing.JFrame {
         });
         reserve_table_panel.add(reserve_table_btn);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reservation Plan/ Edit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        edit_reserve_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reservation Plan/ Edit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
         edit_reserve_table_no_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         edit_reserve_table_no_input.setEnabled(false);
@@ -1066,47 +1087,47 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout edit_reserve_panelLayout = new javax.swing.GroupLayout(edit_reserve_panel);
+        edit_reserve_panel.setLayout(edit_reserve_panelLayout);
+        edit_reserve_panelLayout.setHorizontalGroup(
+            edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(edit_reserve_panelLayout.createSequentialGroup()
+                .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(edit_reserve_panelLayout.createSequentialGroup()
                         .addContainerGap(346, Short.MAX_VALUE)
                         .addComponent(edit_reserve_save, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(edit_reserve_panelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(edit_reserve_no_input, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                             .addComponent(edit_reserve_date_input))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edit_reserve_seat, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(edit_res_table_no_label, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(edit_reserve_seat_input, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                     .addComponent(edit_reserve_table_no_input))
                 .addGap(30, 30, 30))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        edit_reserve_panelLayout.setVerticalGroup(
+            edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(edit_reserve_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edit_reserve_no_input, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(edit_reserve_table_no_input, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edit_res_table_no_label))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(edit_reserve_seat_input, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(edit_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(edit_reserve_date_input, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)
                         .addComponent(edit_reserve_seat)))
@@ -1123,7 +1144,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(left_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(reserve_table_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(edit_reserve_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         left_reserve_panelLayout.setVerticalGroup(
@@ -1132,7 +1153,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(reserve_table_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edit_reserve_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(221, Short.MAX_VALUE))
         );
 
@@ -1275,6 +1296,7 @@ public class Main extends javax.swing.JFrame {
 
         body.add(reserve_pane, "card2");
 
+        order_pane.setName("order"); // NOI18N
         order_pane.setLayout(new java.awt.GridLayout(1, 2));
 
         order_info_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Order Information"));
@@ -1294,6 +1316,11 @@ public class Main extends javax.swing.JFrame {
         order_customer_name_input.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         order_customer_name_input.setText("1");
         order_customer_name_input.setPreferredSize(new java.awt.Dimension(100, 30));
+        order_customer_name_input.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                order_customer_name_inputKeyPressed(evt);
+            }
+        });
         order_info_panel.add(order_customer_name_input);
 
         take_home_option.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1371,7 +1398,7 @@ public class Main extends javax.swing.JFrame {
             order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(order_list_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPanelForHistory1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
+                .addComponent(ScrollPanelForHistory1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_list_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1501,7 +1528,7 @@ public class Main extends javax.swing.JFrame {
             order_right_panelLayout.setHorizontalGroup(
                 order_right_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(order_right_panelLayout.createSequentialGroup()
-                    .addContainerGap(14, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ScrollPanelForQueryTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
                 .addGroup(order_right_panelLayout.createSequentialGroup()
@@ -1522,6 +1549,8 @@ public class Main extends javax.swing.JFrame {
             order_pane.add(order_right_panel);
 
             body.add(order_pane, "card4");
+
+            billing_pane.setName("billing"); // NOI18N
 
             billing_body_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Checkout", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -1546,6 +1575,11 @@ public class Main extends javax.swing.JFrame {
             total_price.setEditable(false);
             total_price.setBackground(new java.awt.Color(255, 255, 255));
             total_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            total_price.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    total_priceActionPerformed(evt);
+                }
+            });
 
             jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             jLabel6.setText("VAT 7%");
@@ -1564,6 +1598,11 @@ public class Main extends javax.swing.JFrame {
             jLabel9.setText("THB");
 
             cash_input_box.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            cash_input_box.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    cash_input_boxActionPerformed(evt);
+                }
+            });
             cash_input_box.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     cash_input_boxKeyPressed(evt);
@@ -1677,22 +1716,20 @@ public class Main extends javax.swing.JFrame {
 
             body.add(billing_pane, "card4");
 
+            statistic_pane.setName("statistic"); // NOI18N
             statistic_pane.setLayout(new java.awt.BorderLayout());
 
             jTabbedPane1.setPreferredSize(new java.awt.Dimension(32767, 32767));
             jTabbedPane1.setRequestFocusEnabled(false);
 
             chart_panel.setLayout(new java.awt.BorderLayout());
-
-            jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/gui/265125.png"))); // NOI18N
-            chart_panel.add(jLabel14, java.awt.BorderLayout.CENTER);
-
             jTabbedPane1.addTab("Revenue", chart_panel);
 
             statistic_pane.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
             body.add(statistic_pane, "card4");
 
+            history_pane.setName("history"); // NOI18N
             history_pane.setLayout(new java.awt.BorderLayout());
 
             ScrollPanelForHistory.setBorder(null);
@@ -2101,7 +2138,7 @@ public class Main extends javax.swing.JFrame {
         statistic_pane.setVisible(true);
     }
 
-    private void initialReserveNo() {
+    public void initialReserveNo() {
         reserve_no_input.setText(String.valueOf(reserve_table.getRowCount() + 1));
     }
 
@@ -2282,24 +2319,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_dashboard_btnActionPerformed
 
     private void checkout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkout_btnActionPerformed
-        if (Double.parseDouble(cash_input_box.getText()) < Double.parseDouble(total_price.getText())) {
-            JOptionPane.showMessageDialog(null, "Cash amount can't less than the total price.", "Cash amount input error",
-                    JOptionPane.ERROR_MESSAGE);
-        } else {
-            BillingDAO bill = new BillingDAO();
-            boolean result = bill.checkout(Double.parseDouble(total_price.getText()), Integer.parseInt(table_no_billing_input.getText()));
-            if (result) {
-                JOptionPane.showMessageDialog(null, "Check out successfully", "Checkout completed",
-                        JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                table_no_billing_input.setText("");
-                total_vat.setText("");
-                total_price.setText("");
-                cash_input_box.setText("");
-                change_box.setText("");
-            }
-        }
-
+        Checkout c = new Checkout(user_box.getText());
+        c.checkout();
     }//GEN-LAST:event_checkout_btnActionPerformed
 
     private void cut_menu_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cut_menu_itemActionPerformed
@@ -2370,15 +2391,14 @@ public class Main extends javax.swing.JFrame {
         ReserveDAO rdao = new ReserveDAO();
         // SearchDAO sdao = new SearchDAO();
         if (search_reserve_box.getText().isEmpty()) {
-            updateReserveTable(rdao.getReserveData());
+            urtb.updateReserveTable(rdao.getReserveData());
         } else {
             switch (filter) {
                 case 0: //Reserve No.
-
                     if (isNumeric(input_search)) {
                         // updateTable(sdao.getDataSearch(input_search, 0));
                     } else {
-                        updateReserveTable(rdao.getReserveData());
+                        urtb.updateReserveTable(rdao.getReserveData());
                     }
                     break;
                 case 1: // Reserve Name.
@@ -2388,7 +2408,7 @@ public class Main extends javax.swing.JFrame {
                     // updateReserveTable(sdao.getDataSearch(input_search, 2));
                     break;
                 default:
-                    updateReserveTable(rdao.getReserveData());
+                    urtb.updateReserveTable(rdao.getReserveData());
             }
         }
     }//GEN-LAST:event_search_product_buttonActionPerformed
@@ -2452,14 +2472,25 @@ public class Main extends javax.swing.JFrame {
         if (history_table.getRowCount() > 0) {
             HistoryDAO hisdao = new HistoryDAO();
             hisdao.truncateHistory();
-            updateHistory(hisdao.getHistoryData());
+            urtb.updateHistory(hisdao.getHistoryData());
             clear_history_menuitem.setEnabled(false);
         }
     }//GEN-LAST:event_clear_history_menuitemActionPerformed
 
     private void edit_reserve_menuitem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_reserve_menuitem_btnActionPerformed
         int selectedRow = reserve_table.getSelectedRow();
-        editReserve(selectedRow);
+        String selectedReserveNo = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 0));
+        String selectedReserveTable = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 1));
+        String selectedReserveSeat = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 2));
+        String selectedReserveDatetime = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 3));
+        edit_reserve_no_input.setText(selectedReserveNo);
+        edit_reserve_table_no_input.setText(selectedReserveTable);
+        edit_reserve_date_input.setText(selectedReserveDatetime);
+        edit_reserve_seat_input.setValue(selectedReserveSeat);
+        if (edit_reserve_no_input.getText().length() != 0) {
+            setEditReserveComponent(true);
+            edit_reserve_save.setEnabled(true);
+        }
     }//GEN-LAST:event_edit_reserve_menuitem_btnActionPerformed
 
     private void reserve_table_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_table_btnActionPerformed
@@ -2485,8 +2516,8 @@ public class Main extends javax.swing.JFrame {
             bean.setReserve_datetime(currentTime);
             bean.setGetUserLastModified(user_box.getText());
             boolean status = dao.AddReserve(bean);
-            updateReserveTable(dao.getReserveData());
-            updateHistory(hisdao.getHistoryData());
+            urtb.updateReserveTable(dao.getReserveData());
+            urtb.updateHistory(hisdao.getHistoryData());
             if (status) {
                 JOptionPane.showMessageDialog(this, "Add reserve successfully", "Add Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -2566,7 +2597,7 @@ public class Main extends javax.swing.JFrame {
             bean.setQuantity(1);
             bean.setCurrentUser(user_box.getText());
             dao.addOrder(bean);
-            updateOrderTable(dao.getOrderData(tableno));
+            udtb.updateOrderTable(dao.getOrderData(tableno));
         }
     }//GEN-LAST:event_add_order_buttonActionPerformed
 
@@ -2583,24 +2614,29 @@ public class Main extends javax.swing.JFrame {
         edit_reserve_seat_input.setEnabled(b);
     }
     private void cancel_reserve_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_reserve_buttonActionPerformed
+        cancel_reserve();
+    }//GEN-LAST:event_cancel_reserve_buttonActionPerformed
 
+    private void cancel_reserve_menuitem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_reserve_menuitem_btnActionPerformed
+        cancel_reserve();
+    }//GEN-LAST:event_cancel_reserve_menuitem_btnActionPerformed
+
+    private void cancel_reserve() {
         if (edit_reserve_no_input.getText().length() == 0) {
             JOptionPane.showMessageDialog(this, "No Table number found", "Missing table no", JOptionPane.WARNING_MESSAGE);
         } else {
             int selectedRow = reserve_table.getSelectedRow();
             ReserveDAO dao = new ReserveDAO();
-
-            int tableno = Integer.parseInt(order_customer_name_input.getText());
+            String selectedReserveNo = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 0));
+            String selectedReserveTable = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 1));
+            int tableno = Integer.parseInt(selectedReserveTable);
             ReserveBean bean = new ReserveBean();
+            bean.setReserve_no(Integer.parseInt(selectedReserveNo));
+            bean.setGetUserLastModified(user_box.getText());
             dao.DeleteReserve(bean, tableno);
-            updateReserveTable(dao.getReserveData());
+            urtb.updateReserveTable(dao.getReserveData());
         }
-
-    }//GEN-LAST:event_cancel_reserve_buttonActionPerformed
-
-    private void cancel_reserve_menuitem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_reserve_menuitem_btnActionPerformed
-
-    }//GEN-LAST:event_cancel_reserve_menuitem_btnActionPerformed
+    }
 
     private void edit_reserve_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_reserve_saveActionPerformed
         String old_res_no = String.valueOf(reserve_table.getModel().getValueAt(reserve_table.getSelectedRow(), 0));
@@ -2622,8 +2658,8 @@ public class Main extends javax.swing.JFrame {
             bean.setReserve_no(res_seat);
             bean.setReserve_name(res_no);
             boolean status = dao.EditReserve(bean, n);
-            updateReserveTable(dao.getReserveData());
-            updateHistory(hisdao.getHistoryData());
+            urtb.updateReserveTable(dao.getReserveData());
+            urtb.updateHistory(hisdao.getHistoryData());
             if (status) {
                 setEditReserveComponent(false);
                 edit_reserve_save.setEnabled(false);
@@ -2657,13 +2693,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_table_no_billing_inputKeyPressed
 
     private void table_checkout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_checkout_btnActionPerformed
+        String table_no = ((JButton) evt.getSource()).getName();
         setPane(billing_pane);
-        //  table_no_billing_input.setText(table_no + "\n");
+        table_no_billing_input.setText(table_no + "\n");
     }//GEN-LAST:event_table_checkout_btnActionPerformed
 
     private void table_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_order_btnActionPerformed
+        String table_no = ((JButton) evt.getSource()).getName();
         setPane(order_pane);
-        // reserve_table_no_input.setText(table_no + "\n");
+        reserve_table_no_input.setText(table_no + "\n");
     }//GEN-LAST:event_table_order_btnActionPerformed
 
     private void remove_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_order_btnActionPerformed
@@ -2678,7 +2716,7 @@ public class Main extends javax.swing.JFrame {
             bean.setTableno(tableno);
             bean.setCurrentUser(user_box.getText());
             dao.deleteOrder(bean, Integer.parseInt(selectedOrderID));
-            updateOrderTable(dao.getOrderData(tableno));
+            udtb.updateOrderTable(dao.getOrderData(tableno));
         }
     }//GEN-LAST:event_remove_order_btnActionPerformed
 
@@ -2686,16 +2724,40 @@ public class Main extends javax.swing.JFrame {
         refreshOrderList();
     }//GEN-LAST:event_reset_order_btnActionPerformed
 
+    private void order_customer_name_inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_order_customer_name_inputKeyPressed
+        int tableno = Integer.parseInt(order_customer_name_input.getText());
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            OrderDAO dao = new OrderDAO();
+            dao.getOrderData(tableno);
+            udtb.updateOrderTable(dao.getOrderData(tableno));
+        }
+
+    }//GEN-LAST:event_order_customer_name_inputKeyPressed
+
+    private void total_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_priceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_total_priceActionPerformed
+
+    private void cash_input_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cash_input_boxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cash_input_boxActionPerformed
+
+    private void table_cancel_reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_cancel_reserve_btnActionPerformed
+        String table_no = ((JButton) evt.getSource()).getName();
+        ReserveDAO dao = new ReserveDAO();
+        int tableno = Integer.parseInt(table_no);
+        ReserveBean bean = new ReserveBean();
+        bean.setReserve_no(tableno);
+        bean.setGetUserLastModified(user_box.getText());
+        dao.DeleteReserve(bean, tableno);
+        urtb.updateReserveTable(dao.getReserveData());
+
+    }//GEN-LAST:event_table_cancel_reserve_btnActionPerformed
+
     private void refreshOrderList() {
         OrderDAO dao = new OrderDAO();
         int tableno = Integer.parseInt(order_customer_name_input.getText());
-        updateOrderTable(dao.getOrderData(tableno));
-    }
-
-    private void editReserve(int selectRow) {
-    }
-
-    private void cancelReserve(int selectRow) {
+        udtb.updateOrderTable(dao.getOrderData(tableno));
     }
 
     private void setTable(ActionEvent e) {
@@ -2705,133 +2767,66 @@ public class Main extends javax.swing.JFrame {
         reserve_table_no_input.setText(table_no);
     }
 
-    public void updateOrderTable(ArrayList<OrderBean> list) {
-        String[] columns = {"Order ID", "Name", "Quantity", "Price", "Datetime"};
-        Object[][] rows = new Object[list.size()][4];
-        for (int i = 0; i < list.size(); i++) {
-            rows[i][0] = list.get(i).getIdorder();
-            rows[i][1] = list.get(i).getFoodName();
-            rows[i][2] = list.get(i).getQuantity();
-            rows[i][3] = list.get(i).getPrice();
-            rows[i][4] = list.get(i).getDatetime();
-        }
-        // set Model of JTabel from list array of data
-        order_list_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
-        order_list_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        order_list_table.getColumnModel().getColumn(0).setPreferredWidth(10);
-        order_list_table.getColumnModel().getColumn(1).setPreferredWidth(30);
-        order_list_table.getColumnModel().getColumn(2).setPreferredWidth(30);
-        order_list_table.getColumnModel().getColumn(3).setPreferredWidth(30);
-        order_list_table.getColumnModel().getColumn(3).setPreferredWidth(30);
-        initialReserveNo();
-        // set the JTable into scroll panel
-        ScrollPanelForQueryTable.setViewportView(order_list_table);
-        System.out.println("Order list table updated");
-    }
-
-    public void updateFoodTable(ArrayList<FoodBean> list) {
-
-        String[] columns = {"#", "Category", "Name", "Price", "Status", "Image"};
-        Object[][] rows = new Object[list.size()][14];
-        for (int i = 0; i < list.size(); i++) {
-            //values.add(new Object[] {
-            rows[i][0] = list.get(i).getIdfood();
-            rows[i][1] = list.get(i).getCategory();
-            rows[i][2] = list.get(i).getName();
-            rows[i][3] = list.get(i).getPrice();
-            rows[i][4] = list.get(i).getStatus();
-            if (list.get(i).getFImage() != null) {
-                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getFImage()).getImage().getScaledInstance(60, 20, Image.SCALE_SMOOTH));
-                rows[i][5] = list.get(i).getFImage();
-            } else {
-                rows[i][5] = null;
-            }
-        }
-        // set Model of JTabel from list array of data
-        food_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
-        food_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        food_table.getColumnModel().getColumn(0).setPreferredWidth(10);
-        food_table.getColumnModel().getColumn(1).setPreferredWidth(30);
-        food_table.getColumnModel().getColumn(2).setPreferredWidth(30);
-        food_table.getColumnModel().getColumn(3).setPreferredWidth(30);
-        food_table.getColumnModel().getColumn(4).setPreferredWidth(30);
-        food_table.getColumnModel().getColumn(5).setPreferredWidth(100);
-
-        if (food_table.getRowCount() == 0) {
-            add_order_button.setEnabled(false);
-        }
-        // set the JTable into scroll panel
-        ScrollPanelForQueryTable.setViewportView(food_table);
-    }
-
-    public void updateReserveTable(ArrayList<ReserveBean> list) {
-        String[] columns = {"Reserve No.", "Reserve Name", "Seat", "Datetime"};
-        Object[][] rows = new Object[list.size()][4];
-        for (int i = 0; i < list.size(); i++) {
-            rows[i][0] = list.get(i).getReserve_no();
-            rows[i][1] = list.get(i).getReserve_name();
-            rows[i][2] = list.get(i).getReserve_seat();
-            rows[i][3] = list.get(i).getReserve_datetime();
-        }
-        // set Model of JTabel from list array of data
-        reserve_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
-        reserve_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        reserve_table.getColumnModel().getColumn(0).setPreferredWidth(30);
-        reserve_table.getColumnModel().getColumn(1).setPreferredWidth(80);
-        reserve_table.getColumnModel().getColumn(2).setPreferredWidth(45);
-        reserve_table.getColumnModel().getColumn(3).setPreferredWidth(80);
-        initialReserveNo();
-        // set the JTable into scroll panel
-        ScrollPanelForQueryTable.setViewportView(reserve_table);
-        System.out.println("Reserve table updated");
-    }
-
-    private void updateHistory(ArrayList<HistoryBean> list) {
-        List<String[]> values = new ArrayList<>();
-        List<String> columns = new ArrayList<>();
-        HistoryDAO dao = new HistoryDAO();
-        try {
-            list = dao.getHistoryData();
-        } catch (Exception e) {
-        }
-
-        columns.add("History ID");
-        columns.add("Type");
-        columns.add("Action detail");
-        columns.add("Date modified");
-        columns.add("Time");
-        columns.add("Username");
-
-        for (int i = 0; i < list.size(); i++) {
-            values.add(new String[]{""
-                + list.get(i).getHistoryID(),
-                list.get(i).getActionType(),
-                list.get(i).getActionDetail(),
-                list.get(i).getHistoryDate(),
-                list.get(i).getHistoryTime(),
-                list.get(i).getUser()
-            });
-        }
-        history_table.setModel(new javax.swing.table.DefaultTableModel(values.toArray(new Object[][]{}), columns.toArray()));
-        ScrollPanelForHistory.setViewportView(history_table);
-        clear_history_menuitem.setEnabled(true);
-        System.out.println("History table updated");
-    }
-
     private void setPane(JPanel panel_name) {
         body.removeAll();
         body.add(panel_name);
         body.repaint();
         body.revalidate();
+        Color bg = new Color(240, 240, 240);
+        Color white = new Color(255, 255, 255);
+        javax.swing.JPanel[] main_bg = new javax.swing.JPanel[]{main_dashboard_btn_box, main_reserve_btn_box, main_order_btn_box, main_billing_btn_box, main_statistic_btn_box, main_history_btn_box};
+        if (panel_name.getName().equals("dashboard")) {
+            main_bg[0].setBackground(bg);
+            main_bg[1].setBackground(white);
+            main_bg[2].setBackground(white);
+            main_bg[3].setBackground(white);
+            main_bg[4].setBackground(white);
+            main_bg[5].setBackground(white);
+        } else if (panel_name.getName().equals("reserve")) {
+            main_bg[1].setBackground(bg);
+            main_bg[0].setBackground(white);
+            main_bg[2].setBackground(white);
+            main_bg[3].setBackground(white);
+            main_bg[4].setBackground(white);
+            main_bg[5].setBackground(white);
+        } else if (panel_name.getName().equals("order")) {
+            main_bg[2].setBackground(bg);
+            main_bg[0].setBackground(white);
+            main_bg[1].setBackground(white);
+            main_bg[3].setBackground(white);
+            main_bg[4].setBackground(white);
+            main_bg[5].setBackground(white);
+        } else if (panel_name.getName().equals("billing")) {
+            main_bg[3].setBackground(bg);
+            main_bg[0].setBackground(white);
+            main_bg[1].setBackground(white);
+            main_bg[2].setBackground(white);
+            main_bg[4].setBackground(white);
+            main_bg[5].setBackground(white);
+        } else if (panel_name.getName().equals("statistic")) {
+            main_bg[4].setBackground(bg);
+            main_bg[0].setBackground(white);
+            main_bg[1].setBackground(white);
+            main_bg[2].setBackground(white);
+            main_bg[3].setBackground(white);
+            main_bg[5].setBackground(white);
+        } else if (panel_name.getName().equals("history")) {
+            main_bg[5].setBackground(bg);
+            main_bg[0].setBackground(white);
+            main_bg[1].setBackground(white);
+            main_bg[2].setBackground(white);
+            main_bg[3].setBackground(white);
+            main_bg[4].setBackground(white);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane ScrollPanelForHistory;
-    private javax.swing.JScrollPane ScrollPanelForHistory1;
-    private javax.swing.JScrollPane ScrollPanelForQueryTable;
-    private javax.swing.JScrollPane ScrollPanelForQueryTable1;
+    public javax.swing.JScrollPane ScrollPanelForHistory;
+    public javax.swing.JScrollPane ScrollPanelForHistory1;
+    public javax.swing.JScrollPane ScrollPanelForQueryTable;
+    public javax.swing.JScrollPane ScrollPanelForQueryTable1;
     private javax.swing.JMenuItem about_menuitem;
-    private javax.swing.JButton add_order_button;
+    public javax.swing.JButton add_order_button;
     private javax.swing.JMenuItem backup_menuitem;
     private javax.swing.JPanel billing_body_panel;
     private javax.swing.JButton billing_btn;
@@ -2840,12 +2835,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel body;
     private javax.swing.JButton cancel_reserve_button;
     private javax.swing.JMenuItem cancel_reserve_menuitem_btn;
-    private javax.swing.JTextField cash_input_box;
-    private javax.swing.JTextField change_box;
+    public javax.swing.JTextField cash_input_box;
+    public javax.swing.JTextField change_box;
     private static javax.swing.JPanel chart_panel;
     private javax.swing.JMenuItem check_for_update_menuitem;
     private javax.swing.JButton checkout_btn;
-    private javax.swing.JMenuItem clear_history_menuitem;
+    public javax.swing.JMenuItem clear_history_menuitem;
     private javax.swing.JMenuItem copy_menu_item;
     private javax.swing.JLabel cus_name_billing;
     private javax.swing.JLabel customer_order_label;
@@ -2861,6 +2856,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField edit_reserve_date_input;
     private javax.swing.JMenuItem edit_reserve_menuitem_btn;
     private javax.swing.JTextField edit_reserve_no_input;
+    private javax.swing.JPanel edit_reserve_panel;
     private javax.swing.JButton edit_reserve_save;
     private javax.swing.JLabel edit_reserve_seat;
     private javax.swing.JSpinner edit_reserve_seat_input;
@@ -2878,13 +2874,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton history_btn;
     private javax.swing.JMenuItem history_menuitem;
     private javax.swing.JPanel history_pane;
-    private javax.swing.JTable history_table;
+    public javax.swing.JTable history_table;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2893,7 +2888,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -2926,7 +2920,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel order_info_panel;
     private javax.swing.JPanel order_left_panel;
     private javax.swing.JPanel order_list_panel;
-    private javax.swing.JTable order_list_table;
+    public javax.swing.JTable order_list_table;
     private javax.swing.JMenuItem order_menuitem;
     private javax.swing.JTextField order_no_input;
     private javax.swing.JLabel order_no_label;
@@ -2987,15 +2981,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton table_9_btn;
     private javax.swing.JMenuItem table_cancel_reserve_btn;
     private javax.swing.JMenuItem table_checkout_btn;
-    private javax.swing.JTextField table_no_billing_input;
+    public javax.swing.JTextField table_no_billing_input;
     private javax.swing.JMenuItem table_order_btn;
     private javax.swing.JMenuItem table_reserve_btn;
     private javax.swing.JRadioButton take_home_option;
     private static final javax.swing.JTextField time_box = new javax.swing.JTextField();
     private javax.swing.JCheckBoxMenuItem toolbar_menuitem;
     private javax.swing.JMenu tools_menu;
-    private javax.swing.JTextField total_price;
-    private javax.swing.JTextField total_vat;
+    public javax.swing.JTextField total_price;
+    public javax.swing.JTextField total_vat;
     private javax.swing.JMenuItem undo_menu_item;
     private static final javax.swing.JTextField user_box = new javax.swing.JTextField();
     private javax.swing.JLabel username_label;

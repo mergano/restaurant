@@ -16,7 +16,7 @@ public class HistoryDAO {
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;
-    private final String history_table = "history";
+    private final String history_table = "kiyoshi.history";
     private String sql;
 
     public HistoryDAO() {

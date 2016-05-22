@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class OrderDAO extends ConnectDB {
 
-    private final String order_table = "order";
+    private final String order_table = "kiyoshi.order";
     private final String history_table = "history";
     private Connection conn;
     private PreparedStatement p = null;
@@ -29,7 +29,7 @@ public class OrderDAO extends ConnectDB {
     }
 
 // Display all data from product table
-    public ArrayList<OrderBean> getOrderData(int tableno) {
+    public ArrayList<OrderBean> getOrderData(int n) {
         ArrayList<OrderBean> order_list = new ArrayList<>();
 
         if (conn == null) {
@@ -38,8 +38,7 @@ public class OrderDAO extends ConnectDB {
                     JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
-            String sql = "SELECT * FROM " + order_table + " WHERE tableno = " + tableno + ";";
-            System.out.println(sql);
+            String sql = "SELECT * FROM " + order_table + " WHERE tableno =" + n + ";";
             try {
                 long start = java.lang.System.currentTimeMillis();
                 p = conn.prepareStatement(sql);
@@ -58,7 +57,7 @@ public class OrderDAO extends ConnectDB {
                     } while (rs.next());
                     // Benchmark time
                     long stop = java.lang.System.currentTimeMillis();
-                    System.out.println("JDBC query food table time: " + String.valueOf((stop - start)) + " ms");
+                    System.out.println("JDBC query order table time: " + String.valueOf((stop - start)) + " ms");
                 } else {
                     // ERROR CODE QUERY ERROR
                 }

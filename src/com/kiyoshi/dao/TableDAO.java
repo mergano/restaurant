@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public class TableDAO extends ConnectDB implements Table {
 
-    private final String table = "table";
+    private final String table = "kiyoshi.table";
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;

@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 public class ReserveDAO extends ConnectDB implements Reserve {
 
-    private final String table = "reserve";
-    private final String history_table = "history";
+    private final String table = "kiyoshi.reserve";
+    private final String history_table = "kiyoshi.history";
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;
@@ -55,7 +55,7 @@ public class ReserveDAO extends ConnectDB implements Reserve {
                     } while (rs.next());
                     // Benchmark time
                     long stop = java.lang.System.currentTimeMillis();
-                    System.out.println("JDBC query reserve list time: " + String.valueOf((stop - start)) + " ms");
+                    System.out.println("JDBC query reserve table time: " + String.valueOf((stop - start)) + " ms");
                 } else {
                     // ERROR CODE QUERY ERROR
                 }

@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 public class FoodDAO extends ConnectDB {
 
-    private final String food_table = "food";
-    private final String history_table = "history";
+    private final String food_table = "kiyoshi.food";
+    private final String history_table = "kiyoshi.history";
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;

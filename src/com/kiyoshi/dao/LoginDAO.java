@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class LoginDAO extends ConnectDB {
 
-    private final String table = "user";
+    private final String table = "kiyoshi.user";
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;

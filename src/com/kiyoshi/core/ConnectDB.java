@@ -46,7 +46,6 @@ public class ConnectDB extends LoadDriver {
 
         try {
             boolean internet = "127.0.0.1".equals(InetAddress.getLocalHost().getHostAddress());
-            System.out.println(internet);
             Class.forName(LoadDriver.getDriver()); // Registed JDBC DRIVER
             conn = DriverManager.getConnection(URL, info);
             conn.setAutoCommit(false);
