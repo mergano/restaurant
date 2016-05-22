@@ -1,10 +1,10 @@
 package com.kiyoshi.gui;
 
 import com.kiyoshi.bean.LoginBean;
-import com.kiyoshi.core.VerifyUser;
 import static com.kiyoshi.core.ClearGC.ClearGarbageCollection;
 import com.kiyoshi.core.Encryption;
 import com.kiyoshi.core.TextFieldLimit;
+import com.kiyoshi.core.VerifyUser;
 import java.awt.Desktop;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
@@ -359,7 +359,6 @@ public class Authenticate extends javax.swing.JFrame {
         if (user.length() != 0 && pwd.length != 0) {
             String encryptedUsername = Encryption.encrypt(user);
             String encryptedPassword = Encryption.encrypt(String.valueOf(pwd));
-            //String decryptedPassword = Encryption.decrypt("tm+m/bhBMk+fc6a/2ScztLdY+PzGUhih1oNUiGKv97lfHAeiRclBKyU6Wi2elCri");
             VerifyUser auth = new VerifyUser();
             int flag = auth.VerifyUser(encryptedUsername, encryptedPassword);
 

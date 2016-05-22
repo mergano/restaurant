@@ -2786,11 +2786,6 @@ public class Main extends javax.swing.JFrame {
         System.out.println("Reserve table updated");
     }
 
-    public void displayHistory() {
-        //backlog_table.setModel(new javax.swing.table.DefaultTableModel(valuesBL.toArray(new Object[][]{}), columnsBL.toArray()));
-        ScrollPanelForHistory.setViewportView(history_table);
-    }
-
     private void updateHistory(ArrayList<HistoryBean> list) {
         List<String[]> values = new ArrayList<>();
         List<String> columns = new ArrayList<>();
