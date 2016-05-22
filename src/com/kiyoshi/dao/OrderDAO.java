@@ -29,7 +29,7 @@ public class OrderDAO extends ConnectDB {
     }
 
 // Display all data from product table
-    public ArrayList<OrderBean> getOrder() {
+    public ArrayList<OrderBean> getOrderData() {
         ArrayList<OrderBean> order_list = new ArrayList<>();
 
         if (conn == null) {
@@ -38,7 +38,8 @@ public class OrderDAO extends ConnectDB {
                     JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
-            String sql = "SELECT idorder, tableno, food_name, quantity, price, create_datetime FROM " + order_table + " ORDER BY " + "category;";
+            String sql = "SELECT * FROM " + order_table + ";";
+            System.out.println(sql);
             try {
                 long start = java.lang.System.currentTimeMillis();
                 p = conn.prepareStatement(sql);
@@ -52,6 +53,7 @@ public class OrderDAO extends ConnectDB {
                         bean.setFoodName(rs.getString("food_name"));
                         bean.setQuantity(rs.getInt("quantity"));
                         bean.setPrice(rs.getDouble("price"));
+                        bean.setCreateDateTime(rs.getTimestamp("create_datetime"));
                         order_list.add(bean);
                     } while (rs.next());
                     // Benchmark time

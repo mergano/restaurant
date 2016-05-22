@@ -28,8 +28,8 @@ public class FoodDAO extends ConnectDB {
         }
     }
 
-// Display all data from product table
-    public ArrayList<FoodBean> getData() {
+// Display all food data from product table
+    public ArrayList<FoodBean> getFoodData() {
         ArrayList<FoodBean> food_list = new ArrayList<>();
 
         if (conn == null) {
@@ -38,7 +38,7 @@ public class FoodDAO extends ConnectDB {
                     JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
-            String sql = "SELECT idfood, category, name, price, quantity, status, image_name FROM " + food_table + " ORDER BY " + "category;";
+            String sql = "SELECT * FROM " + food_table + " ORDER BY " + "category;";
             try {
                 long start = java.lang.System.currentTimeMillis();
                 p = conn.prepareStatement(sql);
@@ -51,7 +51,6 @@ public class FoodDAO extends ConnectDB {
                         bean.setCategory(rs.getString("category"));
                         bean.setName(rs.getString("name"));
                         bean.setPrice(rs.getDouble("price"));
-                        bean.setQuantity(rs.getInt("quantity"));
                         bean.setStatus(rs.getString("status"));
                         bean.setImage_name(rs.getString("image_name"));
                         food_list.add(bean);
@@ -140,7 +139,7 @@ public class FoodDAO extends ConnectDB {
     }
 
     // Delete data from database
-    public boolean deleteData(FoodBean bean, int n) {
+    public boolean deleteFood(FoodBean bean, int n) {
         flag = false;
         try {
             String sql_delete = "DELETE FROM " + food_table + " WHERE idfood =" + n + ";";
@@ -164,12 +163,3 @@ public class FoodDAO extends ConnectDB {
         return flag;
     }
 }
-
-// DEBUG CODE
-//           ResultSetMetaData metadata = (ResultSetMetaData) rs.getMetaData();
-//           int cols = metadata.getColumnCount();
-//           String columnNames[] = new String[cols];
-//           for(int i=1; i<= cols; i++){
-//               System.out.println(metadata.getColumnLabel(i));
-//           }
-

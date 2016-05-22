@@ -1,5 +1,7 @@
 package com.kiyoshi.bean;
 
+import java.sql.Timestamp;
+
 public class OrderBean {
 
     private int idorder;
@@ -8,6 +10,16 @@ public class OrderBean {
     private double price;
     private int quantity;
     private String user;
+    private String timestamp;
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+    private String datetime;
 
     public String getCurrentUser() {
         return user;
@@ -55,6 +67,10 @@ public class OrderBean {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setCreateDateTime(Timestamp timestamp) {
+        this.timestamp = timestamp.toString();
     }
 
 }

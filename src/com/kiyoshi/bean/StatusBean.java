@@ -7,6 +7,7 @@ public class StatusBean {
     private static String port;
     private static String url;
     private static String dbName;
+    private static String username;
 
     //Setter and Getter for Connection status information
     public static String getStatus() {
@@ -48,4 +49,5 @@ public class StatusBean {
     public static void setDbName(String dbName) {
         StatusBean.dbName = dbName;
     }
+
 }

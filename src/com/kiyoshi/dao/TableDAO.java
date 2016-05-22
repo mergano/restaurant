@@ -95,9 +95,4 @@ public class TableDAO extends ConnectDB implements Table {
         return table_list;
     }
 
-    @Override
-    public ArrayList<HashMap> setTable(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

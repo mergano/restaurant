@@ -37,7 +37,7 @@ public class LoginDAO extends ConnectDB {
             p.setString(1, users);
             p.setString(2, passwd);
             rs = p.executeQuery();
-            do {
+            while (rs.next()) {
                 LoginBean bean = new LoginBean();
                 bean.setUsername(rs.getString("username"));
                 bean.setPassword(rs.getString("password"));
@@ -45,7 +45,7 @@ public class LoginDAO extends ConnectDB {
                 bean.setUserEmail(rs.getString("email"));
                 decryptUser = Encryption.decrypt(rs.getString("username"));
                 bean.setUserTxt(decryptUser);
-            } while (rs.next());
+            }
             //Clean-up environment
             conn.commit();
             p.close();

@@ -1,23 +1,31 @@
 package com.kiyoshi.gui;
 
+import com.kiyoshi.bean.BillingBean;
+import com.kiyoshi.bean.FoodBean;
+import com.kiyoshi.bean.HistoryBean;
+import com.kiyoshi.bean.ReserveBean;
 import com.kiyoshi.core.LogOut;
 import com.kiyoshi.core.Website;
-import com.kiyoshi.dao.TableDAO;
-import java.awt.Color;
+import com.kiyoshi.dao.BillingDAO;
+import com.kiyoshi.dao.FoodDAO;
+import com.kiyoshi.dao.HistoryDAO;
+import com.kiyoshi.dao.ReserveDAO;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.undo.UndoManager;
 
@@ -25,25 +33,14 @@ public class Main extends javax.swing.JFrame {
 
     UndoManager manager = new UndoManager(); // UNDO, REDO
     Website w = new Website();
+    DefaultTableModel mod;
 
     public Main(String username) {
         initComponents();
         user_box.setText(username);
         setClock();
-        setTableDashboard();
-
-    }
-
-    private void setTableDashboard() {
-        TableDAO db = new TableDAO();
-
-        try {
-            List<HashMap> list = new ArrayList<>(db.getTable());
-            System.out.println(list);
-
-        } catch (Exception e) {
-        }
-
+        initialReserveNo();
+        initialOrderNo();
     }
 
     /**
@@ -59,8 +56,10 @@ public class Main extends javax.swing.JFrame {
         table_reserve_btn = new javax.swing.JMenuItem();
         table_order_btn = new javax.swing.JMenuItem();
         table_checkout_btn = new javax.swing.JMenuItem();
-        table_detail_btn = new javax.swing.JMenuItem();
         table_cancel_reserve_btn = new javax.swing.JMenuItem();
+        reserve_popup_menu = new javax.swing.JPopupMenu();
+        edit_reserve_menuitem_btn = new javax.swing.JMenuItem();
+        cancel_reserve_menuitem_btn = new javax.swing.JMenuItem();
         header = new javax.swing.JPanel();
         main_dashboard_btn_box = new javax.swing.JPanel();
         dashboard_btn = new javax.swing.JButton();
@@ -105,55 +104,91 @@ public class Main extends javax.swing.JFrame {
         table_20_btn = new javax.swing.JButton();
         reserve_pane = new javax.swing.JPanel();
         left_reserve_panel = new javax.swing.JPanel();
+        reserve_table_panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        reserve_no_input = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        reserve_table_no_input = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        reserve_seat_input = new javax.swing.JSpinner();
+        reserve_table_btn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        edit_reserve_table_no_input = new javax.swing.JTextField();
+        edit_res_table_no_label = new javax.swing.JLabel();
+        edit_reserve_date_input = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        edit_reserve_no_input = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        edit_reserve_seat_input = new javax.swing.JSpinner();
+        edit_reserve_seat = new javax.swing.JLabel();
+        edit_reserve_save = new javax.swing.JButton();
         right_reserve_panel = new javax.swing.JPanel();
-        reserve_list_scroll = new javax.swing.JScrollPane();
-        reserve_list_table = new javax.swing.JTable();
+        sm_search_panel = new javax.swing.JPanel();
+        filter_column = new javax.swing.JComboBox();
+        search_reserve_box = new javax.swing.JTextField();
+        search_product_button = new javax.swing.JButton();
+        ScrollPanelForQueryTable = new javax.swing.JScrollPane();
+        reserve_table = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        edit_reserve_button = new javax.swing.JButton();
+        cancel_reserve_button = new javax.swing.JButton();
         order_pane = new javax.swing.JPanel();
         order_left_panel = new javax.swing.JPanel();
         order_info_panel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        order_no_label = new javax.swing.JLabel();
+        order_no_input = new javax.swing.JTextField();
+        customer_order_label = new javax.swing.JLabel();
         order_customer_name_input = new javax.swing.JTextField();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        take_home_option = new javax.swing.JRadioButton();
+        eat_here_option = new javax.swing.JRadioButton();
         order_list_panel = new javax.swing.JPanel();
-        order_list_scrol = new javax.swing.JScrollPane();
+        remove_order_btn = new javax.swing.JButton();
+        confirm_order_btn = new javax.swing.JButton();
+        ScrollPanelForHistory1 = new javax.swing.JScrollPane();
         order_list_table = new javax.swing.JTable();
         order_right_panel = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        ScrollPanelForQueryTable1 = new javax.swing.JScrollPane();
+        food_table = new javax.swing.JTable();
+        add_order_button = new javax.swing.JButton();
         billing_pane = new javax.swing.JPanel();
-        jButton21 = new javax.swing.JButton();
+        billing_body_panel = new javax.swing.JPanel();
+        cus_name_billing = new javax.swing.JLabel();
+        checkout_btn = new javax.swing.JButton();
+        table_no_billing_input = new javax.swing.JTextField();
+        total_price = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        total_vat = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        cash_input_box = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        change_box = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         statistic_pane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel23 = new javax.swing.JPanel();
-        jPanel17 = new javax.swing.JPanel();
-        jPanel22 = new javax.swing.JPanel();
+        chart_panel = new javax.swing.JPanel();
         history_pane = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ScrollPanelForHistory = new javax.swing.JScrollPane();
+        history_table = new javax.swing.JTable();
         footer = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        footer_inner_panel = new javax.swing.JPanel();
         username_label2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        search_table_box = new javax.swing.JTextField();
+        seat_reserve_input = new javax.swing.JLabel();
         search_table_btn = new javax.swing.JButton();
         username_label = new javax.swing.JLabel();
         username_label1 = new javax.swing.JLabel();
         username_label3 = new javax.swing.JLabel();
+        no_of_customer_input = new javax.swing.JSpinner();
         main_menubar = new javax.swing.JMenuBar();
         file_menu = new javax.swing.JMenu();
-        statistics_menuitem = new javax.swing.JMenuItem();
+        dashboard_menuitem = new javax.swing.JMenuItem();
         order_menuitem = new javax.swing.JMenuItem();
+        billing_menuitem = new javax.swing.JMenuItem();
+        statistics_menuitem = new javax.swing.JMenuItem();
+        history_menuitem = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         print_menuitem = new javax.swing.JMenuItem();
         printtohtml_menuitem = new javax.swing.JMenuItem();
@@ -162,9 +197,6 @@ public class Main extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         logout_menuitem = new javax.swing.JMenuItem();
         exit_program = new javax.swing.JMenuItem();
-        billing_menuitem = new javax.swing.JMenuItem();
-        order_menuitem2 = new javax.swing.JMenuItem();
-        order_menuitem3 = new javax.swing.JMenuItem();
         edit_menu = new javax.swing.JMenu();
         undo_menu_item = new javax.swing.JMenuItem();
         redo_menu_item = new javax.swing.JMenuItem();
@@ -179,7 +211,7 @@ public class Main extends javax.swing.JFrame {
         tools_menu = new javax.swing.JMenu();
         search_menuitem = new javax.swing.JMenuItem();
         backup_menuitem = new javax.swing.JMenuItem();
-        bookmark_menuitem = new javax.swing.JMenuItem();
+        clear_history_menuitem = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         preference_menuitem = new javax.swing.JMenuItem();
         help_menu = new javax.swing.JMenu();
@@ -208,19 +240,46 @@ public class Main extends javax.swing.JFrame {
 
         table_order_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         table_order_btn.setText("Order");
+        table_order_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_order_btnActionPerformed(evt);
+            }
+        });
         property_popup_menu.add(table_order_btn);
 
         table_checkout_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         table_checkout_btn.setText("Check out");
+        table_checkout_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                table_checkout_btnActionPerformed(evt);
+            }
+        });
         property_popup_menu.add(table_checkout_btn);
-
-        table_detail_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        table_detail_btn.setText("Detail");
-        property_popup_menu.add(table_detail_btn);
 
         table_cancel_reserve_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         table_cancel_reserve_btn.setText("Detail");
         property_popup_menu.add(table_cancel_reserve_btn);
+
+        reserve_popup_menu.setMinimumSize(new java.awt.Dimension(300, 200));
+        reserve_popup_menu.setPreferredSize(new java.awt.Dimension(300, 200));
+
+        edit_reserve_menuitem_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        edit_reserve_menuitem_btn.setText("Reserve");
+        edit_reserve_menuitem_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_reserve_menuitem_btnActionPerformed(evt);
+            }
+        });
+        reserve_popup_menu.add(edit_reserve_menuitem_btn);
+
+        cancel_reserve_menuitem_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cancel_reserve_menuitem_btn.setText("Detail");
+        cancel_reserve_menuitem_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_reserve_menuitem_btnActionPerformed(evt);
+            }
+        });
+        reserve_popup_menu.add(cancel_reserve_menuitem_btn);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
@@ -926,17 +985,131 @@ public class Main extends javax.swing.JFrame {
 
         reserve_pane.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Reserve Table"));
+        reserve_table_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reserve Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        reserve_table_panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Reserve No.");
+        reserve_table_panel.add(jLabel1);
+
+        reserve_no_input.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        reserve_no_input.setToolTipText("");
+        reserve_no_input.setMinimumSize(new java.awt.Dimension(100, 30));
+        reserve_no_input.setPreferredSize(new java.awt.Dimension(60, 30));
+        reserve_table_panel.add(reserve_no_input);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Table No.");
+        reserve_table_panel.add(jLabel2);
+
+        reserve_table_no_input.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        reserve_table_no_input.setToolTipText("");
+        reserve_table_no_input.setMinimumSize(new java.awt.Dimension(100, 30));
+        reserve_table_no_input.setPreferredSize(new java.awt.Dimension(100, 30));
+        reserve_table_panel.add(reserve_table_no_input);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Seat");
+        reserve_table_panel.add(jLabel3);
+
+        reserve_seat_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        reserve_seat_input.setModel(new javax.swing.SpinnerNumberModel(1, 1, 20, 1));
+        reserve_seat_input.setPreferredSize(new java.awt.Dimension(100, 30));
+        reserve_table_panel.add(reserve_seat_input);
+
+        reserve_table_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        reserve_table_btn.setText("Reserve");
+        reserve_table_btn.setMaximumSize(new java.awt.Dimension(120, 30));
+        reserve_table_btn.setMinimumSize(new java.awt.Dimension(120, 30));
+        reserve_table_btn.setPreferredSize(new java.awt.Dimension(120, 30));
+        reserve_table_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reserve_table_btnActionPerformed(evt);
+            }
+        });
+        reserve_table_panel.add(reserve_table_btn);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reservation Plan/ Edit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+
+        edit_reserve_table_no_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit_reserve_table_no_input.setEnabled(false);
+
+        edit_res_table_no_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit_res_table_no_label.setText("Table No.");
+
+        edit_reserve_date_input.setEnabled(false);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Datetime");
+
+        edit_reserve_no_input.setEditable(false);
+        edit_reserve_no_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setText("Reserve No.");
+
+        edit_reserve_seat_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit_reserve_seat_input.setEnabled(false);
+
+        edit_reserve_seat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit_reserve_seat.setText("Seat");
+
+        edit_reserve_save.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit_reserve_save.setText("Save");
+        edit_reserve_save.setEnabled(false);
+        edit_reserve_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_reserve_saveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(edit_reserve_no_input, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                            .addComponent(edit_reserve_date_input))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edit_res_table_no_label)
+                            .addComponent(edit_reserve_seat)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(edit_reserve_save, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(edit_reserve_seat_input, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                    .addComponent(edit_reserve_table_no_input))
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 148, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edit_reserve_no_input, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(edit_reserve_table_no_input, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit_res_table_no_label))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edit_reserve_seat_input, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(edit_reserve_date_input, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(edit_reserve_seat)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(edit_reserve_save, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout left_reserve_panelLayout = new javax.swing.GroupLayout(left_reserve_panel);
@@ -945,36 +1118,153 @@ public class Main extends javax.swing.JFrame {
             left_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_reserve_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGroup(left_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reserve_table_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         left_reserve_panelLayout.setVerticalGroup(
             left_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_reserve_panelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(reserve_table_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         reserve_pane.add(left_reserve_panel);
 
-        reserve_list_scroll.setBorder(javax.swing.BorderFactory.createTitledBorder("Reserve List"));
+        right_reserve_panel.setLayout(new java.awt.BorderLayout());
 
-        reserve_list_table.setAutoCreateRowSorter(true);
-        reserve_list_scroll.setViewportView(reserve_list_table);
+        sm_search_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
+        sm_search_panel.setMinimumSize(new java.awt.Dimension(100, 50));
+        sm_search_panel.setPreferredSize(new java.awt.Dimension(100, 70));
+        sm_search_panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
 
-        javax.swing.GroupLayout right_reserve_panelLayout = new javax.swing.GroupLayout(right_reserve_panel);
-        right_reserve_panel.setLayout(right_reserve_panelLayout);
-        right_reserve_panelLayout.setHorizontalGroup(
-            right_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(reserve_list_scroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+        filter_column.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        filter_column.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reserve No.", "Reserve Name.", "Reserve Datetime" }));
+        filter_column.setMinimumSize(new java.awt.Dimension(100, 30));
+        filter_column.setPreferredSize(new java.awt.Dimension(100, 30));
+        sm_search_panel.add(filter_column);
+
+        search_reserve_box.setMinimumSize(new java.awt.Dimension(100, 30));
+        search_reserve_box.setName("reserve_search"); // NOI18N
+        search_reserve_box.setPreferredSize(new java.awt.Dimension(400, 30));
+        search_reserve_box.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                search_reserve_boxKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                search_reserve_boxKeyReleased(evt);
+            }
+        });
+        sm_search_panel.add(search_reserve_box);
+
+        search_product_button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        search_product_button.setText("Search");
+        search_product_button.setPreferredSize(new java.awt.Dimension(100, 30));
+        search_product_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_product_buttonActionPerformed(evt);
+            }
+        });
+        sm_search_panel.add(search_product_button);
+
+        right_reserve_panel.add(sm_search_panel, java.awt.BorderLayout.NORTH);
+
+        ScrollPanelForQueryTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reserve List", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        ScrollPanelForQueryTable.setFont(new java.awt.Font("Segoe UI Light", 0, 11)); // NOI18N
+        ScrollPanelForQueryTable.setMinimumSize(new java.awt.Dimension(500, 430));
+        ScrollPanelForQueryTable.setPreferredSize(new java.awt.Dimension(500, 450));
+        ScrollPanelForQueryTable.setRequestFocusEnabled(false);
+
+        ArrayList<ReserveBean> list = null;
+        ReserveDAO db = new ReserveDAO();
+        try {
+            list = db.getReserveData();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] columns = {"Reserve No.", "Reserve Name", "Seat", "Datetime"};
+        Object[][] rows = new Object[list.size()][4];
+        for (int i = 0; i < list.size(); i++) {
+            rows[i][0] = list.get(i).getReserve_no();
+            rows[i][1] = list.get(i).getReserve_name();
+            rows[i][2] = list.get(i).getReserve_seat();
+            rows[i][3] = list.get(i).getReserve_datetime();
+        }
+        // set Model of JTabel from list array of data
+        reserve_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
+        reserve_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        reserve_table.getColumnModel().getColumn(0).setPreferredWidth(30);
+        reserve_table.getColumnModel().getColumn(1).setPreferredWidth(80);
+        reserve_table.getColumnModel().getColumn(2).setPreferredWidth(45);
+        reserve_table.getColumnModel().getColumn(3).setPreferredWidth(80);
+
+        // set the JTable into scroll panel
+        ScrollPanelForQueryTable.setViewportView(reserve_table);
+        reserve_table.setAutoCreateRowSorter(true);
+        reserve_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        reserve_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns)
+            {public boolean isCellEditable(int row, int column){return false;}}
         );
-        right_reserve_panelLayout.setVerticalGroup(
-            right_reserve_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(right_reserve_panelLayout.createSequentialGroup()
-                .addComponent(reserve_list_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 96, Short.MAX_VALUE))
-        );
+        reserve_table.setToolTipText("Reserve table");
+        reserve_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reserve_table.setFillsViewportHeight(true);
+        reserve_table.setGridColor(new java.awt.Color(204, 204, 204));
+        reserve_table.setName(""); // NOI18N
+        reserve_table.setRowHeight(20);
+        reserve_table.setRowMargin(3);
+        reserve_table.setSelectionBackground(new java.awt.Color(255, 51, 51));
+        reserve_table.setShowHorizontalLines(false);
+        reserve_table.setShowVerticalLines(false);
+        if (reserve_table.getRowCount() == 0) {
+            cancel_reserve_button.setEnabled(false);
+            edit_reserve_button.setEnabled(false);
+        }
+        reserve_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reserve_tableMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                reserve_tableMouseReleased(evt);
+            }
+        });
+        reserve_table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                reserve_tableKeyPressed(evt);
+            }
+        });
+        ScrollPanelForQueryTable.setViewportView(reserve_table);
+
+        right_reserve_panel.add(ScrollPanelForQueryTable, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
+
+        edit_reserve_button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit_reserve_button.setText("Edit Reserve");
+        edit_reserve_button.setPreferredSize(new java.awt.Dimension(130, 40));
+        edit_reserve_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_reserve_buttonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(edit_reserve_button);
+
+        cancel_reserve_button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cancel_reserve_button.setForeground(new java.awt.Color(255, 0, 0));
+        cancel_reserve_button.setText("Cancel Reserve");
+        cancel_reserve_button.setPreferredSize(new java.awt.Dimension(130, 40));
+        cancel_reserve_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_reserve_buttonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cancel_reserve_button);
+
+        right_reserve_panel.add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         reserve_pane.add(right_reserve_panel);
 
@@ -983,75 +1273,118 @@ public class Main extends javax.swing.JFrame {
         order_pane.setLayout(new java.awt.GridLayout(1, 2));
 
         order_info_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Order Information"));
+        order_info_panel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
 
-        jLabel4.setText("Customer Name:");
+        order_no_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        order_no_label.setText("Order No:");
+        order_info_panel.add(order_no_label);
 
-        jRadioButton2.setText("Take Home");
-        jRadioButton2.setToolTipText("");
+        order_no_input.setPreferredSize(new java.awt.Dimension(100, 30));
+        order_info_panel.add(order_no_input);
 
-        jRadioButton1.setLabel("Eat here");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        customer_order_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        customer_order_label.setText("Table No:");
+        order_info_panel.add(customer_order_label);
+
+        order_customer_name_input.setPreferredSize(new java.awt.Dimension(100, 30));
+        order_info_panel.add(order_customer_name_input);
+
+        take_home_option.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        take_home_option.setText("Take Home");
+        take_home_option.setToolTipText("");
+        order_info_panel.add(take_home_option);
+
+        eat_here_option.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        eat_here_option.setSelected(true);
+        eat_here_option.setLabel("Eat here");
+        eat_here_option.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                eat_here_optionActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout order_info_panelLayout = new javax.swing.GroupLayout(order_info_panel);
-        order_info_panel.setLayout(order_info_panelLayout);
-        order_info_panelLayout.setHorizontalGroup(
-            order_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(order_info_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(order_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(order_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(order_customer_name_input, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        order_info_panelLayout.setVerticalGroup(
-            order_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(order_info_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(order_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(order_customer_name_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(order_info_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        order_info_panel.add(eat_here_option);
 
         order_list_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Order List"));
 
-        order_list_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        remove_order_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        remove_order_btn.setForeground(new java.awt.Color(255, 0, 0));
+        remove_order_btn.setText("Remove Order");
+        remove_order_btn.setMinimumSize(new java.awt.Dimension(100, 30));
+        remove_order_btn.setPreferredSize(new java.awt.Dimension(100, 30));
 
-            },
-            new String [] {
-                "No.", "Order", "Quantities"
+        confirm_order_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        confirm_order_btn.setText("Confirm Order");
+        confirm_order_btn.setMinimumSize(new java.awt.Dimension(100, 30));
+        confirm_order_btn.setPreferredSize(new java.awt.Dimension(100, 30));
+        confirm_order_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirm_order_btnActionPerformed(evt);
             }
-        ));
-        order_list_scrol.setViewportView(order_list_table);
+        });
+
+        ScrollPanelForHistory1.setBorder(null);
+
+        ArrayList<com.kiyoshi.bean.OrderBean> listORD = null;
+        com.kiyoshi.dao.OrderDAO ordao = new com.kiyoshi.dao.OrderDAO();
+        try {
+            listORD = ordao.getOrderData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<Object[]> valuesORD = new ArrayList<>();
+        List<String> columnsORD = new ArrayList<>();
+        columnsORD.add("Order ID");
+        columnsORD.add("Table No");
+        columnsORD.add("Order Name");
+        columnsORD.add("Quantity");
+        columnsORD.add("Price");
+        columnsORD.add("Order Datetime");
+
+        for(int i =0; i< listORD.size(); i++) {
+            valuesORD.add(new Object[] {
+                listORD.get(i).getIdorder(),
+                listORD.get(i).getTableno(),
+                listORD.get(i).getFoodName(),
+                listORD.get(i).getQuantity(),
+                listORD.get(i).getPrice(),
+                listORD.get(i).getDatetime()
+            });
+        }
+        order_list_table.setAutoCreateRowSorter(true);
+        order_list_table.setModel(new javax.swing.table.DefaultTableModel(valuesORD.toArray(new Object[][] {}), columnsORD.toArray())
+            {public boolean isCellEditable(int row, int column){return false;}});
+        order_list_table.setFillsViewportHeight(true);
+        order_list_table.setShowHorizontalLines(false);
+        order_list_table.setShowVerticalLines(false);
+        ScrollPanelForHistory1.setViewportView(order_list_table);
 
         javax.swing.GroupLayout order_list_panelLayout = new javax.swing.GroupLayout(order_list_panel);
         order_list_panel.setLayout(order_list_panelLayout);
         order_list_panelLayout.setHorizontalGroup(
             order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(order_list_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(order_list_scrol, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addGroup(order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(order_list_panelLayout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(remove_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(confirm_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(order_list_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ScrollPanelForHistory1)))
                 .addContainerGap())
         );
         order_list_panelLayout.setVerticalGroup(
             order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(order_list_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(order_list_scrol, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(ScrollPanelForHistory1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remove_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirm_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout order_left_panelLayout = new javax.swing.GroupLayout(order_left_panel);
@@ -1060,568 +1393,722 @@ public class Main extends javax.swing.JFrame {
             order_left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(order_left_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(order_left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(order_info_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(order_list_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGroup(order_left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(order_list_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(order_info_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         order_left_panelLayout.setVerticalGroup(
             order_left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_left_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(order_info_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(order_list_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         order_pane.add(order_left_panel);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", "Salmon Sasimi", "250"},
-                {"2", "Salmon Teriyaki", "200"},
-                {"3", "California Roll", "300"},
-                {"4", "Tempura", null},
-                {"", null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "No.", "Menu", "Prices"
+        ScrollPanelForQueryTable1.setBackground(new java.awt.Color(255, 255, 255));
+        ScrollPanelForQueryTable1.setBorder(null);
+        ScrollPanelForQueryTable1.setFont(new java.awt.Font("Segoe UI Light", 0, 11)); // NOI18N
+        ScrollPanelForQueryTable1.setMinimumSize(new java.awt.Dimension(500, 430));
+        ScrollPanelForQueryTable1.setPreferredSize(new java.awt.Dimension(500, 450));
+        ScrollPanelForQueryTable1.setRequestFocusEnabled(false);
+
+        ArrayList<FoodBean> flist = null;
+        FoodDAO fdb = new FoodDAO();
+        try {
+            flist = fdb.getFoodData();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] fcolumns = {"#","Category","Name","Price","Status","Image"};
+        Object[][] frows = new Object[flist.size()][14];
+        for(int i =0; i< flist.size(); i++) {
+            //values.add(new Object[] {
+                frows[i][0] = flist.get(i).getIdfood();
+                frows[i][1] = flist.get(i).getCategory();
+                frows[i][2] = flist.get(i).getName();
+                frows[i][3] = flist.get(i).getPrice();
+                frows[i][4] = flist.get(i).getStatus();
+                if(flist.get(i).getFImage() != null) {
+                    ImageIcon image = new ImageIcon(new ImageIcon(flist.get(i).getFImage()).getImage().getScaledInstance(60,20,Image.SCALE_SMOOTH));
+                    frows[i][5] = flist.get(i).getFImage();
+                } else {
+                    frows[i][5] = null;
+                }
             }
-        )
-        {public boolean isCellEditable(int row,int column){
-            return false;
-        }}
-    );
-    jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            jTable2MouseClicked(evt);
-        }
-    });
-    jScrollPane4.setViewportView(jTable2);
+            food_table.setAutoCreateRowSorter(true);
+            food_table.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+            food_table.setModel(new javax.swing.table.DefaultTableModel(frows, fcolumns)
+                {public boolean isCellEditable(int row, int column){return false;}}
+            );
+            food_table.setToolTipText("Product table");
+            food_table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            food_table.setFillsViewportHeight(true);
+            food_table.setGridColor(new java.awt.Color(204, 204, 204));
+            food_table.setName(""); // NOI18N
+            food_table.setRowHeight(20);
+            food_table.setRowMargin(3);
+            food_table.setSelectionBackground(new java.awt.Color(255, 51, 51));
+            food_table.setShowHorizontalLines(false);
+            food_table.setShowVerticalLines(false);
+            food_table.getColumnModel().getColumn(0).setPreferredWidth(10);
+            food_table.getColumnModel().getColumn(1).setPreferredWidth(30);
+            food_table.getColumnModel().getColumn(2).setPreferredWidth(30);
+            food_table.getColumnModel().getColumn(3).setPreferredWidth(30);
+            food_table.getColumnModel().getColumn(4).setPreferredWidth(30);
+            food_table.getColumnModel().getColumn(5).setPreferredWidth(100);
 
-    javax.swing.GroupLayout order_right_panelLayout = new javax.swing.GroupLayout(order_right_panel);
-    order_right_panel.setLayout(order_right_panelLayout);
-    order_right_panelLayout.setHorizontalGroup(
-        order_right_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(order_right_panelLayout.createSequentialGroup()
-            .addGap(187, 187, 187)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(317, Short.MAX_VALUE))
-    );
-    order_right_panelLayout.setVerticalGroup(
-        order_right_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(order_right_panelLayout.createSequentialGroup()
-            .addGap(51, 51, 51)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
+            if (food_table.getRowCount() == 0) {
+                add_order_button.setEnabled(false);
+            }
+            food_table.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    food_tableMouseClicked(evt);
+                }
+                public void mouseReleased(java.awt.event.MouseEvent evt) {
+                    food_tableMouseReleased(evt);
+                }
+            });
+            food_table.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    food_tableKeyPressed(evt);
+                }
+            });
+            ScrollPanelForQueryTable1.setViewportView(food_table);
 
-    order_pane.add(order_right_panel);
+            add_order_button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            add_order_button.setText("Add Order");
+            add_order_button.setMinimumSize(new java.awt.Dimension(100, 30));
+            add_order_button.setPreferredSize(new java.awt.Dimension(100, 30));
+            add_order_button.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    add_order_buttonActionPerformed(evt);
+                }
+            });
 
-    body.add(order_pane, "card4");
+            javax.swing.GroupLayout order_right_panelLayout = new javax.swing.GroupLayout(order_right_panel);
+            order_right_panel.setLayout(order_right_panelLayout);
+            order_right_panelLayout.setHorizontalGroup(
+                order_right_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_right_panelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ScrollPanelForQueryTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+                .addGroup(order_right_panelLayout.createSequentialGroup()
+                    .addGap(323, 323, 323)
+                    .addComponent(add_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            order_right_panelLayout.setVerticalGroup(
+                order_right_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_right_panelLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ScrollPanelForQueryTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(add_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
 
-    jButton21.setText("Print");
-    jButton21.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton21ActionPerformed(evt);
-        }
-    });
+            order_pane.add(order_right_panel);
 
-    jLabel7.setText("Date / Timeout : ");
+            body.add(order_pane, "card4");
 
-    jLabel8.setText("Customer name : ");
+            billing_body_panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Checkout", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-    jLabel9.setText("Table no :");
+            cus_name_billing.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            cus_name_billing.setText("Table No.");
 
-    jButton1.setText("Finish");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton1ActionPerformed(evt);
-        }
-    });
+            checkout_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            checkout_btn.setText("Checkout");
+            checkout_btn.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    checkout_btnActionPerformed(evt);
+                }
+            });
 
-    jScrollPane9.setViewportView(jTextPane3);
+            table_no_billing_input.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            table_no_billing_input.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    table_no_billing_inputKeyPressed(evt);
+                }
+            });
 
-    jScrollPane10.setViewportView(jTextPane4);
+            total_price.setEditable(false);
+            total_price.setBackground(new java.awt.Color(255, 255, 255));
+            total_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-    jLabel13.setText("Calculater");
+            jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            jLabel6.setText("VAT 7%");
 
-    javax.swing.GroupLayout billing_paneLayout = new javax.swing.GroupLayout(billing_pane);
-    billing_pane.setLayout(billing_paneLayout);
-    billing_paneLayout.setHorizontalGroup(
-        billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(billing_paneLayout.createSequentialGroup()
-            .addGap(275, 275, 275)
-            .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel9)
+            jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel7.setText("THB");
+
+            total_vat.setEditable(false);
+            total_vat.setBackground(new java.awt.Color(255, 255, 255));
+            total_vat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+            jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            jLabel8.setText("Total");
+
+            jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel9.setText("THB");
+
+            cash_input_box.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            cash_input_box.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    cash_input_boxKeyPressed(evt);
+                }
+            });
+
+            jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            jLabel10.setText("Cash");
+
+            jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel11.setText("THB");
+
+            change_box.setEditable(false);
+            change_box.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+            jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+            jLabel12.setText("Change");
+
+            jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel13.setText("THB");
+
+            javax.swing.GroupLayout billing_body_panelLayout = new javax.swing.GroupLayout(billing_body_panel);
+            billing_body_panel.setLayout(billing_body_panelLayout);
+            billing_body_panelLayout.setHorizontalGroup(
+                billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(billing_body_panelLayout.createSequentialGroup()
+                    .addGap(519, 519, 519)
+                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, billing_body_panelLayout.createSequentialGroup()
+                            .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(billing_body_panelLayout.createSequentialGroup()
+                                    .addComponent(cus_name_billing)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(table_no_billing_input, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(billing_body_panelLayout.createSequentialGroup()
+                                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel12))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(total_vat, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                        .addComponent(total_price)
+                                        .addComponent(cash_input_box)
+                                        .addComponent(change_box))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel13))
+                            .addGap(440, 440, 440))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, billing_body_panelLayout.createSequentialGroup()
+                            .addComponent(checkout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(544, 544, 544))))
+            );
+            billing_body_panelLayout.setVerticalGroup(
+                billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, billing_body_panelLayout.createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(table_no_billing_input, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cus_name_billing))
+                    .addGap(18, 18, 18)
+                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(total_vat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel7))
+                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(billing_body_panelLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9)
+                            .addGap(43, 43, 43))
+                        .addGroup(billing_body_panelLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(total_price, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cash_input_box, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel13))
+                    .addGap(34, 34, 34)
+                    .addGroup(billing_body_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(change_box, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12)
+                        .addComponent(jLabel11))
+                    .addGap(33, 33, 33)
+                    .addComponent(checkout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(38, 38, 38))
+            );
+
+            javax.swing.GroupLayout billing_paneLayout = new javax.swing.GroupLayout(billing_pane);
+            billing_pane.setLayout(billing_paneLayout);
+            billing_paneLayout.setHorizontalGroup(
+                billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(billing_paneLayout.createSequentialGroup()
-                    .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel8))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap()
+                    .addComponent(billing_body_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
+            billing_paneLayout.setVerticalGroup(
+                billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(billing_paneLayout.createSequentialGroup()
-                    .addGap(106, 106, 106)
-                    .addComponent(jButton21)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton1)))
-            .addGap(94, 94, 94)
-            .addComponent(jLabel13)
-            .addContainerGap(715, Short.MAX_VALUE))
-    );
-    billing_paneLayout.setVerticalGroup(
-        billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, billing_paneLayout.createSequentialGroup()
-            .addGap(30, 30, 30)
-            .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jLabel7)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel13))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel8)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jLabel9)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
-            .addGroup(billing_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton21)
-                .addComponent(jButton1))
-            .addGap(73, 73, 73))
-    );
+                    .addContainerGap()
+                    .addComponent(billing_body_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
+            );
 
-    body.add(billing_pane, "card4");
+            body.add(billing_pane, "card4");
 
-    statistic_pane.setLayout(new java.awt.BorderLayout());
+            statistic_pane.setLayout(new java.awt.BorderLayout());
 
-    jTabbedPane1.setPreferredSize(new java.awt.Dimension(32767, 32767));
-    jTabbedPane1.setRequestFocusEnabled(false);
+            jTabbedPane1.setPreferredSize(new java.awt.Dimension(32767, 32767));
+            jTabbedPane1.setRequestFocusEnabled(false);
 
-    javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-    jPanel23.setLayout(jPanel23Layout);
-    jPanel23Layout.setHorizontalGroup(
-        jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 32762, Short.MAX_VALUE)
-    );
-    jPanel23Layout.setVerticalGroup(
-        jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 32739, Short.MAX_VALUE)
-    );
+            javax.swing.GroupLayout chart_panelLayout = new javax.swing.GroupLayout(chart_panel);
+            chart_panel.setLayout(chart_panelLayout);
+            chart_panelLayout.setHorizontalGroup(
+                chart_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 1627, Short.MAX_VALUE)
+            );
+            chart_panelLayout.setVerticalGroup(
+                chart_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 455, Short.MAX_VALUE)
+            );
 
-    jTabbedPane1.addTab("Overview", jPanel23);
+            jTabbedPane1.addTab("Revenue", chart_panel);
 
-    javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-    jPanel17.setLayout(jPanel17Layout);
-    jPanel17Layout.setHorizontalGroup(
-        jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 32762, Short.MAX_VALUE)
-    );
-    jPanel17Layout.setVerticalGroup(
-        jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 32739, Short.MAX_VALUE)
-    );
+            statistic_pane.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
-    jTabbedPane1.addTab("Revenue", jPanel17);
+            body.add(statistic_pane, "card4");
 
-    javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-    jPanel22.setLayout(jPanel22Layout);
-    jPanel22Layout.setHorizontalGroup(
-        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 32762, Short.MAX_VALUE)
-    );
-    jPanel22Layout.setVerticalGroup(
-        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 32739, Short.MAX_VALUE)
-    );
+            history_pane.setLayout(new java.awt.BorderLayout());
 
-    jTabbedPane1.addTab("Order stat", jPanel22);
+            ScrollPanelForHistory.setBorder(null);
 
-    statistic_pane.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+            ArrayList<com.kiyoshi.bean.HistoryBean> listHIS = null;
+            com.kiyoshi.dao.HistoryDAO hisdao = new com.kiyoshi.dao.HistoryDAO();
+            try {
+                listHIS = hisdao.getHistoryData();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            List<String[]> valuesHIS = new ArrayList<>();
+            List<String> columnsHIS = new ArrayList<>();
+            columnsHIS.add("#");
+            columnsHIS.add("Type");
+            columnsHIS.add("Action detail");
+            columnsHIS.add("Date modified");
+            columnsHIS.add("Time");
+            columnsHIS.add("Username");
 
-    body.add(statistic_pane, "card4");
+            for(int i =0; i< listHIS.size(); i++) {
+                valuesHIS.add(new String[] {"" +
+                    listHIS.get(i).getHistoryID(),
+                    listHIS.get(i).getActionType(),
+                    listHIS.get(i).getActionDetail(),
+                    listHIS.get(i).getHistoryDate(),
+                    listHIS.get(i).getHistoryTime(),
+                    listHIS.get(i).getUser()
+                });
+            }
+            history_table.setAutoCreateRowSorter(true);
+            history_table.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+            history_table.setModel(new javax.swing.table.DefaultTableModel(valuesHIS.toArray(new Object[][] {}), columnsHIS.toArray())
+                {public boolean isCellEditable(int row, int column){return false;}});
+            history_table.setFillsViewportHeight(true);
+            history_table.setShowHorizontalLines(false);
+            history_table.setShowVerticalLines(false);
+            if (history_table.getRowCount() == 0) {
+                clear_history_menuitem.setEnabled(false);
+            }
+            ScrollPanelForHistory.setViewportView(history_table);
 
-    history_pane.setLayout(new java.awt.BorderLayout());
+            history_pane.add(ScrollPanelForHistory, java.awt.BorderLayout.CENTER);
 
-    jTable1.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
-        },
-        new String [] {
-            "Title 1", "Title 2", "Title 3", "Title 4"
-        }
-    ));
-    jScrollPane2.setViewportView(jTable1);
+            body.add(history_pane, "card4");
 
-    history_pane.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+            getContentPane().add(body, java.awt.BorderLayout.CENTER);
 
-    body.add(history_pane, "card4");
+            footer.setPreferredSize(new java.awt.Dimension(1426, 75));
+            footer.setLayout(new java.awt.BorderLayout());
 
-    getContentPane().add(body, java.awt.BorderLayout.CENTER);
+            footer_inner_panel.setPreferredSize(new java.awt.Dimension(343, 75));
 
-    footer.setPreferredSize(new java.awt.Dimension(1426, 75));
-    footer.setLayout(new java.awt.BorderLayout());
+            username_label2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            username_label2.setText("Time");
 
-    jPanel2.setPreferredSize(new java.awt.Dimension(343, 75));
+            seat_reserve_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            seat_reserve_input.setText("No. of Customers");
 
-    username_label2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    username_label2.setText("Time");
+            search_table_btn.setBackground(new java.awt.Color(255, 255, 255));
+            search_table_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            search_table_btn.setText("Reserve Queue");
+            search_table_btn.setBorder(null);
+            search_table_btn.setBorderPainted(false);
 
-    jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    jLabel1.setText("Search Table");
+            username_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            username_label.setText("Username");
 
-    search_table_box.setPreferredSize(new java.awt.Dimension(200, 35));
-    search_table_box.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            search_table_boxFocusGained(evt);
-        }
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            search_table_boxFocusLost(evt);
-        }
-    });
+            user_box.setEditable(false);
+            user_box.setBackground(new java.awt.Color(255, 255, 255));
+            user_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            user_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+            user_box.setPreferredSize(new java.awt.Dimension(45, 35));
 
-    search_table_btn.setBackground(new java.awt.Color(255, 255, 255));
-    search_table_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    search_table_btn.setText("Search");
-    search_table_btn.setBorder(null);
-    search_table_btn.setBorderPainted(false);
+            queue_box.setEditable(false);
+            queue_box.setBackground(new java.awt.Color(255, 255, 255));
+            queue_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            queue_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-    username_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    username_label.setText("Username");
+            username_label1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            username_label1.setText("Current Queue");
 
-    user_box.setEditable(false);
-    user_box.setBackground(new java.awt.Color(255, 255, 255));
-    user_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    user_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    user_box.setPreferredSize(new java.awt.Dimension(45, 35));
+            time_box.setEditable(false);
+            time_box.setBackground(new java.awt.Color(255, 255, 255));
+            time_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            time_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-    queue_box.setEditable(false);
-    queue_box.setBackground(new java.awt.Color(255, 255, 255));
-    queue_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    queue_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+            date_box.setEditable(false);
+            date_box.setBackground(new java.awt.Color(255, 255, 255));
+            date_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            date_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-    username_label1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    username_label1.setText("Current Queue");
+            username_label3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            username_label3.setText("Date");
 
-    time_box.setEditable(false);
-    time_box.setBackground(new java.awt.Color(255, 255, 255));
-    time_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    time_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+            no_of_customer_input.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            no_of_customer_input.setModel(new javax.swing.SpinnerNumberModel(1, 1, 20, 1));
 
-    date_box.setEditable(false);
-    date_box.setBackground(new java.awt.Color(255, 255, 255));
-    date_box.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    date_box.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-    username_label3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    username_label3.setText("Date");
-
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel2Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jLabel1)
-            .addGap(18, 18, 18)
-            .addComponent(search_table_box, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(search_table_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(username_label1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(queue_box, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(username_label3)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(date_box, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addComponent(username_label2)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(time_box, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addComponent(username_label)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap())
-    );
-    jPanel2Layout.setVerticalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel2Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(search_table_box, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(search_table_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+            javax.swing.GroupLayout footer_inner_panelLayout = new javax.swing.GroupLayout(footer_inner_panel);
+            footer_inner_panel.setLayout(footer_inner_panelLayout);
+            footer_inner_panelLayout.setHorizontalGroup(
+                footer_inner_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(footer_inner_panelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(seat_reserve_input)
+                    .addGap(18, 18, 18)
+                    .addComponent(no_of_customer_input, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(26, 26, 26)
+                    .addComponent(search_table_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(username_label1)
-                    .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(queue_box, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(username_label3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(date_box, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
                     .addComponent(username_label2)
-                    .addComponent(time_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(time_box, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
                     .addComponent(username_label)
-                    .addComponent(queue_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(date_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username_label3)))
-            .addContainerGap(29, Short.MAX_VALUE))
-    );
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(302, Short.MAX_VALUE))
+            );
+            footer_inner_panelLayout.setVerticalGroup(
+                footer_inner_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(footer_inner_panelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(footer_inner_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(footer_inner_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(seat_reserve_input)
+                            .addComponent(no_of_customer_input, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(search_table_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(footer_inner_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(username_label1)
+                            .addComponent(user_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username_label2)
+                            .addComponent(time_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username_label)
+                            .addComponent(queue_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username_label3)))
+                    .addContainerGap(29, Short.MAX_VALUE))
+            );
 
-    footer.add(jPanel2, java.awt.BorderLayout.CENTER);
+            footer.add(footer_inner_panel, java.awt.BorderLayout.CENTER);
 
-    getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
+            getContentPane().add(footer, java.awt.BorderLayout.SOUTH);
 
-    file_menu.setText("File");
+            file_menu.setText("File");
 
-    statistics_menuitem.setLabel("Statistics");
-    statistics_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            statistic_btnActionPerformed(evt);
-        }
-    });
-    file_menu.add(statistics_menuitem);
+            dashboard_menuitem.setText("Dashboard");
+            dashboard_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    dashboard_menuitemstatistic_btnActionPerformed(evt);
+                }
+            });
+            file_menu.add(dashboard_menuitem);
 
-    order_menuitem.setText("Order");
-    order_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            order_menuitemstatistic_btnActionPerformed(evt);
-        }
-    });
-    file_menu.add(order_menuitem);
-    file_menu.add(jSeparator7);
+            order_menuitem.setText("Order");
+            order_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    order_menuitemstatistic_btnActionPerformed(evt);
+                }
+            });
+            file_menu.add(order_menuitem);
 
-    print_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-    print_menuitem.setText("Print...");
-    file_menu.add(print_menuitem);
+            billing_menuitem.setText("Billing");
+            billing_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    billing_menuitemstatistic_btnActionPerformed(evt);
+                }
+            });
+            file_menu.add(billing_menuitem);
 
-    printtohtml_menuitem.setText("Print to HTML");
-    file_menu.add(printtohtml_menuitem);
+            statistics_menuitem.setLabel("Statistics");
+            statistics_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    statistic_btnActionPerformed(evt);
+                }
+            });
+            file_menu.add(statistics_menuitem);
 
-    page_setup_menuitem.setText("Page Setup...");
-    file_menu.add(page_setup_menuitem);
+            history_menuitem.setText("History");
+            history_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    history_menuitemstatistic_btnActionPerformed(evt);
+                }
+            });
+            file_menu.add(history_menuitem);
+            file_menu.add(jSeparator7);
 
-    print_preview_menuitem.setText("Print Preview...");
-    file_menu.add(print_preview_menuitem);
-    file_menu.add(jSeparator2);
+            print_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+            print_menuitem.setText("Print...");
+            file_menu.add(print_menuitem);
 
-    logout_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-    logout_menuitem.setText("Logout");
-    logout_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            logout_menuitemActionPerformed(evt);
-        }
-    });
-    file_menu.add(logout_menuitem);
+            printtohtml_menuitem.setText("Print to HTML");
+            file_menu.add(printtohtml_menuitem);
 
-    exit_program.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
-    exit_program.setText("Exit");
-    exit_program.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            exit_programActionPerformed(evt);
-        }
-    });
-    file_menu.add(exit_program);
+            page_setup_menuitem.setText("Page Setup...");
+            file_menu.add(page_setup_menuitem);
 
-    billing_menuitem.setText("Order");
-    billing_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            billing_menuitemstatistic_btnActionPerformed(evt);
-        }
-    });
-    file_menu.add(billing_menuitem);
+            print_preview_menuitem.setText("Print Preview...");
+            file_menu.add(print_preview_menuitem);
+            file_menu.add(jSeparator2);
 
-    order_menuitem2.setText("Order");
-    order_menuitem2.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            order_menuitem2statistic_btnActionPerformed(evt);
-        }
-    });
-    file_menu.add(order_menuitem2);
+            logout_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+            logout_menuitem.setText("Logout");
+            logout_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    logout_menuitemActionPerformed(evt);
+                }
+            });
+            file_menu.add(logout_menuitem);
 
-    order_menuitem3.setText("Order");
-    order_menuitem3.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            order_menuitem3statistic_btnActionPerformed(evt);
-        }
-    });
-    file_menu.add(order_menuitem3);
+            exit_program.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+            exit_program.setText("Exit");
+            exit_program.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    exit_programActionPerformed(evt);
+                }
+            });
+            file_menu.add(exit_program);
 
-    main_menubar.add(file_menu);
+            main_menubar.add(file_menu);
 
-    edit_menu.setText("Edit");
+            edit_menu.setText("Edit");
 
-    undo_menu_item.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-    undo_menu_item.setText("Undo");
-    undo_menu_item.setEnabled(false);
-    edit_menu.add(undo_menu_item);
+            undo_menu_item.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+            undo_menu_item.setText("Undo");
+            undo_menu_item.setEnabled(false);
+            edit_menu.add(undo_menu_item);
 
-    redo_menu_item.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
-    redo_menu_item.setText("Redo");
-    redo_menu_item.setEnabled(false);
-    redo_menu_item.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            redo_menu_itemActionPerformed(evt);
-        }
-    });
-    edit_menu.add(redo_menu_item);
-    edit_menu.add(jSeparator8);
+            redo_menu_item.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+            redo_menu_item.setText("Redo");
+            redo_menu_item.setEnabled(false);
+            redo_menu_item.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    redo_menu_itemActionPerformed(evt);
+                }
+            });
+            edit_menu.add(redo_menu_item);
+            edit_menu.add(jSeparator8);
 
-    cut_menu_item.setMnemonic(KeyEvent.VK_X);
-    cut_menu_item.setText("Cut");
-    cut_menu_item.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            cut_menu_itemActionPerformed(evt);
-        }
-    });
-    edit_menu.add(cut_menu_item);
+            cut_menu_item.setMnemonic(KeyEvent.VK_X);
+            cut_menu_item.setText("Cut");
+            cut_menu_item.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    cut_menu_itemActionPerformed(evt);
+                }
+            });
+            edit_menu.add(cut_menu_item);
 
-    copy_menu_item.setMnemonic(KeyEvent.VK_C);
-    copy_menu_item.setText("Copy");
-    edit_menu.add(copy_menu_item);
+            copy_menu_item.setMnemonic(KeyEvent.VK_C);
+            copy_menu_item.setText("Copy");
+            edit_menu.add(copy_menu_item);
 
-    paste_menu_item.setMnemonic(KeyEvent.VK_V);
-    paste_menu_item.setText("Paste");
-    edit_menu.add(paste_menu_item);
+            paste_menu_item.setMnemonic(KeyEvent.VK_V);
+            paste_menu_item.setText("Paste");
+            edit_menu.add(paste_menu_item);
 
-    select_all_menu_item.setText("Select All");
-    select_all_menu_item.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            select_all_menu_itemActionPerformed(evt);
-        }
-    });
-    edit_menu.add(select_all_menu_item);
+            select_all_menu_item.setText("Select All");
+            select_all_menu_item.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    select_all_menu_itemActionPerformed(evt);
+                }
+            });
+            edit_menu.add(select_all_menu_item);
 
-    main_menubar.add(edit_menu);
+            main_menubar.add(edit_menu);
 
-    view_menu.setText("View");
-    view_menu.setToolTipText("");
+            view_menu.setText("View");
+            view_menu.setToolTipText("");
 
-    toolbar_menuitem.setSelected(true);
-    toolbar_menuitem.setText("Show Toolbar");
-    toolbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            toolbar_menuitemActionPerformed(evt);
-        }
-    });
-    view_menu.add(toolbar_menuitem);
+            toolbar_menuitem.setSelected(true);
+            toolbar_menuitem.setText("Show Toolbar");
+            toolbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    toolbar_menuitemActionPerformed(evt);
+                }
+            });
+            view_menu.add(toolbar_menuitem);
 
-    statusbar_menuitem.setSelected(true);
-    statusbar_menuitem.setText("Show Status bar");
-    statusbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            statusbar_menuitemActionPerformed(evt);
-        }
-    });
-    view_menu.add(statusbar_menuitem);
+            statusbar_menuitem.setSelected(true);
+            statusbar_menuitem.setText("Show Status bar");
+            statusbar_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    statusbar_menuitemActionPerformed(evt);
+                }
+            });
+            view_menu.add(statusbar_menuitem);
 
-    main_menubar.add(view_menu);
+            main_menubar.add(view_menu);
 
-    tools_menu.setText("Tools");
+            tools_menu.setText("Tools");
 
-    search_menuitem.setText("Search...");
-    tools_menu.add(search_menuitem);
+            search_menuitem.setText("Search...");
+            tools_menu.add(search_menuitem);
 
-    backup_menuitem.setText("Backup");
-    tools_menu.add(backup_menuitem);
+            backup_menuitem.setText("Backup");
+            tools_menu.add(backup_menuitem);
 
-    bookmark_menuitem.setText("Bookmarks");
-    tools_menu.add(bookmark_menuitem);
-    tools_menu.add(jSeparator6);
+            clear_history_menuitem.setText("Clear Recent History");
+            clear_history_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    clear_history_menuitemActionPerformed(evt);
+                }
+            });
+            tools_menu.add(clear_history_menuitem);
+            tools_menu.add(jSeparator6);
 
-    preference_menuitem.setText("Preference");
-    preference_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            preference_menuitemActionPerformed(evt);
-        }
-    });
-    tools_menu.add(preference_menuitem);
+            preference_menuitem.setText("Preference");
+            preference_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    preference_menuitemActionPerformed(evt);
+                }
+            });
+            tools_menu.add(preference_menuitem);
 
-    main_menubar.add(tools_menu);
+            main_menubar.add(tools_menu);
 
-    help_menu.setText("Help");
+            help_menu.setText("Help");
 
-    help_contents_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-    help_contents_menuitem.setText("Help Contents");
-    help_contents_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            help_contents_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(help_contents_menuitem);
+            help_contents_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+            help_contents_menuitem.setText("Help Contents");
+            help_contents_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    help_contents_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(help_contents_menuitem);
 
-    online_docs_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
-    online_docs_menuitem.setText("Online Docs and Support");
-    online_docs_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            online_docs_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(online_docs_menuitem);
+            online_docs_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.SHIFT_MASK));
+            online_docs_menuitem.setText("Online Docs and Support");
+            online_docs_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    online_docs_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(online_docs_menuitem);
 
-    keyboard_shortcuts_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-    keyboard_shortcuts_menuitem.setText("Keyboard shortcuts");
-    keyboard_shortcuts_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            keyboard_shortcuts_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(keyboard_shortcuts_menuitem);
-    help_menu.add(jSeparator5);
+            keyboard_shortcuts_menuitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+            keyboard_shortcuts_menuitem.setText("Keyboard shortcuts");
+            keyboard_shortcuts_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    keyboard_shortcuts_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(keyboard_shortcuts_menuitem);
+            help_menu.add(jSeparator5);
 
-    report_bug_menuitem.setText("Report Bug...");
-    report_bug_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            report_bug_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(report_bug_menuitem);
+            report_bug_menuitem.setText("Report Bug...");
+            report_bug_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    report_bug_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(report_bug_menuitem);
 
-    feedback_menuitem.setText("Feedback...");
-    feedback_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            feedback_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(feedback_menuitem);
+            feedback_menuitem.setText("Feedback...");
+            feedback_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    feedback_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(feedback_menuitem);
 
-    website_menuitem.setText("Website..");
-    website_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            website_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(website_menuitem);
-    help_menu.add(jSeparator4);
+            website_menuitem.setText("Website..");
+            website_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    website_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(website_menuitem);
+            help_menu.add(jSeparator4);
 
-    check_for_update_menuitem.setText("Check for Updates");
-    check_for_update_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            check_for_update_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(check_for_update_menuitem);
+            check_for_update_menuitem.setText("Check for Updates");
+            check_for_update_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    check_for_update_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(check_for_update_menuitem);
 
-    about_menuitem.setText("About");
-    about_menuitem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            about_menuitemActionPerformed(evt);
-        }
-    });
-    help_menu.add(about_menuitem);
+            about_menuitem.setText("About");
+            about_menuitem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    about_menuitemActionPerformed(evt);
+                }
+            });
+            help_menu.add(about_menuitem);
 
-    main_menubar.add(help_menu);
+            main_menubar.add(help_menu);
 
-    setJMenuBar(main_menubar);
+            setJMenuBar(main_menubar);
 
-    pack();
-    setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+            setLocationRelativeTo(null);
+        }// </editor-fold>//GEN-END:initComponents
+    private void drawChart() {
+        statistic_pane.add(DrawGraph.createAndShowGui());
+        statistic_pane.validate();
+        statistic_pane.setVisible(true);
+    }
+
+    private void initialReserveNo() {
+        reserve_no_input.setText(String.valueOf(reserve_table.getRowCount() + 1));
+    }
+
+    private void initialOrderNo() {
+        order_no_input.setText(String.valueOf(order_list_table.getRowCount() + 1));
+    }
 
     private void setClock() {
         Thread clock;
@@ -1643,6 +2130,7 @@ public class Main extends javax.swing.JFrame {
         };
         clock.start();
     }
+
     private void reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_btnActionPerformed
         setPane(reserve_pane);
     }//GEN-LAST:event_reserve_btnActionPerformed
@@ -1760,7 +2248,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_order_btnActionPerformed
 
     private void table_reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_reserve_btnActionPerformed
-        // TODO add your handling code here:
+        String table_no = ((JButton) evt.getSource()).getName();
+        table_reserve_btn.setText("Reserve Table No. " + table_no);
+        setPane(reserve_pane);
+        reserve_table_no_input.setText(table_no + "\n");
     }//GEN-LAST:event_table_reserve_btnActionPerformed
 
     private void table_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_btnActionPerformed
@@ -1772,58 +2263,37 @@ public class Main extends javax.swing.JFrame {
             property_popup_menu.show(evt.getComponent(), evt.getX(), evt.getY());
             String table_no = ((JButton) evt.getSource()).getName();
             table_reserve_btn.setText("Reserve Table No. " + table_no);
+            table_cancel_reserve_btn.setText("Reserve Table No. " + table_no);
+            table_order_btn.setText("Order Table No. " + table_no);
+            table_checkout_btn.setText("Checkout Table No." + table_no);
+            table_cancel_reserve_btn.setText("Cancel Reserve Table No." + table_no);
         }
     }//GEN-LAST:event_table_btnMouseReleased
 
     private void dashboard_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_btnActionPerformed
         setPane(dashboard_pane);
-        main_dashboard_btn_box.setBackground(Color.gray);
-        main_reserve_btn_box.setBackground(Color.white);
-        main_billing_btn_box.setBackground(Color.white);
-        main_history_btn_box.setBackground(Color.white);
-        main_order_btn_box.setBackground(Color.white);
-        main_statistic_btn_box.setBackground(Color.white);
-
     }//GEN-LAST:event_dashboard_btnActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        // TODO add your handling code here:
-        System.out.println(jTable2.getValueAt(jTable2.getSelectedRow(), 1));
-        DefaultTableModel model = (DefaultTableModel) order_list_table.getModel();
-        model.addRow(new Object[]{"1", jTable2.getValueAt(jTable2.getSelectedRow(), 1), "1"});
-
-    }//GEN-LAST:event_jTable2MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void search_table_boxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_search_table_boxFocusGained
-        try {
-            String sysroot = System.getenv("SystemRoot");
-            //  ProcessBuilder pb = new ProcessBuilder("C:/Program Files/Common Files/microsoft shared/ink/tabtip.exe");
-            // pb.start();
-            Runtime.getRuntime().exec("tabtip");
-        } catch (Exception e) {
-
+    private void checkout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkout_btnActionPerformed
+        if (Double.parseDouble(cash_input_box.getText()) < Double.parseDouble(total_price.getText())) {
+            JOptionPane.showMessageDialog(null, "Cash amount can't less than the total price.", "Cash amount input error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            BillingDAO bill = new BillingDAO();
+            boolean result = bill.checkout(Double.parseDouble(total_price.getText()), Integer.parseInt(table_no_billing_input.getText()));
+            if (result) {
+                JOptionPane.showMessageDialog(null, "Check out successfully", "Checkout completed",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                table_no_billing_input.setText("");
+                total_vat.setText("");
+                total_price.setText("");
+                cash_input_box.setText("");
+                change_box.setText("");
+            }
         }
-    }//GEN-LAST:event_search_table_boxFocusGained
 
-    private void search_table_boxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_search_table_boxFocusLost
-
-        try {
-            Runtime.getRuntime().exec("cmd /c taskkill /IM tabtip.exe");
-        } catch (IOException e) {
-        }
-    }//GEN-LAST:event_search_table_boxFocusLost
+    }//GEN-LAST:event_checkout_btnActionPerformed
 
     private void cut_menu_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cut_menu_itemActionPerformed
         Action cutAction = new DefaultEditorKit.CutAction();
@@ -1840,24 +2310,429 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_logout_menuitemActionPerformed
 
     private void order_menuitemstatistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order_menuitemstatistic_btnActionPerformed
-        // TODO add your handling code here:
+        setPane(order_pane);
     }//GEN-LAST:event_order_menuitemstatistic_btnActionPerformed
 
     private void billing_menuitemstatistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billing_menuitemstatistic_btnActionPerformed
-        // TODO add your handling code here:
+        setPane(billing_pane);
     }//GEN-LAST:event_billing_menuitemstatistic_btnActionPerformed
 
-    private void order_menuitem2statistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order_menuitem2statistic_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_order_menuitem2statistic_btnActionPerformed
+    private void dashboard_menuitemstatistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_menuitemstatistic_btnActionPerformed
+        setPane(dashboard_pane);
+    }//GEN-LAST:event_dashboard_menuitemstatistic_btnActionPerformed
 
-    private void order_menuitem3statistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_order_menuitem3statistic_btnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_order_menuitem3statistic_btnActionPerformed
+    private void history_menuitemstatistic_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_history_menuitemstatistic_btnActionPerformed
+        setPane(history_pane);
+    }//GEN-LAST:event_history_menuitemstatistic_btnActionPerformed
+
+    private void search_reserve_boxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_reserve_boxKeyPressed
+        if (evt.getKeyCode() == 10) {
+            search_product_buttonActionPerformed(null);
+        }
+    }//GEN-LAST:event_search_reserve_boxKeyPressed
+
+    private void search_reserve_boxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_reserve_boxKeyReleased
+        String keyword = search_reserve_box.getText().toLowerCase();
+        int selectedCol = filter_column.getSelectedIndex();
+        switch (selectedCol) {
+            case 0:  // Reserve No.
+                filter_search(keyword, 0, reserve_table);
+                break;
+            case 1: // Reserve Name.
+                filter_search(keyword, 1, reserve_table);
+                break;
+            case 2: // Reserve Datetime
+                filter_search(keyword, 3, reserve_table);
+                break;
+            default:
+                filter_search(keyword, 0, reserve_table);
+                break;
+        }
+    }//GEN-LAST:event_search_reserve_boxKeyReleased
+
+    private void filter_search(String keyword, int column, JTable tb) {
+        mod = (DefaultTableModel) tb.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(mod);
+        tb.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, column));
+    }
+
+    private void search_product_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_product_buttonActionPerformed
+        int filter = filter_column.getSelectedIndex();
+        String input_search = search_reserve_box.getText();
+        ReserveDAO rdao = new ReserveDAO();
+        // SearchDAO sdao = new SearchDAO();
+        if (search_reserve_box.getText().isEmpty()) {
+            updateReserveTable(rdao.getReserveData());
+        } else {
+            switch (filter) {
+                case 0: //Reserve No.
+
+                    if (isNumeric(input_search)) {
+                        // updateTable(sdao.getDataSearch(input_search, 0));
+                    } else {
+                        updateReserveTable(rdao.getReserveData());
+                    }
+                    break;
+                case 1: // Reserve Name.
+                    // updateReserveTable(sdao.getDataSearch(input_search, 1));
+                    break;
+                case 2: // Reserve Datetime
+                    // updateReserveTable(sdao.getDataSearch(input_search, 2));
+                    break;
+                default:
+                    updateReserveTable(rdao.getReserveData());
+            }
+        }
+    }//GEN-LAST:event_search_product_buttonActionPerformed
+
+    private static boolean isNumeric(String str) {
+        return str.matches("^-?[0-9]+(\\.[0-9]+)?$");
+    }
+
+    private void reserve_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserve_tableMouseClicked
+        int selectedRow = reserve_table.getSelectedRow();
+        int selectedColumn = reserve_table.getSelectedColumn();
+        System.out.println(reserve_table.getRowCount());
+        fillReserveField(selectedRow);
+    }//GEN-LAST:event_reserve_tableMouseClicked
+
+    private void fillReserveField(int selectedRow) throws ClassCastException, NullPointerException {
+        edit_reserve_button.setEnabled(true);
+        cancel_reserve_button.setEnabled(true);
+        String selectedOrderID = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 0));
+        String selectedTableNo = (String) reserve_table.getModel().getValueAt(selectedRow, 1);
+        String selectSeat = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 2));
+        String selectDateTime = (String) reserve_table.getModel().getValueAt(selectedRow, 3);
+        edit_reserve_no_input.setText(selectedOrderID);
+        edit_reserve_table_no_input.setText(selectedTableNo);
+        edit_reserve_date_input.setText(selectDateTime);
+        edit_reserve_seat_input.setValue(Integer.parseInt(selectSeat));
+
+    }
+
+    private void reserve_tableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reserve_tableMouseReleased
+        if (reserve_table.getSelectedRow() == -1) { // if table not select
+        } else if (evt.isPopupTrigger()) {
+            reserve_popup_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+            String Table_click = (reserve_table.getModel().getValueAt(reserve_table.getSelectedRow(), 0).toString());
+        }
+    }//GEN-LAST:event_reserve_tableMouseReleased
+
+    private void reserve_tableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reserve_tableKeyPressed
+        int index = reserve_table.getSelectedRow();
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            if (index >= 1) {
+                //  fillDataField(index - 1);
+            } else if (index == 1) {
+                // fillDataField(index);
+            } else if (reserve_table.getRowCount() == 1) { // If table have only 1 row
+                //  fillDataField(1);
+            }
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            if (index < reserve_table.getRowCount() - 1) {
+                // fillDataField(index + 1);
+            } else if (index == reserve_table.getRowCount()) { // If selected row is last row
+                //  fillDataField(reserve_table.getRowCount());
+            } else if (reserve_table.getRowCount() == 1) { // If table have only 1 row
+                //  fillDataField(1);
+            }
+        }
+    }//GEN-LAST:event_reserve_tableKeyPressed
+
+    private void clear_history_menuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_history_menuitemActionPerformed
+        if (history_table.getRowCount() > 0) {
+            HistoryDAO hisdao = new HistoryDAO();
+            hisdao.truncateHistory();
+            updateHistory(hisdao.getHistoryData());
+            clear_history_menuitem.setEnabled(false);
+        }
+    }//GEN-LAST:event_clear_history_menuitemActionPerformed
+
+    private void edit_reserve_menuitem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_reserve_menuitem_btnActionPerformed
+        int selectedRow = reserve_table.getSelectedRow();
+        editReserve(selectedRow);
+    }//GEN-LAST:event_edit_reserve_menuitem_btnActionPerformed
+
+    private void reserve_table_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_table_btnActionPerformed
+        String res_no = reserve_no_input.getText();
+        String res_table_no = reserve_table_no_input.getText();
+        java.util.Date dt = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = sdf.format(dt);
+
+        int res_seat = (int) reserve_seat_input.getValue();
+        if (res_no.length() == 0 || res_table_no.length() == 0 || res_seat == 0) {
+            JOptionPane.showMessageDialog(this, "Please fill out request box", "Input Error", JOptionPane.WARNING_MESSAGE);
+        } else if (res_seat > 20) {
+            JOptionPane.showMessageDialog(this, "Reserve seats must less than 20", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // Update product bean
+            ReserveDAO dao = new ReserveDAO();
+            HistoryDAO hisdao = new HistoryDAO();
+            ReserveBean bean = new ReserveBean();
+            bean.setReserve_no(Integer.parseInt(res_no));
+            bean.setReserve_name(res_no);
+            bean.setReserve_seat(res_seat);
+            bean.setReserve_datetime(currentTime);
+            bean.setGetUserLastModified(user_box.getText());
+            boolean status = dao.AddReserve(bean);
+            updateReserveTable(dao.getReserveData());
+            updateHistory(hisdao.getHistoryData());
+            if (status) {
+                JOptionPane.showMessageDialog(this, "Add reserve successfully", "Add Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Add reserve Failed", "Add Failed", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_reserve_table_btnActionPerformed
+
+    private void food_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_tableMouseClicked
+        int selectedRow = food_table.getSelectedRow();
+        int selectedColumn = food_table.getSelectedColumn();
+        //fillDataField(selectedRow);
+    }//GEN-LAST:event_food_tableMouseClicked
+
+    private void food_tableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_tableMouseReleased
+        if (food_table.getSelectedRow() == -1) { // if table not select
+        } else if (evt.isPopupTrigger()) {
+            property_popup_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+            String Table_click = (food_table.getModel().getValueAt(food_table.getSelectedRow(), 0).toString());
+            System.out.println(Table_click);
+        }
+    }//GEN-LAST:event_food_tableMouseReleased
+
+    private void food_tableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_food_tableKeyPressed
+//        int index = food_table.getSelectedRow();
+//        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+//            if (index >= 1) {
+//                // fillDataField(index - 1);
+//            } else if (index == 1) {
+//                // fillDataField(index);
+//            } else if (food_table.getRowCount() == 1) { // If table have only 1 row
+//                // fillDataField(1);
+//            }
+//        }
+//        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+//            if (index < food_table.getRowCount() - 1) {
+//                // fillDataField(index + 1);
+//            } else if (index == food_table.getRowCount()) { // If selected row is last row
+//                // fillDataField(food_table.getRowCount());
+//            } else if (food_table.getRowCount() == 1) { // If table have only 1 row
+//                // fillDataField(1);
+//            }
+//        }
+    }//GEN-LAST:event_food_tableKeyPressed
+
+    private void confirm_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_order_btnActionPerformed
+        if (order_customer_name_input.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "No Table number found", "Missing table no", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_confirm_order_btnActionPerformed
+
+    private void eat_here_optionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eat_here_optionActionPerformed
+
+    }//GEN-LAST:event_eat_here_optionActionPerformed
+
+    private void add_order_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_order_buttonActionPerformed
+
+    }//GEN-LAST:event_add_order_buttonActionPerformed
+
+    private void edit_reserve_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_reserve_buttonActionPerformed
+        if (edit_reserve_no_input.getText().length() != 0) {
+            boolean addType = false;
+            setEditReserveComponent(true);
+            edit_reserve_save.setEnabled(true);
+        }
+    }//GEN-LAST:event_edit_reserve_buttonActionPerformed
+
+    private void setEditReserveComponent(boolean b) {
+        edit_reserve_table_no_input.setEnabled(b);
+        edit_reserve_date_input.setEnabled(b);
+        edit_reserve_seat_input.setEnabled(b);
+    }
+    private void cancel_reserve_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_reserve_buttonActionPerformed
+
+    }//GEN-LAST:event_cancel_reserve_buttonActionPerformed
+
+    private void cancel_reserve_menuitem_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_reserve_menuitem_btnActionPerformed
+
+    }//GEN-LAST:event_cancel_reserve_menuitem_btnActionPerformed
+
+    private void edit_reserve_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_reserve_saveActionPerformed
+        String old_res_no = String.valueOf(reserve_table.getModel().getValueAt(reserve_table.getSelectedRow(), 0));
+        int n = Integer.parseInt(old_res_no);
+        String res_no = reserve_no_input.getText();
+        String res_table_no = reserve_table_no_input.getText();
+
+        int res_seat = (int) reserve_seat_input.getValue();
+        if (res_no.length() == 0 || res_table_no.length() == 0 || res_seat == 0) {
+            JOptionPane.showMessageDialog(this, "Please fill out request box", "Input Error", JOptionPane.WARNING_MESSAGE);
+        } else if (res_seat > 20) {
+            JOptionPane.showMessageDialog(this, "Reserve seats must less than 20", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            // Update product bean
+            ReserveDAO dao = new ReserveDAO();
+            HistoryDAO hisdao = new HistoryDAO();
+            ReserveBean bean = new ReserveBean();
+            bean.setReserve_no(res_seat);
+            bean.setReserve_name(res_no);
+            boolean status = dao.EditReserve(bean, n);
+            updateReserveTable(dao.getReserveData());
+            updateHistory(hisdao.getHistoryData());
+            if (status) {
+                setEditReserveComponent(false);
+                edit_reserve_save.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Updated reserve successfully", "Updated Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Updated reserve Failed", "Updated Failed", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_edit_reserve_saveActionPerformed
+
+    private void cash_input_boxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cash_input_boxKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String m = table_no_billing_input.getText();
+            String c = cash_input_box.getText();
+            BillingDAO bill = new BillingDAO();
+            bill.calculate(Double.parseDouble(c), Integer.parseInt(m));
+            BillingBean bean = new BillingBean();
+            change_box.setText(String.valueOf(bean.getTotalChange()));
+        }
+    }//GEN-LAST:event_cash_input_boxKeyPressed
+
+    private void table_no_billing_inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table_no_billing_inputKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String m = table_no_billing_input.getText();
+            BillingDAO bill = new BillingDAO();
+            bill.getPrice(Integer.parseInt(m));
+            BillingBean bean = new BillingBean();
+            total_price.setText(String.valueOf(bean.getTotalPrice()));
+            total_vat.setText(String.valueOf(bean.getTotalVAT()));
+        }
+    }//GEN-LAST:event_table_no_billing_inputKeyPressed
+
+    private void table_checkout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_checkout_btnActionPerformed
+        String table_no = ((JButton) evt.getSource()).getName();
+        setPane(billing_pane);
+        table_no_billing_input.setText(table_no + "\n");
+    }//GEN-LAST:event_table_checkout_btnActionPerformed
+
+    private void table_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_order_btnActionPerformed
+        String table_no = ((JButton) evt.getSource()).getName();
+        setPane(order_pane);
+        reserve_table_no_input.setText(table_no + "\n");
+    }//GEN-LAST:event_table_order_btnActionPerformed
+
+    private void editReserve(int selectRow) {
+
+    }
+
+    private void cancelReserve(int selectRow) {
+
+    }
 
     private void setTable(ActionEvent e) {
-        String table_no = ((JButton) e.getSource()).getActionCommand();
-        queue_box.setText(table_no);
+        String table_no = ((JButton) e.getSource()).getName();
+        setPane(reserve_pane);
+        order_customer_name_input.setText(table_no);
+        reserve_table_no_input.setText(table_no);
+    }
+
+    public void updateFoodTable(ArrayList<FoodBean> list) {
+
+        String[] columns = {"#", "Category", "Name", "Price", "Status", "Image"};
+        Object[][] rows = new Object[list.size()][14];
+        for (int i = 0; i < list.size(); i++) {
+            //values.add(new Object[] {
+            rows[i][0] = list.get(i).getIdfood();
+            rows[i][1] = list.get(i).getCategory();
+            rows[i][2] = list.get(i).getName();
+            rows[i][3] = list.get(i).getPrice();
+            rows[i][4] = list.get(i).getStatus();
+            if (list.get(i).getFImage() != null) {
+                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getFImage()).getImage().getScaledInstance(60, 20, Image.SCALE_SMOOTH));
+                rows[i][5] = list.get(i).getFImage();
+            } else {
+                rows[i][5] = null;
+            }
+        }
+        // set Model of JTabel from list array of data
+        food_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
+        food_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        food_table.getColumnModel().getColumn(0).setPreferredWidth(10);
+        food_table.getColumnModel().getColumn(1).setPreferredWidth(30);
+        food_table.getColumnModel().getColumn(2).setPreferredWidth(30);
+        food_table.getColumnModel().getColumn(3).setPreferredWidth(30);
+        food_table.getColumnModel().getColumn(4).setPreferredWidth(30);
+        food_table.getColumnModel().getColumn(5).setPreferredWidth(100);
+
+        if (food_table.getRowCount() == 0) {
+            add_order_button.setEnabled(false);
+        }
+        // set the JTable into scroll panel
+        ScrollPanelForQueryTable.setViewportView(food_table);
+    }
+
+    public void updateReserveTable(ArrayList<ReserveBean> list) {
+        String[] columns = {"Reserve No.", "Reserve Name", "Seat", "Datetime"};
+        Object[][] rows = new Object[list.size()][4];
+        for (int i = 0; i < list.size(); i++) {
+            rows[i][0] = list.get(i).getReserve_no();
+            rows[i][1] = list.get(i).getReserve_name();
+            rows[i][2] = list.get(i).getReserve_seat();
+            rows[i][3] = list.get(i).getReserve_datetime();
+        }
+        // set Model of JTabel from list array of data
+        reserve_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
+        reserve_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        reserve_table.getColumnModel().getColumn(0).setPreferredWidth(30);
+        reserve_table.getColumnModel().getColumn(1).setPreferredWidth(80);
+        reserve_table.getColumnModel().getColumn(2).setPreferredWidth(45);
+        reserve_table.getColumnModel().getColumn(3).setPreferredWidth(80);
+        initialReserveNo();
+        // set the JTable into scroll panel
+        ScrollPanelForQueryTable.setViewportView(reserve_table);
+        System.out.println("Reserve table updated");
+    }
+
+    public void displayHistory() {
+        //backlog_table.setModel(new javax.swing.table.DefaultTableModel(valuesBL.toArray(new Object[][]{}), columnsBL.toArray()));
+        ScrollPanelForHistory.setViewportView(history_table);
+    }
+
+    private void updateHistory(ArrayList<HistoryBean> list) {
+        List<String[]> values = new ArrayList<>();
+        List<String> columns = new ArrayList<>();
+        HistoryDAO dao = new HistoryDAO();
+        try {
+            list = dao.getHistoryData();
+        } catch (Exception e) {
+        }
+
+        columns.add("History ID");
+        columns.add("Type");
+        columns.add("Action detail");
+        columns.add("Date modified");
+        columns.add("Time");
+        columns.add("Username");
+
+        for (int i = 0; i < list.size(); i++) {
+            values.add(new String[]{""
+                + list.get(i).getHistoryID(),
+                list.get(i).getActionType(),
+                list.get(i).getActionDetail(),
+                list.get(i).getHistoryDate(),
+                list.get(i).getHistoryTime(),
+                list.get(i).getUser()
+            });
+        }
+        history_table.setModel(new javax.swing.table.DefaultTableModel(values.toArray(new Object[][]{}), columns.toArray()));
+        ScrollPanelForHistory.setViewportView(history_table);
+        clear_history_menuitem.setEnabled(true);
+        System.out.println("History table updated");
     }
 
     private void setPane(JPanel panel_name) {
@@ -1868,34 +2743,70 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPanelForHistory;
+    private javax.swing.JScrollPane ScrollPanelForHistory1;
+    private javax.swing.JScrollPane ScrollPanelForQueryTable;
+    private javax.swing.JScrollPane ScrollPanelForQueryTable1;
     private javax.swing.JMenuItem about_menuitem;
+    private javax.swing.JButton add_order_button;
     private javax.swing.JMenuItem backup_menuitem;
+    private javax.swing.JPanel billing_body_panel;
     private javax.swing.JButton billing_btn;
     private javax.swing.JMenuItem billing_menuitem;
     private javax.swing.JPanel billing_pane;
     private javax.swing.JPanel body;
-    private javax.swing.JMenuItem bookmark_menuitem;
+    private javax.swing.JButton cancel_reserve_button;
+    private javax.swing.JMenuItem cancel_reserve_menuitem_btn;
+    private javax.swing.JTextField cash_input_box;
+    private javax.swing.JTextField change_box;
+    private static javax.swing.JPanel chart_panel;
     private javax.swing.JMenuItem check_for_update_menuitem;
+    private javax.swing.JButton checkout_btn;
+    private javax.swing.JMenuItem clear_history_menuitem;
+    private javax.swing.JButton confirm_order_btn;
     private javax.swing.JMenuItem copy_menu_item;
+    private javax.swing.JLabel cus_name_billing;
+    private javax.swing.JLabel customer_order_label;
     private javax.swing.JMenuItem cut_menu_item;
     private javax.swing.JButton dashboard_btn;
+    private javax.swing.JMenuItem dashboard_menuitem;
     private javax.swing.JPanel dashboard_pane;
     private static final javax.swing.JTextField date_box = new javax.swing.JTextField();
+    private javax.swing.JRadioButton eat_here_option;
     private javax.swing.JMenu edit_menu;
+    private javax.swing.JLabel edit_res_table_no_label;
+    private javax.swing.JButton edit_reserve_button;
+    private javax.swing.JTextField edit_reserve_date_input;
+    private javax.swing.JMenuItem edit_reserve_menuitem_btn;
+    private javax.swing.JTextField edit_reserve_no_input;
+    private javax.swing.JButton edit_reserve_save;
+    private javax.swing.JLabel edit_reserve_seat;
+    private javax.swing.JSpinner edit_reserve_seat_input;
+    private javax.swing.JTextField edit_reserve_table_no_input;
     private javax.swing.JMenuItem exit_program;
     private javax.swing.JMenuItem feedback_menuitem;
     private javax.swing.JMenu file_menu;
+    private javax.swing.JComboBox filter_column;
+    public javax.swing.JTable food_table;
     private javax.swing.JPanel footer;
+    private javax.swing.JPanel footer_inner_panel;
     private javax.swing.JPanel header;
     private javax.swing.JMenuItem help_contents_menuitem;
     private javax.swing.JMenu help_menu;
     private javax.swing.JButton history_btn;
+    private javax.swing.JMenuItem history_menuitem;
     private javax.swing.JPanel history_pane;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton21;
+    private javax.swing.JTable history_table;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1903,20 +2814,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
@@ -1924,10 +2826,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
     private javax.swing.JMenuItem keyboard_shortcuts_menuitem;
     private javax.swing.JPanel left_reserve_panel;
     private javax.swing.JMenuItem logout_menuitem;
@@ -1938,17 +2836,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel main_order_btn_box;
     private javax.swing.JPanel main_reserve_btn_box;
     private javax.swing.JPanel main_statistic_btn_box;
+    private javax.swing.JSpinner no_of_customer_input;
     private javax.swing.JMenuItem online_docs_menuitem;
     private javax.swing.JButton order_btn;
     private javax.swing.JTextField order_customer_name_input;
     private javax.swing.JPanel order_info_panel;
     private javax.swing.JPanel order_left_panel;
     private javax.swing.JPanel order_list_panel;
-    private javax.swing.JScrollPane order_list_scrol;
     private javax.swing.JTable order_list_table;
     private javax.swing.JMenuItem order_menuitem;
-    private javax.swing.JMenuItem order_menuitem2;
-    private javax.swing.JMenuItem order_menuitem3;
+    private javax.swing.JTextField order_no_input;
+    private javax.swing.JLabel order_no_label;
     private javax.swing.JPanel order_pane;
     private javax.swing.JPanel order_right_panel;
     private javax.swing.JMenuItem page_setup_menuitem;
@@ -1960,16 +2858,25 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu property_popup_menu;
     private static final javax.swing.JTextField queue_box = new javax.swing.JTextField();
     private javax.swing.JMenuItem redo_menu_item;
+    private javax.swing.JButton remove_order_btn;
     private javax.swing.JMenuItem report_bug_menuitem;
     private javax.swing.JButton reserve_btn;
-    private javax.swing.JScrollPane reserve_list_scroll;
-    private javax.swing.JTable reserve_list_table;
+    private javax.swing.JTextField reserve_no_input;
     private javax.swing.JPanel reserve_pane;
+    private javax.swing.JPopupMenu reserve_popup_menu;
+    private javax.swing.JSpinner reserve_seat_input;
+    public javax.swing.JTable reserve_table;
+    private javax.swing.JButton reserve_table_btn;
+    private javax.swing.JTextField reserve_table_no_input;
+    private javax.swing.JPanel reserve_table_panel;
     private javax.swing.JPanel right_reserve_panel;
     private javax.swing.JMenuItem search_menuitem;
-    private javax.swing.JTextField search_table_box;
+    private javax.swing.JButton search_product_button;
+    private javax.swing.JTextField search_reserve_box;
     private javax.swing.JButton search_table_btn;
+    private javax.swing.JLabel seat_reserve_input;
     private javax.swing.JMenuItem select_all_menu_item;
+    private javax.swing.JPanel sm_search_panel;
     private javax.swing.JButton statistic_btn;
     private javax.swing.JPanel statistic_pane;
     private javax.swing.JMenuItem statistics_menuitem;
@@ -1996,12 +2903,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton table_9_btn;
     private javax.swing.JMenuItem table_cancel_reserve_btn;
     private javax.swing.JMenuItem table_checkout_btn;
-    private javax.swing.JMenuItem table_detail_btn;
+    private javax.swing.JTextField table_no_billing_input;
     private javax.swing.JMenuItem table_order_btn;
     private javax.swing.JMenuItem table_reserve_btn;
+    private javax.swing.JRadioButton take_home_option;
     private static final javax.swing.JTextField time_box = new javax.swing.JTextField();
     private javax.swing.JCheckBoxMenuItem toolbar_menuitem;
     private javax.swing.JMenu tools_menu;
+    private javax.swing.JTextField total_price;
+    private javax.swing.JTextField total_vat;
     private javax.swing.JMenuItem undo_menu_item;
     private static final javax.swing.JTextField user_box = new javax.swing.JTextField();
     private javax.swing.JLabel username_label;

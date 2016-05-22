@@ -7,5 +7,4 @@ interface Table {
 
     public List<HashMap> getTable();
 
-    public List<HashMap> setTable(int i);
 }

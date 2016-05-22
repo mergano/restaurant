@@ -1,15 +1,16 @@
 package com.kiyoshi.dao;
 
+import com.kiyoshi.bean.ReserveBean;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public interface Reserve {
 
-    public void AddReserve(String reservename, int seat, int tableno);
+    public ArrayList<ReserveBean> getReserveData();
 
-    public void DeleteReserve(String reservename, int tableno);
+    public boolean AddReserve(ReserveBean bean);
 
-    public void EditReserve(String reservename, int seat, int tableno);
+    public boolean DeleteReserve(ReserveBean bean, int res_no);
 
-    public ArrayList<HashMap> getReserveList();
+    public boolean EditReserve(ReserveBean bean, int n);
+
 }

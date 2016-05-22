@@ -10,6 +10,7 @@ public class FoodBean {
     private String status;
     private String image_name;
     private String user;
+    private byte[] img;
 
     public int getIdfood() {
         return idfood;
@@ -65,6 +66,14 @@ public class FoodBean {
 
     public void setImage_name(String image_name) {
         this.image_name = image_name;
+    }
+
+    public byte[] getFImage() {
+        return img;
+    }
+
+    public void setFImage(byte[] img) {
+        this.img = img;
     }
 
     public String getCurrentUser() {

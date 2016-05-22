@@ -7,7 +7,7 @@ package com.kiyoshi.dao;
 
 public interface Order {
 
-    public void AddOrder(String ordername, int amount, int tableno);
+    public boolean getOrderData(String ordername, int amount, int tableno);
 
     public void DeleteOrder(String ordername, int tableno);
 
