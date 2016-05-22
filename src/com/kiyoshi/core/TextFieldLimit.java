@@ -22,5 +22,4 @@ public class TextFieldLimit extends PlainDocument {
             getDefaultToolkit().beep();
         }
     }
-    \
 }
