@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.kiyoshi.core;
 
 import com.jcraft.jsch.Channel;
@@ -15,10 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-/**
- *
- * @author vchuk
- */
 public class Upload {
 
     public void uploadImage(String filename) {
@@ -26,7 +17,7 @@ public class Upload {
         String SFTPHOST = "128.199.117.93";
         int SFTPPORT = 22;
         String SFTPUSER = "juk";
-        String SFTPPASS = "Serio.ome*1181+";
+        String SFTPPASS = "";
         String SFTPWORKINGDIR = "/var/kiyoshi/";
         Session session = null;
         Channel channel = null;

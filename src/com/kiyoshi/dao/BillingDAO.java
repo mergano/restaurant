@@ -17,10 +17,9 @@ public class BillingDAO extends ConnectDB {
     private Connection conn;
     private PreparedStatement p = null;
     private ResultSet rs = null;
-    private double totalPrice = 0.00;
-    private double totalCash = 0.00;
-    private double totalVAT = 0.00;
-    private double totalChange = 0.00;
+    private double totalPrice;
+    private double totalVAT;
+    private double totalChange;
 
     public BillingDAO() {
         try {

@@ -35,7 +35,6 @@ public class About extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         about_footer = new javax.swing.JPanel();
         about_close = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/kiyoshi/info"); // NOI18N
         setTitle(bundle.getString("title")); // NOI18N
@@ -52,7 +51,6 @@ public class About extends javax.swing.JFrame {
         about_title.setText("About Kiyoshi Project");
         about_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         about_title.setPreferredSize(new java.awt.Dimension(180, 35));
-
         // About description scroll box
         about_descrip_scroll.setMinimumSize(new java.awt.Dimension(250, 200));
         about_descrip_scroll.setPreferredSize(new java.awt.Dimension(250, 200));
@@ -66,7 +64,6 @@ public class About extends javax.swing.JFrame {
         about_descrip_textbox.setMinimumSize(new java.awt.Dimension(250, 200));
         about_descrip_textbox.setPreferredSize(new java.awt.Dimension(250, 200));
         about_descrip_scroll.setViewportView(about_descrip_textbox);
-
         javax.swing.GroupLayout about_headerLayout = new javax.swing.GroupLayout(about_header);
         about_header.setLayout(about_headerLayout);
         about_headerLayout.setHorizontalGroup(
@@ -87,14 +84,11 @@ public class About extends javax.swing.JFrame {
                         .addComponent(about_descrip_scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 189, Short.MAX_VALUE)
                         .addContainerGap())
         );
-
         getContentPane().add(about_header, java.awt.BorderLayout.NORTH);
         about_body.setPreferredSize(new java.awt.Dimension(245, 250));
-
         product_version_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         product_version_label.setText("Product version:");
         about_body.add(product_version_label);
-
         about_picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/img/kiyoshi_header.png"))); // NOI18N
         about_picture.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         about_picture.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,14 +99,11 @@ public class About extends javax.swing.JFrame {
         about_body.add(about_picture);
         version_label.setText("1.0.0");
         about_body.add(version_label);
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Our Develop Team");
         about_body.add(jLabel4);
-
         getContentPane().add(about_body, java.awt.BorderLayout.CENTER);
-
-        about_close.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        about_close.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         about_close.setText("Close");
         about_close.addActionListener((java.awt.event.ActionEvent evt) -> {
             about_closeActionPerformed(evt);

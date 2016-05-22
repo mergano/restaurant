@@ -29,7 +29,7 @@ public class OrderDAO extends ConnectDB {
     }
 
 // Display all data from product table
-    public ArrayList<OrderBean> getOrderData() {
+    public ArrayList<OrderBean> getOrderData(int tableno) {
         ArrayList<OrderBean> order_list = new ArrayList<>();
 
         if (conn == null) {
@@ -38,7 +38,7 @@ public class OrderDAO extends ConnectDB {
                     JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
-            String sql = "SELECT * FROM " + order_table + ";";
+            String sql = "SELECT * FROM " + order_table + " WHERE tableno = " + tableno + ";";
             System.out.println(sql);
             try {
                 long start = java.lang.System.currentTimeMillis();

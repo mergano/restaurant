@@ -3,12 +3,14 @@ package com.kiyoshi.gui;
 import com.kiyoshi.bean.BillingBean;
 import com.kiyoshi.bean.FoodBean;
 import com.kiyoshi.bean.HistoryBean;
+import com.kiyoshi.bean.OrderBean;
 import com.kiyoshi.bean.ReserveBean;
 import com.kiyoshi.core.LogOut;
 import com.kiyoshi.core.Website;
 import com.kiyoshi.dao.BillingDAO;
 import com.kiyoshi.dao.FoodDAO;
 import com.kiyoshi.dao.HistoryDAO;
+import com.kiyoshi.dao.OrderDAO;
 import com.kiyoshi.dao.ReserveDAO;
 import java.awt.Component;
 import java.awt.Image;
@@ -143,9 +145,9 @@ public class Main extends javax.swing.JFrame {
         eat_here_option = new javax.swing.JRadioButton();
         order_list_panel = new javax.swing.JPanel();
         remove_order_btn = new javax.swing.JButton();
-        confirm_order_btn = new javax.swing.JButton();
         ScrollPanelForHistory1 = new javax.swing.JScrollPane();
         order_list_table = new javax.swing.JTable();
+        reset_order_btn = new javax.swing.JButton();
         order_right_panel = new javax.swing.JPanel();
         ScrollPanelForQueryTable1 = new javax.swing.JScrollPane();
         food_table = new javax.swing.JTable();
@@ -170,6 +172,7 @@ public class Main extends javax.swing.JFrame {
         statistic_pane = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         chart_panel = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         history_pane = new javax.swing.JPanel();
         ScrollPanelForHistory = new javax.swing.JScrollPane();
         history_table = new javax.swing.JTable();
@@ -664,7 +667,7 @@ public class Main extends javax.swing.JFrame {
         dashboard_pane.add(table_9_btn);
 
         table_10_btn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        table_10_btn.setForeground(new java.awt.Color(51, 51, 255));
+        table_10_btn.setForeground(new java.awt.Color(0, 153, 0));
         table_10_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/ico/bust_in_silhouette.png"))); // NOI18N
         table_10_btn.setText("Table 10");
         table_10_btn.setToolTipText("Table number");
@@ -1070,6 +1073,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(346, Short.MAX_VALUE)
+                        .addComponent(edit_reserve_save, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
@@ -1080,12 +1086,9 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(edit_reserve_date_input))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edit_res_table_no_label)
-                            .addComponent(edit_reserve_seat)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(edit_reserve_save, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)))
+                            .addComponent(edit_reserve_seat, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(edit_res_table_no_label, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(edit_reserve_seat_input, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                     .addComponent(edit_reserve_table_no_input))
@@ -1130,7 +1133,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(reserve_table_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         reserve_pane.add(left_reserve_panel);
@@ -1245,6 +1248,7 @@ public class Main extends javax.swing.JFrame {
 
         edit_reserve_button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         edit_reserve_button.setText("Edit Reserve");
+        edit_reserve_button.setEnabled(false);
         edit_reserve_button.setPreferredSize(new java.awt.Dimension(130, 40));
         edit_reserve_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1256,6 +1260,7 @@ public class Main extends javax.swing.JFrame {
         cancel_reserve_button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cancel_reserve_button.setForeground(new java.awt.Color(255, 0, 0));
         cancel_reserve_button.setText("Cancel Reserve");
+        cancel_reserve_button.setEnabled(false);
         cancel_reserve_button.setPreferredSize(new java.awt.Dimension(130, 40));
         cancel_reserve_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1286,6 +1291,8 @@ public class Main extends javax.swing.JFrame {
         customer_order_label.setText("Table No:");
         order_info_panel.add(customer_order_label);
 
+        order_customer_name_input.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        order_customer_name_input.setText("1");
         order_customer_name_input.setPreferredSize(new java.awt.Dimension(100, 30));
         order_info_panel.add(order_customer_name_input);
 
@@ -1311,79 +1318,77 @@ public class Main extends javax.swing.JFrame {
         remove_order_btn.setText("Remove Order");
         remove_order_btn.setMinimumSize(new java.awt.Dimension(100, 30));
         remove_order_btn.setPreferredSize(new java.awt.Dimension(100, 30));
-
-        confirm_order_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        confirm_order_btn.setText("Confirm Order");
-        confirm_order_btn.setMinimumSize(new java.awt.Dimension(100, 30));
-        confirm_order_btn.setPreferredSize(new java.awt.Dimension(100, 30));
-        confirm_order_btn.addActionListener(new java.awt.event.ActionListener() {
+        remove_order_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirm_order_btnActionPerformed(evt);
+                remove_order_btnActionPerformed(evt);
             }
         });
 
         ScrollPanelForHistory1.setBorder(null);
 
-        ArrayList<com.kiyoshi.bean.OrderBean> listORD = null;
-        com.kiyoshi.dao.OrderDAO ordao = new com.kiyoshi.dao.OrderDAO();
+        ArrayList<OrderBean> olist = null;
+        OrderDAO odb = new OrderDAO();
+        int tableno = Integer.parseInt(order_customer_name_input.getText());
         try {
-            listORD = ordao.getOrderData();
-        } catch (Exception e) {
+            olist = odb.getOrderData(tableno);
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
-        List<Object[]> valuesORD = new ArrayList<>();
-        List<String> columnsORD = new ArrayList<>();
-        columnsORD.add("Order ID");
-        columnsORD.add("Table No");
-        columnsORD.add("Order Name");
-        columnsORD.add("Quantity");
-        columnsORD.add("Price");
-        columnsORD.add("Order Datetime");
-
-        for(int i =0; i< listORD.size(); i++) {
-            valuesORD.add(new Object[] {
-                listORD.get(i).getIdorder(),
-                listORD.get(i).getTableno(),
-                listORD.get(i).getFoodName(),
-                listORD.get(i).getQuantity(),
-                listORD.get(i).getPrice(),
-                listORD.get(i).getDatetime()
-            });
+        String[] ocolumns = {"Order ID", "Name", "Quantity", "Price", "Datetime"};
+        Object[][] orows = new Object[olist.size()][14];
+        for(int i =0; i< olist.size(); i++) {
+            orows[i][0] = olist.get(i).getIdorder();
+            orows[i][1] = olist.get(i).getFoodName();
+            orows[i][2] = olist.get(i).getQuantity();
+            orows[i][3] = olist.get(i).getPrice();
+            orows[i][4] = olist.get(i).getCurrentUser();
         }
         order_list_table.setAutoCreateRowSorter(true);
-        order_list_table.setModel(new javax.swing.table.DefaultTableModel(valuesORD.toArray(new Object[][] {}), columnsORD.toArray())
-            {public boolean isCellEditable(int row, int column){return false;}});
+        order_list_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        order_list_table.setModel(new javax.swing.table.DefaultTableModel(orows, ocolumns)    {public boolean isCellEditable(int row, int column){return false;}});
         order_list_table.setFillsViewportHeight(true);
+        order_list_table.setRowHeight(30);
+        order_list_table.setRowMargin(3);
+        order_list_table.setSelectionBackground(new java.awt.Color(255, 0, 0));
         order_list_table.setShowHorizontalLines(false);
         order_list_table.setShowVerticalLines(false);
         ScrollPanelForHistory1.setViewportView(order_list_table);
+
+        reset_order_btn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        reset_order_btn.setText("Reset Order List");
+        reset_order_btn.setMinimumSize(new java.awt.Dimension(100, 30));
+        reset_order_btn.setPreferredSize(new java.awt.Dimension(100, 30));
+        reset_order_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reset_order_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout order_list_panelLayout = new javax.swing.GroupLayout(order_list_panel);
         order_list_panel.setLayout(order_list_panelLayout);
         order_list_panelLayout.setHorizontalGroup(
             order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(order_list_panelLayout.createSequentialGroup()
-                .addGroup(order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(order_list_panelLayout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(remove_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(confirm_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(order_list_panelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ScrollPanelForHistory1)))
+                .addContainerGap()
+                .addComponent(ScrollPanelForHistory1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_list_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(remove_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(reset_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(236, 236, 236))
         );
         order_list_panelLayout.setVerticalGroup(
             order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(order_list_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPanelForHistory1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(ScrollPanelForHistory1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(order_list_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(remove_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirm_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reset_order_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1442,7 +1447,7 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             food_table.setAutoCreateRowSorter(true);
-            food_table.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+            food_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             food_table.setModel(new javax.swing.table.DefaultTableModel(frows, fcolumns)
                 {public boolean isCellEditable(int row, int column){return false;}}
             );
@@ -1451,7 +1456,7 @@ public class Main extends javax.swing.JFrame {
             food_table.setFillsViewportHeight(true);
             food_table.setGridColor(new java.awt.Color(204, 204, 204));
             food_table.setName(""); // NOI18N
-            food_table.setRowHeight(20);
+            food_table.setRowHeight(30);
             food_table.setRowMargin(3);
             food_table.setSelectionBackground(new java.awt.Color(255, 51, 51));
             food_table.setShowHorizontalLines(false);
@@ -1495,12 +1500,12 @@ public class Main extends javax.swing.JFrame {
             order_right_panel.setLayout(order_right_panelLayout);
             order_right_panelLayout.setHorizontalGroup(
                 order_right_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, order_right_panelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(order_right_panelLayout.createSequentialGroup()
+                    .addContainerGap(14, Short.MAX_VALUE)
                     .addComponent(ScrollPanelForQueryTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
                 .addGroup(order_right_panelLayout.createSequentialGroup()
-                    .addGap(323, 323, 323)
+                    .addGap(322, 322, 322)
                     .addComponent(add_order_button, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
@@ -1677,16 +1682,10 @@ public class Main extends javax.swing.JFrame {
             jTabbedPane1.setPreferredSize(new java.awt.Dimension(32767, 32767));
             jTabbedPane1.setRequestFocusEnabled(false);
 
-            javax.swing.GroupLayout chart_panelLayout = new javax.swing.GroupLayout(chart_panel);
-            chart_panel.setLayout(chart_panelLayout);
-            chart_panelLayout.setHorizontalGroup(
-                chart_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 1627, Short.MAX_VALUE)
-            );
-            chart_panelLayout.setVerticalGroup(
-                chart_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 455, Short.MAX_VALUE)
-            );
+            chart_panel.setLayout(new java.awt.BorderLayout());
+
+            jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/kiyoshi/gui/265125.png"))); // NOI18N
+            chart_panel.add(jLabel14, java.awt.BorderLayout.CENTER);
 
             jTabbedPane1.addTab("Revenue", chart_panel);
 
@@ -2131,6 +2130,13 @@ public class Main extends javax.swing.JFrame {
         clock.start();
     }
 
+    private void setMenuHightLight() {
+        main_dashboard_btn_box.setBackground(new java.awt.Color(240, 240, 240));
+        main_reserve_btn_box.setBackground(new java.awt.Color(240, 240, 240));
+        main_order_btn_box.setBackground(new java.awt.Color(240, 240, 240));
+        main_billing_btn_box.setBackground(new java.awt.Color(240, 240, 240));
+
+    }
     private void reserve_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserve_btnActionPerformed
         setPane(reserve_pane);
     }//GEN-LAST:event_reserve_btnActionPerformed
@@ -2272,6 +2278,7 @@ public class Main extends javax.swing.JFrame {
 
     private void dashboard_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboard_btnActionPerformed
         setPane(dashboard_pane);
+        System.out.println(evt.getActionCommand());
     }//GEN-LAST:event_dashboard_btnActionPerformed
 
     private void checkout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkout_btnActionPerformed
@@ -2491,8 +2498,21 @@ public class Main extends javax.swing.JFrame {
     private void food_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_tableMouseClicked
         int selectedRow = food_table.getSelectedRow();
         int selectedColumn = food_table.getSelectedColumn();
-        //fillDataField(selectedRow);
+        fillDataField(selectedRow);
     }//GEN-LAST:event_food_tableMouseClicked
+
+    private void fillDataField(int selectedRow) throws ClassCastException, NullPointerException {
+
+        String selectedFoodID = String.valueOf(food_table.getModel().getValueAt(selectedRow, 0));
+        String selectedName = (String) food_table.getModel().getValueAt(selectedRow, 2);
+
+        OrderBean bean = new OrderBean();
+        bean.setFoodName(selectedName);
+        bean.setTableno(Integer.parseInt(order_customer_name_input.getText()));
+        bean.setQuantity(1);
+        bean.setCurrentUser(user_box.getText());
+
+    }
 
     private void food_tableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_food_tableMouseReleased
         if (food_table.getSelectedRow() == -1) { // if table not select
@@ -2525,23 +2545,33 @@ public class Main extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_food_tableKeyPressed
 
-    private void confirm_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_order_btnActionPerformed
-        if (order_customer_name_input.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "No Table number found", "Missing table no", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_confirm_order_btnActionPerformed
-
     private void eat_here_optionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eat_here_optionActionPerformed
 
     }//GEN-LAST:event_eat_here_optionActionPerformed
 
     private void add_order_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_order_buttonActionPerformed
-
+        if (order_customer_name_input.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "No Table number found", "Missing table no", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int selectedRow = food_table.getSelectedRow();
+            OrderDAO dao = new OrderDAO();
+            String selectedFoodID = String.valueOf(food_table.getModel().getValueAt(selectedRow, 0));
+            String selectedName = (String) food_table.getModel().getValueAt(selectedRow, 2);
+            String selectPrice = (String) food_table.getModel().getValueAt(selectedRow, 3);
+            String selectStatu = (String) food_table.getModel().getValueAt(selectedRow, 4);
+            int tableno = Integer.parseInt(order_customer_name_input.getText());
+            OrderBean bean = new OrderBean();
+            bean.setFoodName(selectedName);
+            bean.setTableno(Integer.parseInt(order_customer_name_input.getText()));
+            bean.setQuantity(1);
+            bean.setCurrentUser(user_box.getText());
+            dao.addOrder(bean);
+            updateOrderTable(dao.getOrderData(tableno));
+        }
     }//GEN-LAST:event_add_order_buttonActionPerformed
 
     private void edit_reserve_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_reserve_buttonActionPerformed
         if (edit_reserve_no_input.getText().length() != 0) {
-            boolean addType = false;
             setEditReserveComponent(true);
             edit_reserve_save.setEnabled(true);
         }
@@ -2553,6 +2583,18 @@ public class Main extends javax.swing.JFrame {
         edit_reserve_seat_input.setEnabled(b);
     }
     private void cancel_reserve_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_reserve_buttonActionPerformed
+
+        if (edit_reserve_no_input.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "No Table number found", "Missing table no", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int selectedRow = reserve_table.getSelectedRow();
+            ReserveDAO dao = new ReserveDAO();
+
+            int tableno = Integer.parseInt(order_customer_name_input.getText());
+            ReserveBean bean = new ReserveBean();
+            dao.DeleteReserve(bean, tableno);
+            updateReserveTable(dao.getReserveData());
+        }
 
     }//GEN-LAST:event_cancel_reserve_buttonActionPerformed
 
@@ -2615,23 +2657,45 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_table_no_billing_inputKeyPressed
 
     private void table_checkout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_checkout_btnActionPerformed
-        String table_no = ((JButton) evt.getSource()).getName();
         setPane(billing_pane);
-        table_no_billing_input.setText(table_no + "\n");
+        //  table_no_billing_input.setText(table_no + "\n");
     }//GEN-LAST:event_table_checkout_btnActionPerformed
 
     private void table_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table_order_btnActionPerformed
-        String table_no = ((JButton) evt.getSource()).getName();
         setPane(order_pane);
-        reserve_table_no_input.setText(table_no + "\n");
+        // reserve_table_no_input.setText(table_no + "\n");
     }//GEN-LAST:event_table_order_btnActionPerformed
 
-    private void editReserve(int selectRow) {
+    private void remove_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_order_btnActionPerformed
+        if (order_customer_name_input.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "No Table number found", "Missing table no", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int selectedRow = food_table.getSelectedRow();
+            OrderDAO dao = new OrderDAO();
+            String selectedOrderID = String.valueOf(reserve_table.getModel().getValueAt(selectedRow, 0));
+            int tableno = Integer.parseInt(order_customer_name_input.getText());
+            OrderBean bean = new OrderBean();
+            bean.setTableno(tableno);
+            bean.setCurrentUser(user_box.getText());
+            dao.deleteOrder(bean, Integer.parseInt(selectedOrderID));
+            updateOrderTable(dao.getOrderData(tableno));
+        }
+    }//GEN-LAST:event_remove_order_btnActionPerformed
 
+    private void reset_order_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_order_btnActionPerformed
+        refreshOrderList();
+    }//GEN-LAST:event_reset_order_btnActionPerformed
+
+    private void refreshOrderList() {
+        OrderDAO dao = new OrderDAO();
+        int tableno = Integer.parseInt(order_customer_name_input.getText());
+        updateOrderTable(dao.getOrderData(tableno));
+    }
+
+    private void editReserve(int selectRow) {
     }
 
     private void cancelReserve(int selectRow) {
-
     }
 
     private void setTable(ActionEvent e) {
@@ -2639,6 +2703,30 @@ public class Main extends javax.swing.JFrame {
         setPane(reserve_pane);
         order_customer_name_input.setText(table_no);
         reserve_table_no_input.setText(table_no);
+    }
+
+    public void updateOrderTable(ArrayList<OrderBean> list) {
+        String[] columns = {"Order ID", "Name", "Quantity", "Price", "Datetime"};
+        Object[][] rows = new Object[list.size()][4];
+        for (int i = 0; i < list.size(); i++) {
+            rows[i][0] = list.get(i).getIdorder();
+            rows[i][1] = list.get(i).getFoodName();
+            rows[i][2] = list.get(i).getQuantity();
+            rows[i][3] = list.get(i).getPrice();
+            rows[i][4] = list.get(i).getDatetime();
+        }
+        // set Model of JTabel from list array of data
+        order_list_table.setModel(new javax.swing.table.DefaultTableModel(rows, columns));
+        order_list_table.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        order_list_table.getColumnModel().getColumn(0).setPreferredWidth(10);
+        order_list_table.getColumnModel().getColumn(1).setPreferredWidth(30);
+        order_list_table.getColumnModel().getColumn(2).setPreferredWidth(30);
+        order_list_table.getColumnModel().getColumn(3).setPreferredWidth(30);
+        order_list_table.getColumnModel().getColumn(3).setPreferredWidth(30);
+        initialReserveNo();
+        // set the JTable into scroll panel
+        ScrollPanelForQueryTable.setViewportView(order_list_table);
+        System.out.println("Order list table updated");
     }
 
     public void updateFoodTable(ArrayList<FoodBean> list) {
@@ -2763,7 +2851,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem check_for_update_menuitem;
     private javax.swing.JButton checkout_btn;
     private javax.swing.JMenuItem clear_history_menuitem;
-    private javax.swing.JButton confirm_order_btn;
     private javax.swing.JMenuItem copy_menu_item;
     private javax.swing.JLabel cus_name_billing;
     private javax.swing.JLabel customer_order_label;
@@ -2802,6 +2889,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2869,6 +2957,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton reserve_table_btn;
     private javax.swing.JTextField reserve_table_no_input;
     private javax.swing.JPanel reserve_table_panel;
+    private javax.swing.JButton reset_order_btn;
     private javax.swing.JPanel right_reserve_panel;
     private javax.swing.JMenuItem search_menuitem;
     private javax.swing.JButton search_product_button;
